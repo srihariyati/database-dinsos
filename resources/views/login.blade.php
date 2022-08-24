@@ -1,14 +1,7 @@
-<!doctype html>
-<html>
-<head>
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}" defer></script>
-   
-    <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-</head>
-<body>
+@extends('templatelogin')
+@section('title','Login')
 
+@section('container')
   <!-- Section: Design Block -->
 <section class="">
   <!-- Jumbotron -->
@@ -102,6 +95,4 @@
   <!-- Jumbotron -->
 </section>
 <!-- Section: Design Block -->
-
-</body>
-</html>
+@endsection
