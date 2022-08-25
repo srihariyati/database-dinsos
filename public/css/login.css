@@ -1,0 +1,14 @@
+.header {
+    font-family: 'Playfair Display';font-size: 60px;
+}
+
+.headline {
+    font-family: 'Playfair Display';
+    font-size: 30px;
+    font-weight: 900;
+}
+
+.tab {
+    display: inline-block;
+    margin-left: 130px;
+}
