@@ -1,98 +1,72 @@
-@extends('templatelogin')
-@section('title','Login')
+<html lang="en">
+  <head>
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-@section('container')
-  <!-- Section: Design Block -->
-<section class="">
-  <!-- Jumbotron -->
-  <div class="px-4 py-5 px-md-5 text-center text-lg-start" style="background-color: hsl(0, 0%, 96%)">
-    <div class="container">
-      <div class="row gx-lg-5 align-items-center">
-        <div class="col-lg-6 mb-5 mb-lg-0">
-          <h1 class="my-5 display-3 fw-bold ls-tight">
-            The best offer <br />
-            <span class="text-primary">for your business</span>
-          </h1>
-          <p style="color: hsl(217, 10%, 50.8%)">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-            Eveniet, itaque accusantium odio, soluta, corrupti aliquam
-            quibusdam tempora at cupiditate quis eum maiores libero
-            veritatis? Dicta facilis sint aliquid ipsum atque?
-          </p>
-        </div>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link href='https://fonts.googleapis.com/css?family=Playfair Display' rel='stylesheet'>
 
-        <div class="col-lg-6 mb-5 mb-lg-0">
-          <div class="card">
-            <div class="card-body py-5 px-md-5">
-              <form>
-                <!-- 2 column grid layout with text inputs for the first and last names -->
-                <div class="row">
-                  <div class="col-md-6 mb-4">
-                    <div class="form-outline">
-                      <input type="text" id="form3Example1" class="form-control" />
-                      <label class="form-label" for="form3Example1">First name</label>
-                    </div>
-                  </div>
-                  <div class="col-md-6 mb-4">
-                    <div class="form-outline">
-                      <input type="text" id="form3Example2" class="form-control" />
-                      <label class="form-label" for="form3Example2">Last name</label>
-                    </div>
-                  </div>
-                </div>
+    <link rel="stylesheet" href="/css/login.css">
 
-                <!-- Email input -->
-                <div class="form-outline mb-4">
-                  <input type="email" id="form3Example3" class="form-control" />
-                  <label class="form-label" for="form3Example3">Email address</label>
-                </div>
 
-                <!-- Password input -->
-                <div class="form-outline mb-4">
-                  <input type="password" id="form3Example4" class="form-control" />
-                  <label class="form-label" for="form3Example4">Password</label>
-                </div>
+	<body class="container" style="background-color:#EEEEEE" >
+		<div class="text-center">
+			<div class="card-group mt-5" >
+	  			<div class="card" style="border-radius: 10px">
+	    			<div class="card-body" style="color: #444941; margin-top: 5rem">
+	    				<h1 class="header fw-bold mt-5 mb-3">Login</h1>
+	      				<div class="row justify-content-center">
+				            <div class="col-md-8 col-lg-8">
+				                <div class="login-wrap p-0">
+				                    <form action="{{ route('login') }}" class="signin-form" method="POST">
+                              @csrf
+				                        <div class="form-group mt-3">
+                                  <label for="username"></label>
+                                  <input type="text" name="username" id="username" class="form-control" placeholder="Username" required>
+                                  @error('email')
+                                      <span class="invalid-feedback" role="alert">
+                                          <strong>{{ $message }}</strong>
+                                      </span>
+                                  @enderror
+				                        </div>
+				                        <div class="form-group mt-3">
+				                            <label for="pass"></label>
+				                            <input id="password-field" type="password" name="pass" id="pass" class="form-control" placeholder="Password" required>
+                                    @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                    @enderror
+                                    <!-- <i class="bi bi-eye-slash" id="togglePassword"></i> -->
+				                        </div>
+				                        <div>
+				                        	<input type="checkbox" value="" id="" class=" mt-3"> <label for="rememberMe">Remember me &emsp; <a href="" style="color: #032D23" class="tab text-decoration-underline">Forgot Password?</a></label> 
+				                        </div>
+				                        <div class="tombol btn-group justify-content-center">
+				                            <button type="submit" name="login" class="text-white margin fw-bold form-control btn-lg mt-3" style="background-color: #4B7BE5">Login</button>
+                                    @if (Route::has('password.request'))
+                                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        <!-- {{ __('Forgot Your Password?') }} -->
+                                    </a>
+                                @endif
+				                        </div>
+				                    </form>
+				                </div>
+				            </div>
+				        </div>
+	    			</div>
+	    			<div class="justify-content-center text-center mb-3">
+				    	<p class="card-text"><small>Copyright ©2022 <a href="https://informatika.unsyiah.ac.id/webinf/" style="color: #E6B325" class="text-decoration-underline">Informatika USK</a> All rights reserved.</small></p>
+				    </div>
+	  			</div>
+	  			<div class="card" style="border-radius : 10px;">
+	    			<img class="card-img-top" src="/img/log.png" style="object-fit:cover; width:650px; height:675px;border-radius: 10px; "alt="Card image cap">
+	  			</div>
+  
+  			</div>
+		</div>
+    	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
 
-                <!-- Checkbox -->
-                <div class="form-check d-flex justify-content-center mb-4">
-                  <input class="form-check-input me-2" type="checkbox" value="" id="form2Example33" checked />
-                  <label class="form-check-label" for="form2Example33">
-                    Subscribe to our newsletter
-                  </label>
-                </div>
-
-                <!-- Submit button -->
-                <button type="submit" class="btn btn-primary btn-block mb-4">
-                  Sign up
-                </button>
-
-                <!-- Register buttons -->
-                <div class="text-center">
-                  <p>or sign up with:</p>
-                  <button type="button" class="btn btn-link btn-floating mx-1">
-                    <i class="fab fa-facebook-f"></i>
-                  </button>
-
-                  <button type="button" class="btn btn-link btn-floating mx-1">
-                    <i class="fab fa-google"></i>
-                  </button>
-
-                  <button type="button" class="btn btn-link btn-floating mx-1">
-                    <i class="fab fa-twitter"></i>
-                  </button>
-
-                  <button type="button" class="btn btn-link btn-floating mx-1">
-                    <i class="fab fa-github"></i>
-                  </button>
-                </div>
-              </form>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Jumbotron -->
-</section>
-<!-- Section: Design Block -->
-@endsection
+  	</body>
+</html>
