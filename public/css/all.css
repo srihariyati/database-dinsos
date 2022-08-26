@@ -1,0 +1,11 @@
+#card-dua {
+    background: #FFFFFF;
+    box-shadow: 1px black;
+    height: 150px;
+    margin: 4rem 6rem;
+    width: 1150px;
+    padding: 24px 40px;
+    text-align: center;
+    font-family:  Helvetica, sans-serif;
+    border-radius : 10px;
+}
