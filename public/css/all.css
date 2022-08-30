@@ -1,11 +1,22 @@
+#card-satu {
+    background: #FFFFFF;
+    box-shadow: 1px black;
+    height: 150px;
+    margin: 2rem 2rem;
+    width: 980px;
+    padding: 12px 20px;
+    font-family:  Helvetica, sans-serif;
+}
+
 #card-dua {
     background: #FFFFFF;
     box-shadow: 1px black;
     height: 150px;
     margin: 4rem 6rem;
-    width: 1150px;
+    width: 850px;
     padding: 24px 40px;
     text-align: center;
     font-family:  Helvetica, sans-serif;
     border-radius : 10px;
 }
+
