@@ -1,10 +1,10 @@
 #card-satu {
     background: #FFFFFF;
     box-shadow: 1px black;
-    height: 150px;
+    height: 300px;
     margin: 2rem 2rem;
-    width: 980px;
-    padding: 12px 20px;
+    width: 1050px;
+    padding: 12px 10px;
     font-family:  Helvetica, sans-serif;
 }
 
@@ -20,3 +20,6 @@
     border-radius : 10px;
 }
 
+#data {
+    margin-left: 0;
+}
