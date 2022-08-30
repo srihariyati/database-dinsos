@@ -10,5 +10,10 @@
 
 .tab {
     display: inline-block;
-    margin-left: 130px;
+    margin-left: 85px;
+}
+
+.card{
+    height: 560px;
+    margin-top: 33px;
 }

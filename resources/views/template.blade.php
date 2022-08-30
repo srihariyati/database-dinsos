@@ -118,7 +118,7 @@
 
           <!-- sidebar -->
           <div class="flex-shrink-0 p-3 " >
-              <a href="/" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
+              <a href="/dashboard" class="d-flex align-items-center pb-3 mb-3 link-dark text-decoration-none border-bottom">
                 <svg xmlns="http://www.w3.org/2000/svg" width="30" height="16" fill="currentColor" class="bi bi-grid-fill" viewBox="0 0 16 16">
                   <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3z"/>
                 </svg> 
@@ -131,7 +131,7 @@
                   </button>
                   <div class="collapse show" id="home-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                      <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Data PMKS</a></li>
+                      <li><a href="{{ url('/pmks') }}" class="link-dark d-inline-flex text-decoration-none rounded">Data PMKS</a></li>
                     </ul>
                   </div>
                 </li>
@@ -141,7 +141,7 @@
                   </button>
                   <div class="collapse" id="dashboard-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                      <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Data .....</a></li>
+                      <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Data DTKS</a></li>
                       <!-- <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Weekly</a></li>
                       <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Monthly</a></li>
                       <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Annually</a></li> -->
@@ -154,9 +154,9 @@
                   </button>
                   <div class="collapse" id="orders-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                      <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Data .....</a></li>
-                      <!-- <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Processed</a></li>
-                      <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Shipped</a></li>
+                      <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Data PKH</a></li>
+                      <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Data Bantuan Bencana</a></li>
+                      <!-- <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Shipped</a></li>
                       <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Returned</a></li> -->
                     </ul>
                   </div>
