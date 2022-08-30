@@ -20,6 +20,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
+Route::get('/pmks', function () {
+    return view('pmks');
+});
+
 
 Auth::routes();
 
