@@ -32,7 +32,7 @@
                                 </select>
                         </div>
 
-                        <div class="col-auto" style="margin-left: 75px;">
+                        <div class="col-auto" style="margin-left: 80px;">
                             <label>Desa/Kelurahan</label>
                                 <select class="form-select" id="autoSizingSelect">
                                     <option selected>Pilih Desa/Kelurahan</option>
@@ -48,7 +48,7 @@
                                 </select>
                         </div>
 
-                        <div class="col-auto" style="margin-left: 75px;">
+                        <div class="col-auto" style="margin-left: 80px;">
                             <label>Bulan</label>
                                 <select class="form-select" id="autoSizingSelect">
                                     <option selected>Pilih Bulan</option>
@@ -64,7 +64,7 @@
                                 </select>
                         </div>
 
-                        <div class="col-auto" style="margin-left: 75px;">
+                        <div class="col-auto" style="margin-left: 80px;">
                             <label>Tahun</label>
                                 <select class="form-select" id="autoSizingSelect">
                                     <option selected>Pilih Tahun</option>
@@ -84,11 +84,11 @@
                 </div>
 
             <div class="row" style="margin-top: 180px;">
-                <div class="col-auto" style="margin-left: 600px;">
-                    <a href="#" id="edit-btn" class="btn btn-primary" style="background-color:#FF3232; border-color:#FF3232;"> Edit </a>
+                <div class="col-auto" style="margin-left: 630px;">
+                    <a href="#" id="edit-btn" class="tombol btn-group text-white fw-bold form-control btn-lg mt-3" style="background-color: #FF3232; text-decoration: none; padding: 7px 24px;"> Edit </a>
                 </div>
                 <div class="col-auto">
-                    <a href="#" id="cari-btn" class="btn btn-primary" style="background-color:#0B63F8; border-color:#0B63F8;"> Cari </a>
+                    <a href="#" id="cari-btn" class="tombol btn-group text-white fw-bold form-control btn-lg mt-3" style="background-color:#0B63F8; text-decoration: none; padding: 7px 24px"> Cari </a>
                 </div>
             </div>
 
