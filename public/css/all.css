@@ -3,8 +3,8 @@
     box-shadow: 1px black;
     height: 300px;
     margin: 2rem 2rem;
-    width: 1050px;
-    padding: 12px 10px;
+    width: 990px;
+    padding: 12px 8px;
     font-family:  Helvetica, sans-serif;
     border-radius: 5px;
 }
@@ -21,6 +21,22 @@
     border-radius : 10px;
 }
 
+#card-tiga {
+    background: #FFFFFF;
+    box-shadow: 1px black;
+    height: 560px;
+    margin: 2rem 2rem;
+    width: 990px;
+    padding: 12px 8px;
+    font-family:  Helvetica, sans-serif;
+    border-radius: 5px;
+}
+
+
 #data {
     margin-left: 0;
+}
+
+a {
+    text-decoration: none;
 }
