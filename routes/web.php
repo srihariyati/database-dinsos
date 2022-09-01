@@ -24,6 +24,10 @@ Route::get('/pmks', function () {
     return view('pmks');
 });
 
+Route::get('/tambahpmks', function () {
+    return view('tambahpmks');
+});
+
 
 Auth::routes();
 
