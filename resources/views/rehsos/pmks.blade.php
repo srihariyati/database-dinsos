@@ -9,7 +9,7 @@
                 </div>
                         
                 <div class="col-auto" >
-                    <a href="{{ url('/tambahpmks')}}" id="tambah" class="tombol btn-group text-white fw-bold form-control btn-lg mt-3" style="background-color: #1CCE2E; text-decoration: none;"> Tambah </a>
+                    <a href="{{ url('/tambahpmks')}}" id="tambah" class="tombol btn-group text-white fw-bold form-control btn-lg mt-3" style="background-color: #1CCE2E; text-decoration: none; height:33px; padding:5px;"> Tambah </a>
                 </div>
 
                 <div class="container" style="margin-top: 30px;">

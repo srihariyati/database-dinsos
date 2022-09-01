@@ -21,11 +21,23 @@ Route::get('/dashboard', function () {
 });
 
 Route::get('/pmks', function () {
-    return view('pmks');
+    return view('rehsos/pmks');
 });
 
 Route::get('/tambahpmks', function () {
-    return view('tambahpmks');
+    return view('rehsos/tambahpmks');
+});
+
+Route::get('/dtks', function () {
+    return view('dayasos/dtks');
+});
+
+Route::get('/tambahdtks', function () {
+    return view('dayasos/tambahdtks');
+});
+
+Route::get('/bencana', function () {
+    return view('linjamsos/bencana');
 });
 
 
