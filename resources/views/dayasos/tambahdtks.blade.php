@@ -1,11 +1,16 @@
 @extends('template')
-@section('title','Tambah Data PMKS')
+@section('title','Tambah Data DTKS')
 
 @section('content')
     <div id="card-tiga">
             <div id="data" class="row">
+                
+                <div class="col-auto" style="margin-top: 12px; margin-left:15px;">
+                    <a href="{{ url('/dtks')}}" class="icon"><i class= "fas fa-chevron-left fa-lg"  style="color:black;"> </i></a>
+                </div>
+
                 <div class="col-auto" style="margin-top: 10px;">
-                    <h4 class="fw-bold" style="margin-left: 10px;">Tambah Data PMKS</h4>
+                    <h4 class="fw-bold">Tambah Data DTKS</h4>
                 </div>
             
             <form action="#">
@@ -78,77 +83,53 @@
                     </div>
                 </div>
 
-                <div class="container" style="margin-top: 120px;">
+                <div class="container" style="margin-top: 130px; margin-left:15px">
+                    <h6>Jumlah DTKS</h6>
+                    <hr width="850px" size="4px" margin-top="0px">
+                </div>
+
+                <div class="container">
                     <div class="row" style="margin-left: 0px;">
-                        <div class="col-auto" style="width:290px">
-                            <label style="font-size:13px; margin-left: 0px; margin-bottom: 6px">Gelandangan</label>
-                            <input type="number" name="gld" id="gld" class="form-control" placeholder="0" required>   
+
+                        <div class="col-auto" style="font-size:13px; margin-left: 5px; width:290px">
+                            <label style="margin-bottom: 6px">Jiwa</label>
+                            <input type="number" name="jiwa" id="jiwa" class="form-control" placeholder="0" required>   
                         </div>
 
                         <div class="col-auto" style="font-size:13px; margin-left: 5px; width:290px">
-                            <label style="margin-bottom: 6px">Pengemis</label>
-                            <input type="number" name="peng" id="peng" class="form-control" placeholder="0" required>   
-                        </div>
-
-                        <div class="col-auto" style="font-size:13px; margin-left: 5px; width:290px">
-                            <label style="margin-bottom: 6px">Punk</label>
-                            <input type="number" name="punk" id="punk" class="form-control" placeholder="0" required>   
+                            <label style="margin-bottom: 6px">Ruta</label>
+                            <input type="number" name="ruta" id="ruta" class="form-control" placeholder="0" required>   
                         </div>
 
                     </div>
                 </div>
 
-                <div class="container" style="margin-top: 200px;">
+                <div class="container" style="margin-top: 130px; margin-left:15px">
+                    <h6 >Jumlah PBI</h6>
+                    <hr width="850px" size="4px" margin-top="0px">
+                </div>
+
+                <div class="container">
                     <div class="row" style="margin-left: 0px;">
-                        <div class="col-auto" style="width:290px">
-                            <label style="font-size:13px; margin-left: 0px; margin-bottom: 6px">Anak Jalanan</label>
-                            <input type="number" name="anjal" id="anjal" class="form-control" placeholder="0" required>   
+
+                        <div class="col-auto" style="font-size:13px; margin-left: 5px; width:290px">
+                            <label style="margin-bottom: 6px">Jumlah Aktif</label>
+                            <input type="number" name="aktif" id="aktif" class="form-control" placeholder="0" required>   
                         </div>
 
                         <div class="col-auto" style="font-size:13px; margin-left: 5px; width:290px">
-                            <label style="margin-bottom: 6px">Orang Terlantar</label>
-                            <input type="number" name="ot" id="ot" class="form-control" placeholder="0" required>   
+                            <label style="margin-bottom: 6px">Jumlah Non Aktif</label>
+                            <input type="number" name="nonaktif" id="nonaktif" class="form-control" placeholder="0" required>   
                         </div>
 
                         <div class="col-auto" style="font-size:13px; margin-left: 5px; width:290px">
-                            <label style="margin-bottom: 6px">Anak Terlantar</label>
-                            <input type="number" name="at" id="at" class="form-control" placeholder="0" required>   
+                            <label style="margin-bottom: 6px">Jumlah BBL</label>
+                            <input type="number" name="bbl" id="bbl" class="form-control" placeholder="0" required>   
                         </div>
-
                     </div>
                 </div>
 
-                <div class="container" style="margin-top: 280px;">
-                    <div class="row" style="margin-left: 0px;">
-                        <div class="col-auto" style="width:290px">
-                            <label style="font-size:13px; margin-left: 0px; margin-bottom: 6px">Pekerja Seks Komersial</label>
-                            <input type="number" name="pks" id="pks" class="form-control" placeholder="0" required>   
-                        </div>
-
-                        <div class="col-auto" style="font-size:13px; margin-left: 5px; width:290px">
-                            <label  style="margin-bottom: 6px">WARIA</label>
-                            <input type="number" name="waria" id="waria" class="form-control" placeholder="0" required>   
-                        </div>
-
-                        <div class="col-auto" style="font-size:13px; margin-left: 5px; width:290px">
-                            <label style="margin-bottom: 6px">PRIA</label>
-                            <input type="number" name="pria" id="pria" class="form-control" placeholder="0" required>   
-                        </div>
-
-                    </div>
-                </div>
-
-                <div class="container" style="margin-top: 360px;">
-                    <div class="row" style="margin-left: 0px;">
-                        <div class="col-auto" style="width:290px">
-                            <label style="font-size:13px; margin-left: 0px; margin-bottom: 6px">WANITA</label>
-                            <input type="number" name="wanita" id="wanita" class="form-control" placeholder="0" required>   
-                        </div>
-
-                    </div>
-                </div>
-
-                <div id="button" style="margin-top: 25rem; margin-left:50rem;">
+                <div id="button" style="margin-top: 6rem; margin-left:50rem;">
                     <a href="#" id="simpan" class="tombol btn-group text-white fw-bold form-control btn-lg mt-3" style="background-color: #1CCE2E; text-decoration: none; width: 80px;"> Simpan </a>
                 </div> 
 
