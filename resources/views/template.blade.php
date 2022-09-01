@@ -9,6 +9,7 @@
     <title>@yield('title')</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/5.2/examples/sidebars/">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
      
     <!-- Styles -->
     <link href="css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
@@ -140,12 +141,9 @@
                   <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
                     Bidang Dayasos & PFM
                   </button>
-                  <div class="collapse" id="dashboard-collapse">
+                  <div class="collapse show" id="dashboard-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                      <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Data DTKS</a></li>
-                      <!-- <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Weekly</a></li>
-                      <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Monthly</a></li>
-                      <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Annually</a></li> -->
+                      <li><a href="{{ url('/dtks') }}" class="link-dark d-inline-flex text-decoration-none rounded">Data DTKS</a></li>
                     </ul>
                   </div>
                 </li>
@@ -153,13 +151,11 @@
                   <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
                     Bidang Limjamsos
                   </button>
-                  <div class="collapse" id="orders-collapse">
+                  <div class="collapse show" id="orders-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
                       <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Data PKH</a></li>
-                      <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Data Bantuan Bencana</a></li>
-                      <!-- <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Shipped</a></li>
-                      <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Returned</a></li> -->
-                    </ul>
+                        <li><a href="{{ url('/bencana') }}" class="link-dark d-inline-flex text-decoration-none rounded">Data Bantuan Bencana</a></li>
+                      </ul>
                   </div>
                 </li>
                 
