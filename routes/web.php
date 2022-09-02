@@ -40,6 +40,10 @@ Route::get('/bencana', function () {
     return view('linjamsos/bencana');
 });
 
+Route::get('/tambahdatabencana', function () {
+    return view('linjamsos/tambahdatabencana');
+});
+
 
 Auth::routes();
 
