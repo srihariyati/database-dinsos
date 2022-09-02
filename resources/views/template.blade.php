@@ -110,7 +110,7 @@
           <!-- header -->
           <header class="p-3 ">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-              <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+              <a href="#" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
                 <!-- logo kota banda aceh -->
                 <img src="img\pemko_bna.png" width="25%" style="margin-right: 7px;">
                 <span class="fs-5 fw-bold" >Dinas Sosial Kota Banda Aceh</span>
@@ -149,11 +149,11 @@
                 </li>
                 <li class="mb-1">
                   <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-                    Bidang Limjamsos
+                    Bidang Linjamsos
                   </button>
                   <div class="collapse show" id="orders-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                      <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Data PKH</a></li>
+                      <li><a href="{{ url('/pkh') }}" class="link-dark d-inline-flex text-decoration-none rounded">Data PKH</a></li>
                         <li><a href="{{ url('/bencana') }}" class="link-dark d-inline-flex text-decoration-none rounded">Data Bantuan Bencana</a></li>
                       </ul>
                   </div>
@@ -165,9 +165,9 @@
                   <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
                     Akun
                   </button>
-                  <div class="collapse" id="account-collapse">
+                  <div class="collapse show" id="account-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                      <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Log Out</a></li>
+                      <li><a href="/" class="link-dark d-inline-flex text-decoration-none rounded">Log Out</a></li>
                     </ul>
                   </div>
                 </li>

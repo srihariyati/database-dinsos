@@ -5,14 +5,14 @@
     <div id="card-satu">
             <div id="data" class="row">
                 <div class="col-auto" style="margin-top: 20px;">
-                    <h4 class="fw-bold" style="margin-left: 10px;">Data Bantuan Masa Tanggap Darurat Bencana</h4>
+                    <h4 class="fw-bold" style="margin-left: 10px;">Data Rekapan Bantuan Sosial Masa Tanggap Darurat Bencana </h4>
                 </div>
                         
                 <div class="col-auto" >
                     <a href="{{ url('/tambahdatabencana')}}" id="tambah" class="tombol btn-group text-white fw-bold form-control btn-lg mt-3" style="background-color: #1CCE2E; text-decoration: none; height:33px; padding:5px;" > Tambah </a>
                 </div>
 
-                <div class="container" style="margin-top: 30px;">
+                <div class="container" style="margin-top: 35px;">
                     <div class="row" style="margin-left: 0px;">
                         
                         <div class="col-auto" style="font-size:13px; margin-left: 5px; width:170px">

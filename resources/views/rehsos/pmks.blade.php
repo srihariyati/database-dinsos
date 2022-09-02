@@ -5,7 +5,7 @@
     <div id="card-satu">
             <div id="data" class="row">
                 <div class="col-auto" style="margin-top: 20px;">
-                    <h4 class="fw-bold" style="margin-left: 10px;">Data PMKS</h4>
+                    <h4 class="fw-bold" style="margin-left: 10px;">Data Rekapan PMKS</h4>
                 </div>
                         
                 <div class="col-auto" >
