@@ -44,6 +44,13 @@ Route::get('/tambahdatabencana', function () {
     return view('linjamsos/tambahdatabencana');
 });
 
+Route::get('/pkh', function () {
+    return view('linjamsos/pkh');
+});
+
+Route::get('/tambahpkh', function () {
+    return view('linjamsos/tambahpkh');
+});
 
 Auth::routes();
 

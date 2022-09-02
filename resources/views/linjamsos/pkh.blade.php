@@ -1,20 +1,51 @@
 @extends('template')
-@section('title','Data Bencana')
+@section('title','PKH')
 
 @section('content')
     <div id="card-satu">
             <div id="data" class="row">
                 <div class="col-auto" style="margin-top: 20px;">
-                    <h4 class="fw-bold" style="margin-left: 10px;">Data Rekapan Bantuan Sosial Masa Tanggap Darurat Bencana </h4>
+                    <h4 class="fw-bold" style="margin-left: 10px;">Data Rekapan PKH</h4>
                 </div>
                         
                 <div class="col-auto" >
-                    <a href="{{ url('/tambahdatabencana')}}" id="tambah" class="tombol btn-group text-white fw-bold form-control btn-lg mt-3" style="background-color: #1CCE2E; text-decoration: none; height:33px; padding:5px;" > Tambah </a>
+                    <a href="{{ url('/tambahpkh')}}" id="tambah" class="tombol btn-group text-white fw-bold form-control btn-lg mt-3" style="background-color: #1CCE2E; text-decoration: none; height:33px; padding:5px;"> Tambah </a>
                 </div>
 
-                <div class="container" style="margin-top: 35px;">
+                <div class="container" style="margin-top: 30px;">
                     <div class="row" style="margin-left: 0px;">
-                        
+                        <div class="col-auto" style="width:290px">
+                            <label class="fw-bold" style="font-size:13px; margin-left: 0px; margin-bottom: 6px">Kecamatan</label>
+                                <select class="form-select" id="autoSizingSelect" style="font-size:13px;">
+                                    <option selected >Pilih Kecamatan</option>
+                                    <option value="1">Baiturrahman</option>
+                                    <option value="2">Banda Raya</option>
+                                    <option value="3">Jaya Baru</option>
+                                    <option value="4">Kuta Alam</option>
+                                    <option value="5">Kuta Raja</option>
+                                    <option value="6">Lueng Bata</option>
+                                    <option value="7">Meuraxa</option>
+                                    <option value="8">Syiah Kuala</option>
+                                    <option value="9">Ulee Kareng</option>
+                                </select>
+                        </div>
+
+                        <div class="col-auto" style="font-size:13px; margin-left: 5px; width:290px">
+                            <label class="fw-bold" style="margin-bottom: 6px">Desa/Kelurahan</label>
+                                <select class="form-select" id="autoSizingSelect" style="font-size:13px;">
+                                    <option selected>Pilih Desa/Kelurahan</option>
+                                    <option value="1">Baiturrahman</option>
+                                    <option value="2">Banda Raya</option>
+                                    <option value="3">Jaya Baru</option>
+                                    <option value="4">Kuta Alam</option>
+                                    <option value="5">Kuta Raja</option>
+                                    <option value="6">Lueng Bata</option>
+                                    <option value="7">Meuraxa</option>
+                                    <option value="8">Syiah Kuala</option>
+                                    <option value="9">Ulee Kareng</option>
+                                </select>
+                        </div>
+
                         <div class="col-auto" style="font-size:13px; margin-left: 5px; width:170px">
                             <label class="fw-bold" style="margin-bottom: 6px">Bulan</label>
                                 <select class="form-select" id="autoSizingSelect" style="font-size:13px;">
@@ -47,30 +78,6 @@
                                     <option value="7">2016</option>
                                 </select>
                         </div>
-
-                        <div class="col-auto" style="width:290px">
-                            <label class="fw-bold" style="font-size:13px; margin-left: 0px; margin-bottom: 6px">Jenis Bencana</label>
-                                <select class="form-select" id="autoSizingSelect" style="font-size:13px;">
-                                    <option selected >Pilih Jenis Bencana</option>
-                                    <option value="1">Banjir</option>
-                                    <option value="2">Kebakaran</option>
-                                    <option value="3">Angin Kencang</option>
-                                    <option value="4">Gempa Bumi</option>
-                                    <option value="5">Tanah Longsor</option>
-                                    <option value="6">Tsunami</option>
-                                    <option value="7">Lain-lain</option>
-                                </select>
-                        </div>
-
-                        <div class="col-auto" style="font-size:13px; margin-left: 5px; width:290px">
-                            <label class="fw-bold" style="margin-bottom: 6px">Sumber Dana</label>
-                                <select class="form-select" id="autoSizingSelect" style="font-size:13px;">
-                                    <option selected>Pilih Sumber Dana</option>
-                                    <option value="1">APBK</option>
-                                    <option value="2">Lain-lain</option>
-                                </select>
-                        </div>
-
                     </div>
                 </div>
 

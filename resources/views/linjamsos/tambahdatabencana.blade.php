@@ -79,7 +79,7 @@
 
                         <div class="col-auto" style="font-size:13px; margin-left: 5px; width:270px">
                             <label style="margin-bottom: 6px">Total Penerima (KK)</label>
-                            <input type="number" name="jiwa" id="jiwa" class="form-control" placeholder="0" required>   
+                            <input type="number" name="totalkk" id="totalkk" class="form-control" placeholder="0" required>   
                         </div>
 
                     </div>
