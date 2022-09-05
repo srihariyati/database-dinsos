@@ -14,6 +14,38 @@
 
                 <div class="container" style="margin-top: 35px;">
                     <div class="row" style="margin-left: 0px;">
+
+                    <div class="col-auto" style="width:290px">
+                            <label class="fw-bold" style="font-size:13px; margin-left: 0px; margin-bottom: 6px">Kecamatan</label>
+                                <select class="form-select" id="autoSizingSelect" style="font-size:13px;">
+                                    <option selected >Pilih Kecamatan</option>
+                                    <option value="1">Baiturrahman</option>
+                                    <option value="2">Banda Raya</option>
+                                    <option value="3">Jaya Baru</option>
+                                    <option value="4">Kuta Alam</option>
+                                    <option value="5">Kuta Raja</option>
+                                    <option value="6">Lueng Bata</option>
+                                    <option value="7">Meuraxa</option>
+                                    <option value="8">Syiah Kuala</option>
+                                    <option value="9">Ulee Kareng</option>
+                                </select>
+                        </div>
+
+                        <div class="col-auto" style="font-size:13px; margin-left: 5px; width:290px">
+                            <label class="fw-bold" style="margin-bottom: 6px">Desa/Kelurahan</label>
+                                <select class="form-select" id="autoSizingSelect" style="font-size:13px;">
+                                    <option selected>Pilih Desa/Kelurahan</option>
+                                    <option value="1">Baiturrahman</option>
+                                    <option value="2">Banda Raya</option>
+                                    <option value="3">Jaya Baru</option>
+                                    <option value="4">Kuta Alam</option>
+                                    <option value="5">Kuta Raja</option>
+                                    <option value="6">Lueng Bata</option>
+                                    <option value="7">Meuraxa</option>
+                                    <option value="8">Syiah Kuala</option>
+                                    <option value="9">Ulee Kareng</option>
+                                </select>
+                        </div>
                         
                         <div class="col-auto" style="font-size:13px; margin-left: 5px; width:170px">
                             <label class="fw-bold" style="margin-bottom: 6px">Bulan</label>
@@ -47,7 +79,12 @@
                                     <option value="7">2016</option>
                                 </select>
                         </div>
+                    </div>
+                </div>
 
+
+                <div class="container" style="margin-top: 80px;">
+                    <div class="row" style="margin-left: 0px;">
                         <div class="col-auto" style="width:290px">
                             <label class="fw-bold" style="font-size:13px; margin-left: 0px; margin-bottom: 6px">Jenis Bencana</label>
                                 <select class="form-select" id="autoSizingSelect" style="font-size:13px;">
@@ -67,21 +104,24 @@
                                 <select class="form-select" id="autoSizingSelect" style="font-size:13px;">
                                     <option selected>Pilih Sumber Dana</option>
                                     <option value="1">APBK</option>
+                                    <option value="1">APBN</option>
+                                    <option value="1">APBA</option>
                                     <option value="2">Lain-lain</option>
                                 </select>
                         </div>
-
                     </div>
                 </div>
 
-            <div class="row" style="margin-top: 190px;">
-                <div class="col-auto" style="margin-left: 630px;">
-                    <a href="#" id="edit-btn" class="tombol btn-group text-white fw-bold form-control btn-lg mt-3" style="background-color: #FF3232; text-decoration: none; padding: 5px 20px;"> Edit </a>
+                
+
+                <div class="row" style="margin-top: 215px;">
+                    <div class="col-auto" style="margin-left: 630px;">
+                        <a href="#" id="edit-btn" class="tombol btn-group text-white fw-bold form-control btn-lg mt-3" style="background-color: #FF3232; text-decoration: none; padding: 5px 20px;"> Edit </a>
+                    </div>
+                    <div class="col-auto">
+                        <a href="#" id="cari-btn" class="tombol btn-group text-white fw-bold form-control btn-lg mt-3" style="background-color:#0B63F8; text-decoration: none; padding: 5px 20px;"> Cari </a>
+                    </div>
                 </div>
-                <div class="col-auto">
-                    <a href="#" id="cari-btn" class="tombol btn-group text-white fw-bold form-control btn-lg mt-3" style="background-color:#0B63F8; text-decoration: none; padding: 5px 20px;"> Cari </a>
-                </div>
-            </div>
 
         </div>
     </div>
