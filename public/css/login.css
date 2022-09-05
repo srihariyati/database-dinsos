@@ -1,5 +1,5 @@
 .header {
-    font-family: 'Playfair Display';font-size: 60px;
+    font-family: 'Playfair Display';font-size: 5vw;
 }
 
 .headline {
@@ -8,12 +8,11 @@
     font-weight: 900;
 }
 
-.tab {
-    display: inline-block;
-    margin-left: 85px;
-}
 
 .card{
-    height: 560px;
-    margin-top: 33px;
+    margin-top: 2%;
+}
+
+.card-body{
+    height: 80%;
 }
