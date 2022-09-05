@@ -1,21 +1,22 @@
 #card-satu {
     background: #FFFFFF;
     box-shadow: 1px black;
-    height: 300px;
-    margin: 2rem 2rem;
-    width: 990px;
-    padding: 12px 8px;
+    height: 18rem;
+    margin: 0.5rem 2rem;
+    width: 78%;
+    padding: 1vh 2vh;
     font-family:  Helvetica, sans-serif;
     border-radius: 5px;
+    display: inline-block;
 }
 
 #card-dua {
     background: #FFFFFF;
     box-shadow: 1px black;
-    height: 150px;
+    height: 70%;
     margin: 4rem 6rem;
-    width: 850px;
-    padding: 24px 40px;
+    width: 70%;
+    padding: 6vh 10vh;
     text-align: center;
     font-family:  Helvetica, sans-serif;
     border-radius : 10px;
@@ -24,14 +25,13 @@
 #card-tiga {
     background: #FFFFFF;
     box-shadow: 1px black;
-    height: 560px;
-    margin: 2rem 2rem;
-    width: 990px;
-    padding: 12px 8px;
+    height: 34rem;
+    margin: 0.5rem 2rem;
+    width: 78%;
+    padding: 1vh 2vh;
     font-family:  Helvetica, sans-serif;
     border-radius: 5px;
 }
-
 
 #data {
     margin-left: 0;
@@ -40,3 +40,4 @@
 a {
     text-decoration: none;
 }
+
