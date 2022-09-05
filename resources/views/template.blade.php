@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <meta name="description" content="">
     <meta name="author" content="Mark Otto, Jacob Thornton, and Bootstrap contributors">
     <meta name="generator" content="Hugo 0.101.0">
@@ -18,8 +18,9 @@
     <link href="css/sidebars.css" rel="stylesheet">
     <link href="/css/all.css"  rel="stylesheet" >
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
-     <!-- Favicons -->
+    [if lt IE 9]> <script src="http://css3-mediaqueries-js.googlecode.com/svn/trunk/css3-mediaqueries.js"></script> <![endif]
+    
+    <!-- Favicons -->
     <link rel="apple-touch-icon" href="https://getbootstrap.com/docs/5.2/assets/img/favicons/apple-touch-icon.png" sizes="180x180">
     <link rel="icon" href="https://getbootstrap.com/docs/5.2/assets/img/favicons/favicon-32x32.png" sizes="32x32" type="image/png">
     <link rel="icon" href="https://getbootstrap.com/docs/5.2/assets/img/favicons/favicon-16x16.png" sizes="16x16" type="image/png">
@@ -110,7 +111,7 @@
           <!-- header -->
           <header class="p-3 ">
             <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-              <a href="/" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
+              <a href="#" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
                 <!-- logo kota banda aceh -->
                 <img src="img\pemko_bna.png" width="25%" style="margin-right: 7px;">
                 <span class="fs-5 fw-bold" >Dinas Sosial Kota Banda Aceh</span>
@@ -149,11 +150,11 @@
                 </li>
                 <li class="mb-1">
                   <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#orders-collapse" aria-expanded="false">
-                    Bidang Limjamsos
+                    Bidang Linjamsos
                   </button>
                   <div class="collapse show" id="orders-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                      <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Data PKH</a></li>
+                      <li><a href="{{ url('/pkh') }}" class="link-dark d-inline-flex text-decoration-none rounded">Data PKH</a></li>
                         <li><a href="{{ url('/bencana') }}" class="link-dark d-inline-flex text-decoration-none rounded">Data Bantuan Bencana</a></li>
                       </ul>
                   </div>
@@ -165,9 +166,9 @@
                   <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
                     Akun
                   </button>
-                  <div class="collapse" id="account-collapse">
+                  <div class="collapse show" id="account-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                      <li><a href="#" class="link-dark d-inline-flex text-decoration-none rounded">Log Out</a></li>
+                      <li><a href="/" class="link-dark d-inline-flex text-decoration-none rounded">Log Out</a></li>
                     </ul>
                   </div>
                 </li>
