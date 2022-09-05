@@ -14,11 +14,11 @@
 		<div class="text-center">
 			<div class="card-group" >
 	  			<div class="card" style="border-radius: 2%; width:90%;">
-	    			<div class="card-body" style="color: #444941; margin-top: 5rem">
+	    			<div class="card-body" style="color: #444941; margin-top: 3rem">
 	    				<h1 class="header fw-bold mt-2 mb-3">Login</h1>
 	      				<div class="row justify-content-center">
 				            <div class="col-md-8 col-lg-8">
-				                <div class="login-wrap p-0">
+				                <div class="login-wrap p-0" style="margin-top : 3rem;">
 				                    <form action="{{ route('login') }}" class="signin-form" method="POST">
 									@csrf
 									<div class="form-group mt-3">
@@ -40,15 +40,11 @@
 										@enderror
 										<!-- <i class="bi bi-eye-slash" id="togglePassword"></i> -->
 									</div>
-									<div>
-										<input type="checkbox" value="" id="" class="mt-3"> <label for="rememberMe">Remember me <a href="" style="color: #032D23; margin-left:5rem;" class="tab text-decoration-underline">Forgot Password?</a></label> 
-									</div>
-									<div class="tombol btn-group justify-content-center">
-										<button type="submit" name="login" class="text-white margin fw-bold form-control btn-lg mt-4" style="background-color: #4B7BE5">Login</button>
+
+									<div style= "margin-top : 4rem; margin-left:2rem;" class="tombol btn-group justify-content-center">
+										<button type="submit" name="login" class="text-white margin fw-bold form-control btn-lg " style="background-color: #4B7BE5">Login</button>
 									@if (Route::has('password.request'))
-									<a class="btn btn-link" href="{{ url('/dashboard') }}">
-										<!-- {{ __('Forgot Your Password?') }} -->
-									</a>
+									<a class="btn btn-link" href="{{ url('/dashboard') }}"></a>
 									@endif
 									</div>
 				                    </form>

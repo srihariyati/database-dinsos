@@ -5,20 +5,20 @@
     <div id="card-tiga">
             <div id="data" class="row">
                 
-                <div class="col-auto" style="margin-top: 12px; margin-left:15px;">
+                <div class="col-auto" style="margin-top: 0.8rem; margin-left:0.3rem;">
                     <a href="{{ url('/pmks')}}" class="icon"><i class= "fas fa-chevron-left fa-lg"  style="color:black;"> </i></a>
                 </div>
 
-                <div class="col-auto" style="margin-top: 10px;">
+                <div class="col-auto" style="margin-top: 0.7rem;">
                     <h4 class="fw-bold">Tambah Data PMKS</h4>
                 </div>
             
             <form action="#">
-                <div class="container" style="margin-top: 30px;">
+                <div class="container" style="margin-top: 2rem;">
                     <div class="row" style="margin-left: 0px;">
                         <div class="col-auto" style="width:290px">
-                            <label style="font-size:13px; margin-left: 0px; margin-bottom: 6px">Kecamatan</label>
-                                <select class="form-select" id="autoSizingSelect" style="font-size:13px;">
+                            <label style="font-size:2.2vh; margin-left: 0px; margin-bottom: 0.3rem">Kecamatan</label>
+                                <select class="form-select" id="autoSizingSelect" style="font-size:2.2vh;">
                                     <option selected >Pilih Kecamatan</option>
                                     <option value="1">Baiturrahman</option>
                                     <option value="2">Banda Raya</option>
@@ -32,9 +32,9 @@
                                 </select>
                         </div>
 
-                        <div class="col-auto" style="font-size:13px; margin-left: 5px; width:290px">
-                            <label style="margin-bottom: 6px">Desa/Kelurahan</label>
-                                <select class="form-select" id="autoSizingSelect" style="font-size:13px;">
+                        <div class="col-auto" style="font-size:2.2vh; margin-left: 0.2rem; width:290px">
+                            <label style="margin-bottom: 0.3rem">Desa/Kelurahan</label>
+                                <select class="form-select" id="autoSizingSelect" style="font-size:2.2vh;">
                                     <option selected>Pilih Desa/Kelurahan</option>
                                     <option value="1">Baiturrahman</option>
                                     <option value="2">Banda Raya</option>
@@ -48,9 +48,9 @@
                                 </select>
                         </div>
 
-                        <div class="col-auto" style="font-size:13px; margin-left: 5px; width:140px">
-                            <label style="margin-bottom: 6px">Bulan</label>
-                                <select class="form-select" id="autoSizingSelect" style="font-size:13px;">
+                        <div class="col-auto" style="font-size:2.2vh; margin-left: 0.2rem; width:140px">
+                            <label style="margin-bottom: 0.3rem">Bulan</label>
+                                <select class="form-select" id="autoSizingSelect" style="font-size:2.2vh;">
                                     <option selected>Pilih Bulan</option>
                                     <option value="1">Januari</option>
                                     <option value="2">Februari</option>
@@ -67,9 +67,9 @@
                                 </select>
                         </div>
 
-                        <div class="col-auto" style="font-size:13px; margin-left: 5px; width:140px">
+                        <div class="col-auto" style="font-size:2.2vh; margin-left: 0.2rem; width:140px">
                             <label style="margin-bottom: 6px">Tahun</label>
-                                <select class="form-select" id="autoSizingSelect" style="font-size:13px;">
+                                <select class="form-select" id="autoSizingSelect" style="font-size:2.2vh;">
                                     <option selected>Pilih Tahun</option>
                                     <option value="1">2022</option>
                                     <option value="2">2021</option>
@@ -83,47 +83,47 @@
                     </div>
                 </div>
 
-                <div class="container" style="margin-top: 120px;">
+                <div class="container" style="margin-top: 7.3rem;">
                     <div class="row" style="margin-left: 0px;">
                         <div class="col-auto" style="width:290px">
-                            <label style="font-size:13px; margin-left: 0px; margin-bottom: 6px">Gelandangan</label>
+                            <label style="font-size:2.2vh; margin-left: 0px; margin-bottom: 0.2rem">Gelandangan</label>
                             <input type="number" name="gld" id="gld" class="form-control" placeholder="0" required>   
                         </div>
 
-                        <div class="col-auto" style="font-size:13px; margin-left: 5px; width:290px">
-                            <label style="margin-bottom: 6px">Pengemis</label>
+                        <div class="col-auto" style="font-size:2.2vh; margin-left: 0.2rem; width:290px">
+                            <label style="margin-bottom: 0.2rem">Pengemis</label>
                             <input type="number" name="peng" id="peng" class="form-control" placeholder="0" required>   
                         </div>
 
-                        <div class="col-auto" style="font-size:13px; margin-left: 5px; width:290px">
-                            <label style="margin-bottom: 6px">Punk</label>
+                        <div class="col-auto" style="font-size:2.2vh; margin-left: 0.2rem; width:290px">
+                            <label style="margin-bottom: 0.2rem">Punk</label>
                             <input type="number" name="punk" id="punk" class="form-control" placeholder="0" required>   
                         </div>
 
                     </div>
                 </div>
 
-                <div class="container" style="margin-top: 200px;">
+                <div class="container" style="margin-top: 12.3rem;">
                     <div class="row" style="margin-left: 0px;">
                         <div class="col-auto" style="width:290px">
-                            <label style="font-size:13px; margin-left: 0px; margin-bottom: 6px">Anak Jalanan</label>
+                            <label style="font-size:2.2vh; margin-left: 0px; margin-bottom: 0.2rem">Anak Jalanan</label>
                             <input type="number" name="anjal" id="anjal" class="form-control" placeholder="0" required>   
                         </div>
 
-                        <div class="col-auto" style="font-size:13px; margin-left: 5px; width:290px">
-                            <label style="margin-bottom: 6px">Orang Terlantar</label>
+                        <div class="col-auto" style="font-size:2.2vh; margin-left: 0.2rem; width:290px">
+                            <label style="margin-bottom: 0.2rem">Orang Terlantar</label>
                             <input type="number" name="ot" id="ot" class="form-control" placeholder="0" required>   
                         </div>
 
-                        <div class="col-auto" style="font-size:13px; margin-left: 5px; width:290px">
-                            <label style="margin-bottom: 6px">Anak Terlantar</label>
+                        <div class="col-auto" style="font-size:2.2vh; margin-left: 0.2rem; width:290px">
+                            <label style="margin-bottom: 0.2rem">Anak Terlantar</label>
                             <input type="number" name="at" id="at" class="form-control" placeholder="0" required>   
                         </div>
 
                     </div>
                 </div>
 
-                <div class="container" style="margin-top: 280px;">
+                <div class="container" style="margin-top: 17.3rem;">
                     <div class="row" style="margin-left: 0px;">
                         <div class="col-auto" style="width:290px">
                             <label style="font-size:13px; margin-left: 0px; margin-bottom: 6px">Pekerja Seks Komersial</label>
@@ -143,7 +143,7 @@
                     </div>
                 </div>
 
-                <div class="container" style="margin-top: 360px;">
+                <div class="container" style="margin-top: 22.3rem;">
                     <div class="row" style="margin-left: 0px;">
                         <div class="col-auto" style="width:290px">
                             <label style="font-size:13px; margin-left: 0px; margin-bottom: 6px">WANITA</label>
