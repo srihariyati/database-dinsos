@@ -28,6 +28,10 @@ Route::get('/tambahpmks', function () {
     return view('rehsos/tambahpmks');
 });
 
+Route::get('/caripmks', function () {
+    return view('rehsos/caripmks');
+});
+
 Route::get('/dtks', function () {
     return view('dayasos/dtks');
 });

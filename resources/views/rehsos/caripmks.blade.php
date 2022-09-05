@@ -93,4 +93,57 @@
             </div>
         </div>
 
+        <div id="card-satu">
+            <div class="row">
+                <div class="col-auto" style="margin-left: 38rem;">
+                    <a href="#" id="pdf-btn" class="tombol btn-group text-black fw-bold form-control btn-lg mt-3" style="text-color: #000000; background-color: #FFCA0E; text-decoration: none; padding: 1vh 3vh;"> Cetak PDF </a>
+                </div>
+                <div class="col-auto">
+                    <a href="" id="excel-btn" class="tombol btn-group text-white fw-bold form-control btn-lg mt-3" style="background-color:#1CCE2E; text-decoration: none; padding: 1vh 3vh;"> Cetak Excel </a>
+                </div>
+            </div>
+
+            <table class="table" style="margin-top: 6rem;">
+                <thead>
+                    <tr>
+                        <th scope="col">No</th>
+                        <th scope="col">Desa/Kelurahan</th>
+                        <th scope="col">Bulan</th>
+                        <th scope="col">Tahun</th>
+                        <th scope="col">GLD</th>
+                        <th scope="col">PENG</th>
+                        <th scope="col">PUNK</th>
+                        <th scope="col">ANJAL</th>
+                        <th scope="col">OT</th>
+                        <th scope="col">AT</th>
+                        <th scope="col">PSK</th>
+                        <th scope="col">WARIA</th>
+                        <th scope="col">PRIA</th>
+                        <th scope="col">WANITA</th>
+                        <th scope="col">TOTAL</th>
+                    </tr>
+                </thead>
+                    <tbody>
+                        <tr>
+                            <th scope="row">1</th>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                            <td>@mdo</td>
+                            <td>Mark</td>
+                            <td>Otto</td>
+                        </tr>
+                    </tbody>
+            </table>
+        </div>
+    </div>
+
 @endsection
