@@ -107,6 +107,7 @@
                 <thead>
                     <tr>
                         <th scope="col">No</th>
+                        <th scope="col">Kecamatan</th>
                         <th scope="col">Desa/Kelurahan</th>
                         <th scope="col">Bulan</th>
                         <th scope="col">Tahun</th>
@@ -124,23 +125,26 @@
                     </tr>
                 </thead>
                     <tbody>
+                        @foreach($pmks as $p)
                         <tr>
                             <th scope="row">1</th>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
-                            <td>@mdo</td>
-                            <td>Mark</td>
-                            <td>Otto</td>
+                            <td>{{$p -> kecamatan}}</td>
+                            <td>{{$p -> nama_desa}}</td>
+                            <td>{{$p -> nama_bulan}}</td>
+                            <td>{{$p -> tahun}}</td>
+                            <td>{{$p -> gelandangan}}</td>
+                            <td>{{$p -> pengemis}}</td>
+                            <td>{{$p -> punk}}</td>
+                            <td>{{$p -> anak_jalanan}}</td>
+                            <td>{{$p -> orang_terlantar}}</td>
+                            <td>{{$p -> anak_terlantar}}</td>
+                            <td>{{$p -> psk}}</td>
+                            <td>{{$p -> waria}}</td>
+                            <td>{{$p -> pria}}</td>
+                            <td>{{$p -> wanita}}</td>
+                            <td>total</td>
                         </tr>
+                        @endforeach($pmks as $p)
                     </tbody>
             </table>
         </div>
