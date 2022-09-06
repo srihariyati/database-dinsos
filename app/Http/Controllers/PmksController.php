@@ -21,6 +21,19 @@ class PmksController extends Controller
         'data_pmks.waria', 'data_pmks.pria', 'data_pmks.wanita')
         -> get();
         
-        return view('rehsos.caripmks',['pmks'=>$pmks]);
+        $bulan = DB::table('bulan')->get();
+        $tahun = DB::table('tahun')->get();
+        
+        $kecamatan =DB::table('desa')
+        ->select('desa.kecamatan')->distinct()->get();
+        $desa = DB::table('desa')->distinct()->get();
+
+        return view('rehsos.caripmks')
+        ->with (['pmks'=>$pmks])
+        ->with (['bulan'=>$bulan])
+        ->with (['tahun'=>$tahun])
+        ->with (['desa'=>$desa])
+        ->with(['kecamatan'=>$kecamatan]);
     }
+
 }
