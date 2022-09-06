@@ -19,14 +19,9 @@
                                 <select class="form-select" id="autoSizingSelect" style="font-size:2.2vh;">
                                     <option selected >Pilih Kecamatan</option>
                                     <option value="1">Baiturrahman</option>
-                                    <option value="2">Banda Raya</option>
-                                    <option value="3">Jaya Baru</option>
-                                    <option value="4">Kuta Alam</option>
-                                    <option value="5">Kuta Raja</option>
-                                    <option value="6">Lueng Bata</option>
-                                    <option value="7">Meuraxa</option>
-                                    <option value="8">Syiah Kuala</option>
-                                    <option value="9">Ulee Kareng</option>
+                                    @foreach($kecamatan as $k)
+                                    <option value="1">{{$k->kecamatan}}</option>
+                                    @endforeach($kecamatan as $k)
                                 </select>
                         </div>
 
@@ -50,18 +45,10 @@
                             <label class="fw-bold" style="margin-bottom: 0.5rem">Bulan</label>
                                 <select class="form-select" id="autoSizingSelect" style="font-size:2.2vh;">
                                     <option selected>Pilih Bulan</option>
-                                    <option value="1">Januari</option>
-                                    <option value="2">Februari</option>
-                                    <option value="3">Maret</option>
-                                    <option value="4">April</option>
-                                    <option value="5">Mei</option>
-                                    <option value="6">Juni</option>
-                                    <option value="7">Juli</option>
-                                    <option value="8">Agustus</option>
-                                    <option value="9">September</option>
-                                    <option value="10">Oktober</option>
-                                    <option value="11">November</option>
-                                    <option value="12">Desember</option>
+                                    @foreach($bulan as $b)
+                                    <option value="{{$b->id_bulan}}">{{$b->nama_bulan}}</option>
+                                    @endforeach($bulan as $b)
+
                                 </select>
                         </div>
 
@@ -69,13 +56,9 @@
                             <label class="fw-bold" style="margin-bottom: 0.5rem">Tahun</label>
                                 <select class="form-select" id="autoSizingSelect" style="font-size:2.2vh;">
                                     <option selected>Pilih Tahun</option>
-                                    <option value="1">2022</option>
-                                    <option value="2">2021</option>
-                                    <option value="3">2020</option>
-                                    <option value="4">2019</option>
-                                    <option value="5">2018</option>
-                                    <option value="6">2017</option>
-                                    <option value="7">2016</option>
+                                    @foreach($tahun as $t)
+                                    <option value="{{$t->id_tahun}}">{{$t->tahun}}</option>
+                                    @endforeach($tahun as $t)
                                 </select>
                         </div>
                     </div>
