@@ -24,13 +24,13 @@ Route::get('/pmks', function () {
     return view('rehsos/pmks');
 });
 
+// Route::get('/pmks/cari', 'PmksController@index');
+
 Route::get('/tambahpmks', function () {
     return view('rehsos/tambahpmks');
 });
 
-Route::get('/caripmks', function () {
-    return view('rehsos/caripmks');
-});
+Route::get('/caripmks','PmksController@index');
 
 Route::get('/dtks', function () {
     return view('dayasos/dtks');
