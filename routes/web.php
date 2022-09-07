@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\DropdownController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,9 +20,10 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 });
 
-Route::get('/pmks', function () {
-    return view('rehsos/pmks');
-});
+// Route::get('/pmks', function () {
+//     return view('rehsos/pmks');
+// });
+Route::get('/pmks','PmksController@index2');
 
 // Route::get('/pmks/cari', 'PmksController@index');
 
@@ -59,3 +60,6 @@ Route::get('/tambahpkh', function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Route::get('pmks', [DropdownController::class, 'view'])->name('dropdownView');
+Route::get('get-desa',[DropdownController::class, 'getDesa'])->name('getDesa');
