@@ -19,9 +19,6 @@
                                 <select class="form-select" id="autoSizingSelect" style="font-size:2.2vh;">
                                     <option selected >Pilih Kecamatan</option>
                                     <option value="1">Baiturrahman</option>
-                                    @foreach($kecamatan as $k)
-                                    <option value="1">{{$k->kecamatan}}</option>
-                                    @endforeach($kecamatan as $k)
                                 </select>
                         </div>
 
@@ -111,7 +108,7 @@
                         @foreach($pmks as $p)
                         <tr>
                             <th scope="row">1</th>
-                            <td>{{$p -> kecamatan}}</td>
+                            <td>kec</td>
                             <td>{{$p -> nama_desa}}</td>
                             <td>{{$p -> nama_bulan}}</td>
                             <td>{{$p -> tahun}}</td>
