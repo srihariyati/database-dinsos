@@ -27,7 +27,9 @@
 
                         <div class="col-auto" style="font-size:2.2vh; margin-left: 0.5rem; width:290px">
                             <label class="fw-bold" style="margin-bottom: 0.5rem;">Desa/Kelurahan</label>
-                                <select class="form-select" id="desa" style="font-size:2.2vh;"></select>
+                                <select class="form-select" id="desa" style="font-size:2.2vh;">
+                                <option value="">Pilih Desa</option>
+                                </select>
                         </div>
 
                         <div class="col-auto" style="font-size:2.2vh; margin-left: 0.5rem; width:170px">
@@ -70,16 +72,25 @@
             $('#desa').html('');
             $.ajax({
                 url: '{{ route('getDesa') }}?id_kec='+kecId,
-                type :'get',
+                type :'get',               
                 success : function(res){
                     $('#desa').html('<option value="">Pilih Desa</option>');
-                    $.each(res, function (key, value){
-                        $('#desa').append('<option value="'+ value
-                            .id +'">' + value.name + '</option>');
+                    //berhasil mendapatkan id_kecamatan
+                    console.log(kecId);
+                    console.log(res);
+                 
+                  
+                    $.each(res, function (key, value) {
+                        $('#desa').append('<option value="'+ value.id_desa + '">' + value.nama_desa + '</option>');
+                        console.log(value.id_desa);
+                        console.log(value.nama_desa);
+                        //kirim id_kec, id_desa, tahun, bulan ke controller
+                        // setelah itu select data dari variabel diatas
                     });
                 }
             });
         });
     });
 </script>
+
 @endsection

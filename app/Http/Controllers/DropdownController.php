@@ -34,9 +34,8 @@ class DropdownController extends Controller
         $desa = DB::table('desa')
             ->where('id_kec', $request->id_kec)
             ->get();
-
-        if(count($desa)> 0){
-            return response()->json($desa);
-        }
+        
+        return response()->json($desa);
+        
     }
 }
