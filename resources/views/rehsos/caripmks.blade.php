@@ -105,7 +105,7 @@
                     </tr>
                 </thead>
                     <tbody>
-                        @foreach($pmks as $p)
+                        @foreach($data as $p)
                         <tr>
                             <th scope="row">1</th>
                             <td>kec</td>
@@ -124,7 +124,7 @@
                             <td>{{$p -> wanita}}</td>
                             <td>total</td>
                         </tr>
-                        @endforeach($pmks as $p)
+                        @endforeach($data as $p)
                     </tbody>
             </table>
         </div>
