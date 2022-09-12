@@ -63,3 +63,4 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 Route::get('pmks', [DropdownController::class, 'view'])->name('dropdownView');
 Route::get('get-desa',[DropdownController::class, 'getDesa'])->name('getDesa');
+Route::get('get-data-pmks',[DropdownController::class, 'getDataPMKS'])->name('getDataPMKS');

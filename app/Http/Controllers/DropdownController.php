@@ -38,4 +38,27 @@ class DropdownController extends Controller
         return response()->json($desa);
         
     }
+
+    // public function getDataPMKS(Request $request)
+    // {
+    //     dd($request->input());
+    //     Log::info($requests);
+    //     //return response()->json($desa);
+
+    // }
+
+    public function getDataPMKS(Request $request)
+    {
+        //dd($request->input());
+        
+        $data = DB::table('data_pmks')->get();   
+
+        // return view('rehsos.caripmks', compact('kecamatan')) 
+        // ->with (['data'=>$data]);
+        //dd($data);
+        
+       // return compact('action', 'data');
+        return response()->json($data);
+        
+    }
 }

@@ -34,7 +34,7 @@
 
                         <div class="col-auto" style="font-size:2.2vh; margin-left: 0.5rem; width:170px">
                             <label class="fw-bold" style="margin-bottom: 0.5rem">Bulan</label>
-                                <select class="form-select" id="autoSizingSelect" style="font-size:2.2vh;">
+                                <select class="form-select" id="bulan" style="font-size:2.2vh;">
                                     <option selected>Pilih Bulan</option>
                                     @foreach($bulan as $b)
                                     <option value="{{$b->id_bulan}}">{{$b->nama_bulan}}</option>
@@ -44,7 +44,7 @@
 
                         <div class="col-auto" style="font-size:2.2vh; margin-left: 0.5rem; width:170px">
                             <label class="fw-bold" style="margin-bottom: 0.5rem">Tahun</label>
-                                <select class="form-select" id="autoSizingSelect" style="font-size:2.2vh;">
+                                <select class="form-select" id="tahun" style="font-size:2.2vh;">
                                     <option selected>Pilih Tahun</option>
                                     @foreach($tahun as $t)
                                     <option value="{{$t->id_tahun}}">{{$t->tahun}}</option>
@@ -58,7 +58,7 @@
                             <a href="#" id="edit-btn" class="tombol btn-group text-white fw-bold form-control btn-lg mt-3" style="background-color: #FF3232; text-decoration: none; padding: 1vh 3vh;"> Edit </a>
                         </div>
                         <div class="col-auto">
-                            <a href="{{ url('/caripmks')}}" id="cari-btn" class="tombol btn-group text-white fw-bold form-control btn-lg mt-3" style="background-color:#0B63F8; text-decoration: none; padding: 1vh 3vh;"> Cari </a>
+                            <a href="" id="cari-btn" class="tombol btn-group text-white fw-bold form-control btn-lg mt-3" style="background-color:#0B63F8; text-decoration: none; padding: 1vh 3vh;"> Cari </a>
                         </div>
                     </div>
                 </div>
@@ -70,25 +70,46 @@
         $('#kecamatan').on('change', function(){
             var kecId = this.value;
             $('#desa').html('');
+
             $.ajax({
                 url: '{{ route('getDesa') }}?id_kec='+kecId,
                 type :'get',               
                 success : function(res){
-                    $('#desa').html('<option value="">Pilih Desa</option>');
-                    //berhasil mendapatkan id_kecamatan
-                    console.log(kecId);
-                    console.log(res);
-                 
-                  
+                    $('#desa').html('<option value="">Pilih Desa</option>');                 
+                    console.log("ini id kec :"+kecId);
                     $.each(res, function (key, value) {
                         $('#desa').append('<option value="'+ value.id_desa + '">' + value.nama_desa + '</option>');
-                        console.log(value.id_desa);
-                        console.log(value.nama_desa);
-                        //kirim id_kec, id_desa, tahun, bulan ke controller
-                        // setelah itu select data dari variabel diatas
-                    });
+                        console.log(value.id_desa, value.nama_desa);
+                    });           
                 }
             });
+        });
+
+
+
+        $("#cari-btn").click(function(){
+            var kecId = document.getElementById("kecamatan").value;
+            var desaId = document.getElementById("desa").value;
+            var bulanId = document.getElementById("bulan").value;
+            var tahunId = document.getElementById("tahun").value;
+            console.log(kecId);
+            console.log(desaId);
+            console.log(bulanId);
+            console.log(tahunId);
+
+            $.ajax({
+                url: '{{ route('getDataPMKS') }}?id_kec='+kecId+'&id_desa='+desaId+'&id_bulan='+bulanId+'&tahun='+tahunId,
+                type :'get',
+                success : function(res){
+                    $.each(res, function (key, value) {
+                        console.log("bisa ni");
+                    });
+                },
+                error :function(error){
+                    alert('ada yang salah');
+                }
+            });
+            
         });
     });
 </script>
