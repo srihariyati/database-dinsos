@@ -72,7 +72,7 @@
         position: relative;
         z-index: 2;
         height: 2.75rem;
-        overflow-y: hidden;
+        overflow-y: auto;
       }
 
       .nav-scroller .nav {
@@ -80,7 +80,7 @@
         flex-wrap: nowrap;
         padding-bottom: 1rem;
         margin-top: -1px;
-        overflow-x: hidden;
+        overflow-x: auto;
         text-align: center;
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
@@ -96,12 +96,14 @@
       }
 
       .row{
-          margin-left:115px;
+          margin-left: 126px;
           overflow: hidden;
       }
 
       body{
         background: #EFEFEF;
+        overflow: hidden;
+        width: 1600px;
       }
 
     </style>
