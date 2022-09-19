@@ -12,41 +12,39 @@
 
 	<body class="container" style="background-color:#EEEEEE" >
 		<div class="text-center">
+			
+					
 			<div class="card-group" >
 	  			<div class="card" style="border-radius: 2%; width:90%;">
 	    			<div class="card-body" style="color: #444941; margin-top: 3rem">
-	    				<h1 class="header fw-bold mt-2 mb-3">Login</h1>
+						
+						@if(session('loginError'))
+							<div class="alert alert-danger alert-dismissible fade show" role="alert">
+								<b>Opps!</b> {{session('loginError')}}
+								<button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" ></button>
+							</div>
+						@endif
+
+						<h1 class="header fw-bold mt-2 mb-3">Login</h1>
 	      				<div class="row justify-content-center">
 				            <div class="col-md-8 col-lg-8">
 				                <div class="login-wrap p-0" style="margin-top : 3rem;">
-				                    <form action="{{ route('login') }}" class="signin-form" method="POST">
-									@csrf
-									<div class="form-group mt-3">
-										<label for="username"></label>
-										<input type="text" name="username" id="username" class="form-control" placeholder="Username" required>
-										@error('email')
-											<span class="invalid-feedback" role="alert">
-												<strong>{{ $message }}</strong>
-											</span>
-										@enderror
-									</div>
-									<div class="form-group mt-3">
-										<label for="pass"></label>
-										<input id="password-field" type="password" name="pass" id="pass" class="form-control" placeholder="Password" required>
-										@error('password')
-											<span class="invalid-feedback" role="alert">
-												<strong>{{ $message }}</strong>
-											</span>
-										@enderror
-										<!-- <i class="bi bi-eye-slash" id="togglePassword"></i> -->
-									</div>
+				                    <form action="{{ url ('/actionlogin') }}"  method="post">
+									{{ csrf_field() }}
+										<!-- @csrf -->
+										<div class="form-group mt-3">
+											<label for="email"></label>
+											<input type="email" name="email" id="email" class="form-control" placeholder="Email" required autofocus>
+											
+										</div>
+										<div class="form-group mt-3">
+											<label for="password"></label>
+											<input id="password" type="password" name="password" id="password" class="form-control" placeholder="Password" required>
+										</div>
 
-									<div style= "margin-top : 4rem; margin-left:2rem;" class="tombol btn-group justify-content-center">
-										<button type="submit" name="login" class="text-white margin fw-bold form-control btn-lg " style="background-color: #4B7BE5">Login</button>
-									@if (Route::has('password.request'))
-									<a class="btn btn-link" href="{{ url('/dashboard') }}"></a>
-									@endif
-									</div>
+										<div style= "margin-top : 4rem; margin-left:2rem;" class="tombol btn-group justify-content-center">
+											<button type="submit" name="login" class="text-white margin fw-bold form-control btn-lg " style="background-color: #4B7BE5">Login</button>
+										</div>
 				                    </form>
 				                </div>
 				            </div>

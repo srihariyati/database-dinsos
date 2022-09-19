@@ -170,11 +170,16 @@
                   <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#account-collapse" aria-expanded="false">
                     Akun
                   </button>
-                  <div class="collapse show" id="account-collapse">
-                    <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                      <li><a href="/" class="link-dark d-inline-flex text-decoration-none rounded">Log Out</a></li>
-                    </ul>
-                  </div>
+
+                  <form action="{{ url('/logout') }}" method="post">
+                    @csrf
+                    <div class="collapse show" id="account-collapse">
+                      <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
+                        <button type="submit" style ="border :none; margin-left:1.5rem;">Log Out</button>
+                      </ul>
+                    </div>
+                  </form>
+                  
                 </li>
               </ul>
           </div>
