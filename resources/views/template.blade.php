@@ -80,7 +80,7 @@
         flex-wrap: nowrap;
         padding-bottom: 1rem;
         margin-top: -1px;
-        overflow-x: auto;
+        overflow-x: hidden;
         text-align: center;
         white-space: nowrap;
         -webkit-overflow-scrolling: touch;
@@ -97,7 +97,7 @@
 
       .row{
           margin-left:115px;
-          position: fixed;
+          overflow: hidden;
       }
 
       body{
