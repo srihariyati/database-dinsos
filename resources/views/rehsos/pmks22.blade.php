@@ -16,42 +16,35 @@
                     <div class="row" style="margin-left: 0px;">
                         <div class="col-auto" style="width:290px">
                             <label class="fw-bold" style="font-size:2.2vh; margin-left: 0px; margin-bottom: 0.5rem">Kecamatan</label>
-                                <select class="form-select" id="autoSizingSelect" style="font-size:2.2vh;">
+                                <select class="form-select" id="kecamatan" style="font-size:2.2vh;">
                                     <option selected >Pilih Kecamatan</option>
-                                    <option value="1">Baiturrahman</option>
+                                    @foreach ($kecamatan as $kec)
+                                    <option value="{{$kec->id_kec}}">{{$kec->nama_kec}}</option>
+                                    @endforeach ($kecamatan as $kec)
+                                                                   
                                 </select>
                         </div>
 
                         <div class="col-auto" style="font-size:2.2vh; margin-left: 0.5rem; width:290px">
                             <label class="fw-bold" style="margin-bottom: 0.5rem;">Desa/Kelurahan</label>
-                                <select class="form-select" id="autoSizingSelect" style="font-size:2.2vh;">
-                                    <option selected>Pilih Desa/Kelurahan</option>
-                                    <option value="1">Baiturrahman</option>
-                                    <option value="2">Banda Raya</option>
-                                    <option value="3">Jaya Baru</option>
-                                    <option value="4">Kuta Alam</option>
-                                    <option value="5">Kuta Raja</option>
-                                    <option value="6">Lueng Bata</option>
-                                    <option value="7">Meuraxa</option>
-                                    <option value="8">Syiah Kuala</option>
-                                    <option value="9">Ulee Kareng</option>
+                                <select class="form-select" id="desa" style="font-size:2.2vh;">
+                                <option value="">Pilih Desa</option>
                                 </select>
                         </div>
 
                         <div class="col-auto" style="font-size:2.2vh; margin-left: 0.5rem; width:170px">
                             <label class="fw-bold" style="margin-bottom: 0.5rem">Bulan</label>
-                                <select class="form-select" id="autoSizingSelect" style="font-size:2.2vh;">
+                                <select class="form-select" id="bulan" style="font-size:2.2vh;">
                                     <option selected>Pilih Bulan</option>
                                     @foreach($bulan as $b)
                                     <option value="{{$b->id_bulan}}">{{$b->nama_bulan}}</option>
                                     @endforeach($bulan as $b)
-
                                 </select>
                         </div>
 
                         <div class="col-auto" style="font-size:2.2vh; margin-left: 0.5rem; width:170px">
                             <label class="fw-bold" style="margin-bottom: 0.5rem">Tahun</label>
-                                <select class="form-select" id="autoSizingSelect" style="font-size:2.2vh;">
+                                <select class="form-select" id="tahun" style="font-size:2.2vh;">
                                     <option selected>Pilih Tahun</option>
                                     @foreach($tahun as $t)
                                     <option value="{{$t->id_tahun}}">{{$t->tahun}}</option>
@@ -65,26 +58,27 @@
                             <a href="#" id="edit-btn" class="tombol btn-group text-white fw-bold form-control btn-lg mt-3" style="background-color: #FF3232; text-decoration: none; padding: 1vh 3vh;"> Edit </a>
                         </div>
                         <div class="col-auto">
-                            <a href="{{ url('/caripmks')}}" id="cari-btn" class="tombol btn-group text-white fw-bold form-control btn-lg mt-3" style="background-color:#0B63F8; text-decoration: none; padding: 1vh 3vh;"> Cari </a>
+                            <a href="" id="cari-btn" class="tombol btn-group text-white fw-bold form-control btn-lg mt-3" style="background-color:#0B63F8; text-decoration: none; padding: 1vh 3vh;"> Cari </a>
                         </div>
                     </div>
                 </div>
 
             </div>
         </div>
-
+        
+        <!-- card menampilkan data
+        <div id="data-pmks">
         <div id="card-satu">
             <div class="row">
                 <div class="col-auto" style="margin-left: 38rem;">
                     <a href="#" id="pdf-btn" class="tombol btn-group text-black fw-bold form-control btn-lg mt-3" style="text-color: #000000; background-color: #FFCA0E; text-decoration: none; padding: 1vh 3vh;"> Cetak PDF </a>
                 </div>
 
-                <div class="col-auto"  style="margin-left: 38rem;" >
+                <div class="col-auto" >
                     <a href="" id="excel-btn" class="tombol btn-group text-white fw-bold form-control btn-lg mt-3" style="background-color:#1CCE2E; text-decoration: none; padding: 1vh 3vh;"> Cetak Excel </a>
                 </div>
-            </div>
 
-            <table class="table" style="margin-top: 6rem;">
+                <table class="table" style="margin-top: 6rem;">
                 <thead>
                     <tr>
                         <th scope="col">No</th>
@@ -106,29 +100,72 @@
                     </tr>
                 </thead>
                     <tbody>
-                        @foreach($data as $p)
                         <tr>
-                            <th scope="row">1</th>
-                            <td>kec</td>
-                            <!-- <td>{{$p -> nama_desa}}</td>
-                            <td>{{$p -> nama_bulan}}</td>
-                            <td>{{$p -> tahun}}</td>
-                            <td>{{$p -> gelandangan}}</td>
-                            <td>{{$p -> pengemis}}</td>
-                            <td>{{$p -> punk}}</td>
-                            <td>{{$p -> anak_jalanan}}</td>
-                            <td>{{$p -> orang_terlantar}}</td>
-                            <td>{{$p -> anak_terlantar}}</td>
-                            <td>{{$p -> psk}}</td>
-                            <td>{{$p -> waria}}</td>
-                            <td>{{$p -> pria}}</td>
-                            <td>{{$p -> wanita}}</td> -->
-                            <td>total</td>
                         </tr>
-                        @endforeach($data as $p)
                     </tbody>
             </table>
+
+
+            </div>
         </div>
-    </div>
+           
+        </div> -->
+
+        
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#kecamatan').on('change', function(){
+            var kecId = this.value;
+            $('#desa').html('');
+
+            $.ajax({
+                url: '{{ route('getDesa') }}?id_kec='+kecId,
+                type :'get',               
+                success : function(res){
+                    $('#desa').html('<option value="">Pilih Desa</option>');                 
+                    console.log("ini id kec :"+kecId);
+                    $.each(res, function (key, value) {
+                        $('#desa').append('<option value="'+ value.id_desa + '">' + value.nama_desa + '</option>');
+                        console.log(value.id_desa, value.nama_desa);
+                    });           
+                }
+            });
+        });
+
+        // cari data
+        $("#cari-btn").click(function(){
+            var kecId = document.getElementById("kecamatan").value;
+            var desaId = document.getElementById("desa").value;
+            var bulanId = document.getElementById("bulan").value;
+            var tahunId = document.getElementById("tahun").value;
+
+            console.log(kecId);
+            console.log(desaId);
+            console.log(bulanId);
+            console.log(tahunId);
+
+            $.ajax({
+                url: '{{ route('getDataPMKS') }}?id_kec='+kecId+'&id_desa='+desaId+'&id_bulan='+bulanId+'&tahun='+tahunId,
+                type :'get',
+                success : function(res){
+                    $.each(res, function (key, value) {
+                        console.log("bisa ni");
+                        // // $('#data-pmks').html('<div id="card-satu"><div class="col-auto"><a href="" id="excel-btn" class="tombol btn-group text-white fw-bold form-control btn-lg mt-3" style="background-color:#1CCE2E; text-decoration: none; padding: 1vh 3vh;"> Cetak Excel </a></div></div>'); 
+                        // // $('#card-satu').append('<h1>'+ value.id_data + ','+value.id_tahun+'</h1>');
+
+
+                        // var markup = "<tr><td>" + value.id_data + "</td><td>" + value.id_tahun + "</td></tr>";
+                        // $("table tbody").append(markup);
+                        console.log(value.id_data);
+                    });
+                },
+                error :function(error){
+                    alert('ada yang salah');
+                }
+            });
+            
+        });
+    });
+</script>
 
 @endsection
