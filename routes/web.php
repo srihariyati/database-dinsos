@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DropdownController;
+use App\Http\Controllers\PmksController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -61,6 +61,6 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('pmks', [DropdownController::class, 'view'])->name('dropdownView');
-Route::get('get-desa',[DropdownController::class, 'getDesa'])->name('getDesa');
-Route::get('get-data-pmks',[DropdownController::class, 'getDataPMKS'])->name('getDataPMKS');
+Route::get('pmks', [PmksController::class, 'view'])->name('dropdownView');
+Route::get('get-desa',[PmksController::class, 'getDesa'])->name('getDesa');
+Route::get('get-data-pmks',[PmksController::class, 'getDataPMKS'])->name('getDataPMKS');
