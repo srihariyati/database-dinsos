@@ -536,6 +536,7 @@
        
 <script type="text/javascript">
     $(document).ready(function(){
+        $('#tabel-data').DataTable();
         $('#dtHorizontalVerticalExample').DataTable({
             "scrollX": true,
             "scrollY": 200,
