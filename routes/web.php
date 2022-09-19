@@ -21,14 +21,6 @@ use App\Http\Middleware;
 |
 */
 
-// Auth::routes();
-// Route::post('/actionlogin', [LoginController::class, 'login']);
-// Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
-
-// Route::get('/', function () {
-//     return view('login');
-// });
-
 Route::get('/', [LoginController::class, 'index'])->name('/');
 Route::post('/actionlogin', [LoginController::class, 'login']);
 
