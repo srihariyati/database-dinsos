@@ -51,13 +51,18 @@ class DropdownController extends Controller
     {
         //dd($request->input());
         
-        $data = DB::table('data_pmks')->get();   
+        $data = DB::table('data_pmks')->get();
+        //return view ('dashboard',['data'=>$data]);
+        //return view('rehsos.pmks', compact('data'));
 
-        // return view('rehsos.caripmks', compact('kecamatan')) 
-        // ->with (['data'=>$data]);
-        //dd($data);
-        
-       // return compact('action', 'data');
+        // -> JOIN ('kecamatan', 'data_pmks.id_kec',"=", 'kecamatan.id_kec')
+        // -> JOIN ('desa','data_pmks.id_desa',"=","desa.id_desa")
+        // -> JOIN ('bulan', 'data_pmks.id_bulan','=','buln.id_bulan')
+        // -> JOIN ('tahun','data_pmks.id_tahun',"=",'tahun.id_tahun')
+        // -> SELECT ('data.pmks.id_data','desa.nama_desa','desa.kecamatan','bulan.nama_bulan')
+        // -> WHERE ('data_pmks.id_desa', $request->id_desa)
+        // -> get();
+       
         return response()->json($data);
         
     }
