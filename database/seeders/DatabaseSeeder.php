@@ -13,6 +13,12 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        // \DB::table('users')->insert([
+        //     [
+        //         'level' => 'Admin',
+        //         'email' => 'admin@gmail.com',
+        //         'password' => \Hash::make('dinsos123')
+        //     ]
+        // ]);
     }
 }

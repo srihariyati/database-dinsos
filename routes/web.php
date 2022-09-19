@@ -1,7 +1,15 @@
 <?php
 
+
 use Illuminate\Support\Facades\Route;
+
+use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\DropdownController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PmksController;
+use App\Http\Middleware;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,54 +21,60 @@ use App\Http\Controllers\PmksController;
 |
 */
 
-Route::get('/', function () {
-    return view('login');
-});
-Route::get('/dashboard', function () {
-    return view('dashboard');
-});
+// Auth::routes();
+// Route::post('/actionlogin', [LoginController::class, 'login']);
+// Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
 
-// Route::get('/pmks', function () {
-//     return view('rehsos/pmks');
+// Route::get('/', function () {
+//     return view('login');
 // });
-Route::get('/pmks','PmksController@index2');
 
-// Route::get('/pmks/cari', 'PmksController@index');
+Route::get('/', [LoginController::class, 'index'])->name('/');
+Route::post('/actionlogin', [LoginController::class, 'login']);
 
-Route::get('/tambahpmks', function () {
-    return view('rehsos/tambahpmks');
+
+Route::group(['middleware' =>['auth']], function(){
+
+    Auth::routes();
+
+    Route::post('/logout', [LoginController::class, 'logout']);
+    Route::get('/dashboard', [DashboardController::class, 'index']);
+    Route::get('/pmks','PmksController@index2');
+
+    Route::get('/tambahpmks', function () {
+        return view('rehsos/tambahpmks');
+    });
+
+    Route::get('/caripmks','PmksController@index');
+
+    Route::get('/dtks', function () {
+        return view('dayasos/dtks');
+    });
+
+    Route::get('/tambahdtks', function () {
+        return view('dayasos/tambahdtks');
+    });
+
+    Route::get('/bencana', function () {
+        return view('linjamsos/bencana');
+    });
+
+    Route::get('/tambahdatabencana', function () {
+        return view('linjamsos/tambahdatabencana');
+    });
+
+    Route::get('/pkh', function () {
+        return view('linjamsos/pkh');
+    });
+
+    Route::get('/tambahpkh', function () {
+        return view('linjamsos/tambahpkh');
+    });
+
+    // Auth::routes();
+
+    Route::get('pmks', [DropdownController::class, 'view'])->name('dropdownView');
+    Route::get('get-desa',[DropdownController::class, 'getDesa'])->name('getDesa');
+    Route::get('get-data-pmks',[DropdownController::class, 'getDataPMKS'])->name('getDataPMKS');
 });
 
-Route::get('/caripmks','PmksController@index');
-
-Route::get('/dtks', function () {
-    return view('dayasos/dtks');
-});
-
-Route::get('/tambahdtks', function () {
-    return view('dayasos/tambahdtks');
-});
-
-Route::get('/bencana', function () {
-    return view('linjamsos/bencana');
-});
-
-Route::get('/tambahdatabencana', function () {
-    return view('linjamsos/tambahdatabencana');
-});
-
-Route::get('/pkh', function () {
-    return view('linjamsos/pkh');
-});
-
-Route::get('/tambahpkh', function () {
-    return view('linjamsos/tambahpkh');
-});
-
-Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-Route::get('pmks', [PmksController::class, 'view'])->name('dropdownView');
-Route::get('get-desa',[PmksController::class, 'getDesa'])->name('getDesa');
-Route::get('get-data-pmks',[PmksController::class, 'getDataPMKS'])->name('getDataPMKS');
