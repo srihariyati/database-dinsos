@@ -14,9 +14,7 @@
                             <a class="btn btn-success" id="tambah" href="{{ url('/tambahpmks')}}" role="button">Tambah</a>
                     </div>
                 </div>
-            </div>
-
-
+        </div>
 
             <div class="container">
                 <div class="row" style="margin-top: 1rem; margin-left: -2.4rem">
@@ -82,6 +80,7 @@
                     </div> 
                 </div>
             </div>
+            
         <div class="table-responsive" style="height: 17.5rem; font-size:1.5vh;">
         <table id="tabel-data" class="table table-striped table-bordered" width="100%" cellspacing="0" >
         <thead>
@@ -188,44 +187,51 @@
             </tr>
             
         </tbody>
-        </table>
-        </div>
+        
+       
         </div>
         </div>
 
 <script type="text/javascript">
     $(document).ready(function(){
-        $('#tabel-data').DataTable();
-
-        $('#dtHorizontalVerticalExample').DataTable({
-            "scrollX": true,
-            "scrollY": 200,
-        });
-        $('.dataTables_length').addClass('bs-select');
-
         $('#kecamatan').on('change', function(){
-            //ambil value dari id kecamatan
+            //ambil value dari id kecamatan       ]     
             var kecId = this.value;
+            console.log(kecId);
             $('#desa').html('');
+
+            var table =  $('tabel-data').DataTable();
+            table.destroy();
 
             $.ajax({
                 //kirim id ke controller
                 url: '{{ route('getDesa') }}?id_kec='+kecId,
                 type :'get',               
                 success : function(res){
-                    $('#desa').html('<option value="">Pilih Desa</option>');                 
+                    $('#desa').html('<option value="">Pilih Desa</option>'); 
+
+                    console.log(res);               
      
                     $.each(res.desa, function (key, value) {
                         console.log("ini id kec :"+kecId);
                         console.log(value);
                         console.log(res);
                         console.log(value.id_desa, value.nama_desa);
-
+                                               
                         // buat option untuk pilih desa
                         $('#desa').append('<option value="'+ value.id_desa + '">' + value.nama_desa + '</option>');                  
-                        
+                      
                     });
+
+                    console.log(res.kecamatan);
                      // tampilkan dat yang kecamatannya dipilih
+                     table =  $('#tabel-data').DataTable({
+                        "columns": [
+                        { data: "kecId" },
+                        { data:  "kecId"  },
+                        ]
+
+                        });
 
                     $.each(res.datapmks, function(key, value){
                         console.log(value.id_data);
