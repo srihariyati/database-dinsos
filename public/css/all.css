@@ -1,8 +1,8 @@
 #card-satu {
     background: #FFFFFF;
     box-shadow: 1px black;
-    height: 18rem;
-    margin: 0.5rem 2rem;
+    height: 16rem;
+    margin-left: 1rem;
     width: 78%;
     padding: 1vh 2vh;
     font-family: Helvetica, sans-serif;
@@ -63,3 +63,8 @@ table.dataTable thead .sorting_desc_disabled:after,
 table.dataTable thead .sorting_desc_disabled:before {
     bottom: .5em;
 }
+
+.card {
+    position:fixed;
+}
+

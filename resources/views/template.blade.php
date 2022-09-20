@@ -72,7 +72,7 @@
         position: relative;
         z-index: 2;
         height: 2.75rem;
-        overflow-y: hidden;
+        overflow-y: auto;
       }
 
       .nav-scroller .nav {
@@ -96,12 +96,14 @@
       }
 
       .row{
-          margin-left:115px;
-          position: fixed;
+          margin-left: 126px;
+          overflow: hidden;
       }
 
       body{
         background: #EFEFEF;
+        overflow: hidden;
+        width: 1600px;
       }
 
     </style>
