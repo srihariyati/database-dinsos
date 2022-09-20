@@ -96,14 +96,14 @@
       }
 
       .row{
-          margin-left: 126px;
+          margin-left: 8.5%;
           overflow: hidden;
       }
 
       body{
         background: #EFEFEF;
         overflow: hidden;
-        width: 1600px;
+        width: 93rem;
       }
 
     </style>
