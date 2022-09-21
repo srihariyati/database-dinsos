@@ -70,6 +70,7 @@ Route::group(['middleware' =>['auth']], function(){
     Route::get('pmks', [PmksController::class, 'view'])->name('dropdownView');
     Route::get('get-desa',[PmksController::class, 'getDesa'])->name('getDesa');
     Route::get('get-data-pmks',[PmksController::class, 'getDataPMKS'])->name('getDataPMKS');
+    Route::get('get-data-kec',[PmksController::class, 'getDataKec'])->name('getDataKec');
 
     Route::get('dtks', [DtksController::class, 'view'])->name('dropdownView');
     Route::get('get-desa',[DtksController::class, 'getDesa'])->name('getDesa');

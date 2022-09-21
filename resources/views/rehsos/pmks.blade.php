@@ -55,14 +55,14 @@
                             </select>
                     </div>
 
-                    <div  class="row" style="margin-top: 0.8rem; margin-left: 47rem;">
+                    <!-- <div  class="row" style="margin-top: 0.8rem; margin-left: 47rem;">
                         <div class="col-auto" >
                             <a class="btn btn-danger" id="edit-btn" href="{{ url('/editpmks')}}" role="button">Edit</a>
                         </div> 
                         <div class="col-auto" >
                             <a class="btn btn-primary" id="Cari-btn" href="{{ url('/caripmks')}}" role="button">Cari</a>
                         </div> 
-                    </div>
+                    </div> -->
 
                 </div>
             </div>
@@ -85,7 +85,6 @@
             <table id="tabel-data" class="table table-striped table-bordered" width="100%" cellspacing="0" >
             <thead>
                 <tr>
-                    <th>No</th>
                     <th>Kecamatan</th>
                     <th>Desa/Kelurahan</th>
                     <th>Bulan</th>
@@ -101,91 +100,9 @@
                     <th>PRIA</th>
                     <th>WANITA</th>
                     <th>TOTAL</th>
-                </tr>
             </thead>
 
             <tbody>
-                <tr>
-                    <td>1</td>
-                    <td>System Architect</td>
-                    <td>Edinburgh</td>
-                    <td>61</td>
-                    <td>2011</td>
-                    <td>32</td>
-                </tr>
-                <tr>
-                    <td>2</td>
-                    <td>Accountant</td>
-                    <td>Tokyo</td>
-                    <td>63</td>
-                    <td>2011</td>
-                    <td>17</td>
-                </tr>
-                <tr>
-                    <td>3</td>
-                    <td>Junior Technical Author</td>
-                    <td>San Francisco</td>
-                    <td>66</td>
-                    <td>2009</td>
-                    <td>86</td>
-                </tr>
-                <tr>
-                    <td>4</td>
-                    <td>Senior Javascript Developer</td>
-                    <td>Edinburgh</td>
-                    <td>22</td>
-                    <td>2012</td>
-                    <td>43</td>
-                </tr>
-                <tr>
-                    <td>5</td>
-                    <td>Accountant</td>
-                    <td>Tokyo</td>
-                    <td>33</td>
-                    <td>2008</td>
-                    <td>16</td>
-                </tr>
-                <tr>
-                    <td>6</td>
-                    <td>Integration Specialist</td>
-                    <td>New York</td>
-                    <td>61</td>
-                    <td>2012</td>
-                    <td>37</td>
-                </tr>
-                <tr>
-                    <td>7</td>
-                    <td>Sales Assistant</td>
-                    <td>San Francisco</td>
-                    <td>59</td>
-                    <td>2012</td>
-                    <td>13</td>
-                </tr>
-                <tr>
-                    <td>8</td>
-                    <td>Integration Specialist</td>
-                    <td>Tokyo</td>
-                    <td>55</td>
-                    <td>2010</td>
-                    <td>32</td>
-                </tr>
-                <tr>
-                    <td>9</td>
-                    <td>Javascript Developer</td>
-                    <td>San Francisco</td>
-                    <td>39</td>
-                    <td>2009</td>
-                    <td>15</td>
-                </tr>
-                <tr>
-                    <td>10</td>
-                    <td>Software Engineer</td>
-                    <td>Edinburgh</td>
-                    <td>23</td>
-                    <td>2008</td>
-                    <td>10</td>
-                </tr>
-                
             </tbody>
         </div>
     </div>
@@ -193,49 +110,70 @@
 <script type="text/javascript">
     $(document).ready(function(){
         $('#kecamatan').on('change', function(){
-            //ambil value dari id kecamatan       ]     
+            //ambil value dari id kecamatan     
             var kecId = this.value;
             console.log(kecId);
             $('#desa').html('');
 
-            var table =  $('tabel-data').DataTable();
-            table.destroy();
-
             $.ajax({
-                //kirim id ke controller
+                //kirim id ke controller getDesa untuk baca desa yang ada didalam kacamatan yang dipilih
                 url: '{{ route('getDesa') }}?id_kec='+kecId,
-                type :'get',               
+                type :'get',             
                 success : function(res){
                     $('#desa').html('<option value="">Pilih Desa</option>'); 
 
-                    console.log(res);               
-     
-                    $.each(res.desa, function (key, value) {
-                        console.log("ini id kec :"+kecId);
-                        console.log(value);
-                        console.log(res);
-                        console.log(value.id_desa, value.nama_desa);
-                                               
-                        // buat option untuk pilih desa
+                    $.each(res.desa, function (key, value) {                                             
+                        // buat option untuk pilih desa (desa berada di kecamatan yang  dipilih)
                         $('#desa').append('<option value="'+ value.id_desa + '">' + value.nama_desa + '</option>');                  
-                      
+                        
                     });
+                    console.log(res.datapmks);
 
-                    console.log(res.kecamatan);
-                     // tampilkan dat yang kecamatannya dipilih
-                     table =  $('#tabel-data').DataTable({
-                        "columns": [
-                        { data: "kecId" },
-                        { data:  "kecId"  },
+                    $('#tabel-data').DataTable({
+                        destroy: true,
+                        data: res.datapmks,
+                        columns: [
+                            { 'data': 'nama_kec' },
+                            { 'data': 'nama_desa' },
+                            { 'data': 'nama_bulan' },
+                            { 'data': 'tahun' },
+                            { 'data': 'gelandangan' },
+                            { 'data': 'pengemis' },
+                            { 'data': 'punk' },
+                            { 'data': 'anak_jalanan' },
+                            { 'data': 'orang_terlantar' },
+                            { 'data': 'anak_terlantar' },
+                            { 'data': 'psk' },
+                            { 'data': 'waria' },
+                            { 'data': 'pria' },
+                            { 'data': 'wanita' },
+                            { 'data': 'id_data' },
+
                         ]
-
-                        });
-
-                    $.each(res.datapmks, function(key, value){
-                        console.log(value.id_data);
-
                     });
-                    
+        
+        // tampilkan datatables untuk data dimana kec
+
+       
+
+        // $('#tabel-data').DataTable( {
+        // "ajax": {
+        //     "url":  "{{ action('PmksController@getDataKec') }}",
+        //     "type": "GET",
+        //     "data": {
+        //              "id_kec": kecId,
+        //         },
+        //     "cache": true,
+        //     "datatype": 'json',
+        //     "success": function (data) {
+        //         console.log(data);
+        //     },
+        //     "complete": function(xhr, status){
+        //         console.log(status);
+        //     },
+        //     //masukkan data ke datatables
+        //     },
+        // });                    
                 }
             });
         });
