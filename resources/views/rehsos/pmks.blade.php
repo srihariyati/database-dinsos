@@ -100,6 +100,7 @@
                     <th>PRIA</th>
                     <th>WANITA</th>
                     <th>TOTAL</th>
+                    <th>Aksi</th>
             </thead>
 
             <tbody>
@@ -148,6 +149,7 @@
                             { 'data': 'pria' },
                             { 'data': 'wanita' },
                             { 'data': 'id_data' },
+                            { 'data': "", "defaultContent": "<button  class='btn btn-warning btn-sm' onclick='edititem();'>Edit</button>" },
 
                         ]
                     });
