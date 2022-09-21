@@ -82,14 +82,29 @@ class PmksController extends Controller
             ->where('id_kec', $request->id_kec)
             ->get();
 
-        $datapmks = DB::table('data_pmks')
-            ->where('id_kec', $request->id_kec)
-            ->get();
+        $datapmks = DB::table('data_pmks')      
+            -> where('data_pmks.id_kec', $request->id_kec)
+            -> join('kecamatan','data_pmks.id_kec','=','kecamatan.id_kec')
+            -> join('desa', 'data_pmks.id_desa', '=','desa.id_desa')
+            -> join('bulan','data_pmks.id_bulan','=','bulan.id_bulan')
+            -> join('tahun','data_pmks.id_tahun','=','tahun.id_tahun')
+            -> select('data_pmks.*','desa.nama_desa', 'kecamatan.nama_kec',
+            'bulan.nama_bulan', 'tahun.tahun')
+            -> get();
 
         return response()->json(array(
             'desa' => $desa,
-            'datapmks' => $datapmks,
+            'datapmks' =>$datapmks,
         ));
+    }
+
+    public function getDataKec(Request $request)
+    {
+        $kecOnly = DB::table('data_pmks')
+            ->where('id_kec', $request->id_kec)
+            ->get();
+        return response()->json($kecOnly);
+       
     }
 
     // public function getDataPMKS(Request $request)
@@ -100,24 +115,23 @@ class PmksController extends Controller
 
     // }
 
-    public function getDataPMKS(Request $request)
-    {
-        //dd($request->input());
+    // public function getDataPMKS(Request $request)
+    // {
+    //     //dd($request->input());
         
-        $data = DB::table('data_pmks')->get();
-        //return view ('dashboard',['data'=>$data]);
-        //return view('rehsos.pmks', compact('data'));
+    //     $data = DB::table('data_pmks')->get();
+    //     //return view ('dashboard',['data'=>$data]);
+    //     //return view('rehsos.pmks', compact('data'));
 
-        // -> JOIN ('kecamatan', 'data_pmks.id_kec',"=", 'kecamatan.id_kec')
-        // -> JOIN ('desa','data_pmks.id_desa',"=","desa.id_desa")
-        // -> JOIN ('bulan', 'data_pmks.id_bulan','=','buln.id_bulan')
-        // -> JOIN ('tahun','data_pmks.id_tahun',"=",'tahun.id_tahun')
-        // -> SELECT ('data.pmks.id_data','desa.nama_desa','desa.kecamatan','bulan.nama_bulan')
-        // -> WHERE ('data_pmks.id_desa', $request->id_desa)
-        // -> get();
+    //     // -> JOIN ('kecamatan', 'data_pmks.id_kec',"=", 'kecamatan.id_kec')
+    //     // -> JOIN ('desa','data_pmks.id_desa',"=","desa.id_desa")
+    //     // -> JOIN ('bulan', 'data_pmks.id_bulan','=','buln.id_bulan')
+    //     // -> JOIN ('tahun','data_pmks.id_tahun',"=",'tahun.id_tahun')
+    //     // -> SELECT ('data.pmks.id_data','desa.nama_desa','desa.kecamatan','bulan.nama_bulan')
+    //     // -> WHERE ('data_pmks.id_desa', $request->id_desa)
+    //     // -> get();
        
-        return response()->json($data);
-        
-    }
+    //     return response()->json($data);
+    // }
 
 }
