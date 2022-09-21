@@ -1,5 +1,5 @@
 @extends('template')
-@section('title','Tambah Data PMKS')
+@section('title','Edit Data PMKS')
 
 @section('content')
     <div class="card w-75">
@@ -9,7 +9,7 @@
                     <a href="{{ url('/pmks')}}" class="icon"><i class= "fas fa-chevron-left fa-lg"  style="color:black;"> </i></a>
                 </div>
                 <div class="col-auto">
-                    <h4 class="fw-bold">Tambah Data PMKS</h4>
+                    <h4 class="fw-bold">Edit Data PMKS</h4>
                 </div>
 
                 <form action="#">
@@ -156,9 +156,9 @@
 
                 
                 <div class="container">
-                    <div class="row" style="margin-left: 48.5rem;">
+                    <div class="row" style="margin-left: 43.5rem;">
                         <div class="col-auto">
-                            <a class="btn btn-success" id="tambah" href="" role="button">Simpan</a>
+                            <a class="btn btn-success" id="tambah" href="" role="button">Simpan Perubahan</a>
                         </div>
 
                     </div>
