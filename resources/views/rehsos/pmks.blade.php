@@ -57,10 +57,10 @@
 
                     <!-- <div  class="row" style="margin-top: 0.8rem; margin-left: 47rem;">
                         <div class="col-auto" >
-                            <a class="btn btn-danger" id="edit-btn" href="#" role="button">Edit</a>
+                            <a class="btn btn-danger" id="edit-btn" href="{{ url('/editpmks')}}" role="button">Edit</a>
                         </div> 
                         <div class="col-auto" >
-                            <a class="btn btn-primary" id="Cari-btn" href="#" role="button">Cari</a>
+                            <a class="btn btn-primary" id="Cari-btn" href="{{ url('/caripmks')}}" role="button">Cari</a>
                         </div> 
                     </div> -->
 
