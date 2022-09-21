@@ -2,19 +2,18 @@
 @section('title','Tambah Data PMKS')
 
 @section('content')
-    <div id="card-tiga">
-            <div id="data" class="row">
-                
-                <div class="col-auto" style="margin-top: 0.8rem; margin-left:0.3rem;">
+    <div class="card w-75">
+        <div class="card-body" >
+            <div class="row"  style="margin-left:-1rem;">
+                <div class="col-auto" style="margin-top: 0.3rem;">
                     <a href="{{ url('/pmks')}}" class="icon"><i class= "fas fa-chevron-left fa-lg"  style="color:black;"> </i></a>
                 </div>
-
-                <div class="col-auto" style="margin-top: 0.7rem;">
+                <div class="col-auto">
                     <h4 class="fw-bold">Tambah Data PMKS</h4>
                 </div>
-            
-            <form action="#">
-                <div class="container" style="margin-top: 2rem;">
+
+                <form action="#">
+                <div class="container" style="margin-top: 1rem;">
                     <div class="row" style="margin-left: 0px;">
                         <div class="col-auto" style="width:290px">
                             <label style="font-size:2.2vh; margin-left: 0px; margin-bottom: 0.3rem">Kecamatan</label>
@@ -83,7 +82,7 @@
                     </div>
                 </div>
 
-                <div class="container" style="margin-top: 7.3rem;">
+                <div class="container" style="margin-top: 2rem;">
                     <div class="row" style="margin-left: 0px;">
                         <div class="col-auto" style="width:290px">
                             <label style="font-size:2.2vh; margin-left: 0px; margin-bottom: 0.2rem">Gelandangan</label>
@@ -103,7 +102,7 @@
                     </div>
                 </div>
 
-                <div class="container" style="margin-top: 12.3rem;">
+                <div class="container" style="margin-top: 2rem;">
                     <div class="row" style="margin-left: 0px;">
                         <div class="col-auto" style="width:290px">
                             <label style="font-size:2.2vh; margin-left: 0px; margin-bottom: 0.2rem">Anak Jalanan</label>
@@ -123,7 +122,7 @@
                     </div>
                 </div>
 
-                <div class="container" style="margin-top: 17.3rem;">
+                <div class="container" style="margin-top: 2rem;">
                     <div class="row" style="margin-left: 0px;">
                         <div class="col-auto" style="width:290px">
                             <label style="font-size:13px; margin-left: 0px; margin-bottom: 6px">Pekerja Seks Komersial</label>
@@ -143,7 +142,7 @@
                     </div>
                 </div>
 
-                <div class="container" style="margin-top: 22.3rem;">
+                <div class="container" style="margin-top: 2rem;">
                     <div class="row" style="margin-left: 0px;">
                         <div class="col-auto" style="width:290px">
                             <label style="font-size:13px; margin-left: 0px; margin-bottom: 6px">WANITA</label>
@@ -153,13 +152,24 @@
                     </div>
                 </div>
 
-                <div id="button" style="margin-top: 25rem; margin-left:50rem;">
-                    <a href="#" id="simpan" class="tombol btn-group text-white fw-bold form-control btn-lg mt-3" style="background-color: #1CCE2E; text-decoration: none; width: 80px;"> Simpan </a>
-                </div> 
+                 
+
+                
+                <div class="container">
+                    <div class="row" style="margin-left: 48.5rem;">
+                        <div class="col-auto">
+                            <a class="btn btn-success" id="tambah" href="" role="button">Simpan</a>
+                        </div>
+
+                    </div>
+                </div>
 
             </form>
 
+
+            </div>
         </div>
+
     </div>
 
 @endsection
