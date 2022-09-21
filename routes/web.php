@@ -8,6 +8,7 @@ use App\Http\Controllers\DropdownController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PmksController;
+use App\Http\Controllers\DtksController;
 use App\Http\Middleware;
 
 /*
@@ -32,16 +33,19 @@ Route::group(['middleware' =>['auth']], function(){
     Route::post('/logout', [LoginController::class, 'logout']);
     Route::get('/dashboard', [DashboardController::class, 'index']);
     Route::get('/pmks','PmksController@index2');
+    Route::get('/dtks','DtksController@index2');
 
     Route::get('/tambahpmks', function () {
         return view('rehsos/tambahpmks');
     });
 
+    Route::get('/editpmks', function () {
+        return view('rehsos/editpmks');
+    });
+
     Route::get('/caripmks','PmksController@index');
 
-    Route::get('/dtks', function () {
-        return view('dayasos/dtks');
-    });
+    Route::get('/caridtks','DtksController@index');
 
     Route::get('/tambahdtks', function () {
         return view('dayasos/tambahdtks');
@@ -62,9 +66,14 @@ Route::group(['middleware' =>['auth']], function(){
     Route::get('/tambahpkh', function () {
         return view('linjamsos/tambahpkh');
     });
+
     Route::get('pmks', [PmksController::class, 'view'])->name('dropdownView');
     Route::get('get-desa',[PmksController::class, 'getDesa'])->name('getDesa');
     Route::get('get-data-pmks',[PmksController::class, 'getDataPMKS'])->name('getDataPMKS');
+
+    Route::get('dtks', [DtksController::class, 'view'])->name('dropdownView');
+    Route::get('get-desa',[DtksController::class, 'getDesa'])->name('getDesa');
+    Route::get('get-data-dtks',[DtksController::class, 'getDataDTKS'])->name('getDataDTKS');
 });
 
 
