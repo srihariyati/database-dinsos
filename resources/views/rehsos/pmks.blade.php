@@ -69,9 +69,9 @@
         </div>
     </div>
 
-    <div class="card w-75" style="margin-top: 5px;">
+    <div id="card2" class="card w-75" style="margin-top: 5px;">
         <div class="card-body">
-            <div  class="row" style="margin-top: 0.2rem; margin-left: 43rem; margin-bottom: 0.2rem">
+            <!-- <div  class="row" style="margin-top: 0.2rem; margin-left: 43rem; margin-bottom: 0.2rem">
                 <div class="col-auto" >
                     <a class="btn btn-warning" id="edit-btn" href="#" role="button">Cetak PDF</a>
                 </div> 
@@ -79,7 +79,7 @@
                         <a class="btn btn-success" id="Cari-btn" href="#" role="button">Cetak Excel</a>
                     </div> 
                 </div>
-            </div>
+            </div> -->
             
         <div class="table-responsive" style="height: 17.5rem; font-size:1.5vh;">
             <table id="tabel-data" class="table table-striped table-bordered" width="100%" cellspacing="0" >
@@ -110,6 +110,12 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
+        $('#desa').on('change', function(){
+            var desaId = desa.value;
+            console.log(desaId);
+            // isi value dari kecaman dengan kecaaamtan yg sudah diilih
+            //tampilakn datd dari desa dan kecamatan
+        });
         $('#kecamatan').on('change', function(){
             //ambil value dari id kecamatan     
             var kecId = this.value;
@@ -129,7 +135,7 @@
                         
                     });
                     console.log(res.datapmks);
-
+                    //menampilkan data pmks (hanya kecamatan yang dipilih)
                     $('#tabel-data').DataTable({
                         destroy: true,
                         data: res.datapmks,
@@ -152,69 +158,11 @@
                             { 'data': "", "defaultContent": "<button  class='btn btn-warning btn-sm' onclick='edititem();'>Edit</button>" },
 
                         ]
-                    });
-        
-        // tampilkan datatables untuk data dimana kec
-
-       
-
-        // $('#tabel-data').DataTable( {
-        // "ajax": {
-        //     "url":  "{{ action('PmksController@getDataKec') }}",
-        //     "type": "GET",
-        //     "data": {
-        //              "id_kec": kecId,
-        //         },
-        //     "cache": true,
-        //     "datatype": 'json',
-        //     "success": function (data) {
-        //         console.log(data);
-        //     },
-        //     "complete": function(xhr, status){
-        //         console.log(status);
-        //     },
-        //     //masukkan data ke datatables
-        //     },
-        // });                    
+                    });  
                 }
             });
         });
 
-        // cari data
-        $("#cari-btn").click(function(){
-            var kecId = document.getElementById("kecamatan").value;
-            var desaId = document.getElementById("desa").value;
-            var bulanId = document.getElementById("bulan").value;
-            var tahunId = document.getElementById("tahun").value;
-
-            console.log(kecId);
-            console.log(desaId);
-            console.log(bulanId);
-            console.log(tahunId);
-
-            $.ajax({
-                url: '{{ route('getDataPMKS') }}?id_kec='+kecId+'&id_desa='+desaId+'&id_bulan='+bulanId+'&tahun='+tahunId,
-                type :'get',
-                success : function(res){
-                    $.each(res, function (key, value) {
-                        console.log("bisa ni");
-                        
-
-                        // // $('#data-pmks').html('<div id="card-satu"><div class="col-auto"><a href="" id="excel-btn" class="tombol btn-group text-white fw-bold form-control btn-lg mt-3" style="background-color:#1CCE2E; text-decoration: none; padding: 1vh 3vh;"> Cetak Excel </a></div></div>'); 
-                        // // $('#card-satu').append('<h1>'+ value.id_data + ','+value.id_tahun+'</h1>');
-
-
-                        // var markup = "<tr><td>" + value.id_data + "</td><td>" + value.id_tahun + "</td></tr>";
-                        // $("table tbody").append(markup);
-                        console.log(value.id_data);
-                    });
-                },
-                error :function(error){
-                    alert('ada yang salah');
-                }
-            });
-            
-        });
     });
 </script>
 
