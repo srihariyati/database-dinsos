@@ -11,8 +11,9 @@
                 <div class="col-auto">
                     <h4 class="fw-bold">Tambah Data PMKS</h4>
                 </div>
+            </div>
 
-                <form action="#">
+            <form action="#">
                 <div class="container" style="margin-top: 1rem;">
                     <div class="row" style="margin-left: 0px;">
                         <div class="col-auto" style="width:290px">
@@ -166,8 +167,6 @@
 
             </form>
 
-
-            </div>
         </div>
 
     </div>

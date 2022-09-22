@@ -45,7 +45,9 @@ Route::group(['middleware' =>['auth']], function(){
 
     Route::get('/caripmks','PmksController@index');
 
-    Route::get('/caridtks','DtksController@index');
+    Route::get('/dtks', function () {
+        return view('dayasos/dtks');
+    });
 
     Route::get('/tambahdtks', function () {
         return view('dayasos/tambahdtks');
@@ -72,9 +74,6 @@ Route::group(['middleware' =>['auth']], function(){
     Route::get('get-data-pmks',[PmksController::class, 'getDataPMKS'])->name('getDataPMKS');
     Route::get('get-data-kec',[PmksController::class, 'getDataKec'])->name('getDataKec');
 
-    Route::get('dtks', [DtksController::class, 'view'])->name('dropdownView');
-    Route::get('get-desa',[DtksController::class, 'getDesa'])->name('getDesa');
-    Route::get('get-data-dtks',[DtksController::class, 'getDataDTKS'])->name('getDataDTKS');
 });
 
 
