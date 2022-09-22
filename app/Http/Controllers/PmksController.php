@@ -98,6 +98,76 @@ class PmksController extends Controller
         ));
     }
 
+    public function getPmksDesa(Request $request)
+    {
+        $datapmks = DB::table('data_pmks')      
+        -> where(['data_pmks.id_kec'=>$request->id_kec, "data_pmks.id_desa"=>$request->id_desa])
+        -> join('kecamatan','data_pmks.id_kec','=','kecamatan.id_kec')
+        -> join('desa', 'data_pmks.id_desa', '=','desa.id_desa')
+        -> join('bulan','data_pmks.id_bulan','=','bulan.id_bulan')
+        -> join('tahun','data_pmks.id_tahun','=','tahun.id_tahun')
+        -> select('data_pmks.*','desa.nama_desa', 'kecamatan.nama_kec',
+        'bulan.nama_bulan', 'tahun.tahun')
+        -> get();
+
+        return response()->json($datapmks);
+    }
+
+    public function getPmksBulan (Request $request)
+    {   // untuk hanya pilih bulan (res.bulan)
+        $bulan = DB::table('data_pmks')      
+        -> where('data_pmks.id_bulan', $request->id_bulan)
+        -> join('kecamatan','data_pmks.id_kec','=','kecamatan.id_kec')
+        -> join('desa', 'data_pmks.id_desa', '=','desa.id_desa')
+        -> join('bulan','data_pmks.id_bulan','=','bulan.id_bulan')
+        -> join('tahun','data_pmks.id_tahun','=','tahun.id_tahun')
+        -> select('data_pmks.*','desa.nama_desa', 'kecamatan.nama_kec',
+        'bulan.nama_bulan', 'tahun.tahun')
+        -> get();
+
+        // untuk pilih kec + bulan (res.kec_bulan)
+        $kec_bulan = DB::table('data_pmks')      
+        -> where(['data_pmks.id_bulan'=>$request->id_bulan, 'data_pmks.id_kec'=>$request->id_kec])
+        -> join('kecamatan','data_pmks.id_kec','=','kecamatan.id_kec')
+        -> join('desa', 'data_pmks.id_desa', '=','desa.id_desa')
+        -> join('bulan','data_pmks.id_bulan','=','bulan.id_bulan')
+        -> join('tahun','data_pmks.id_tahun','=','tahun.id_tahun')
+        -> select('data_pmks.*','desa.nama_desa', 'kecamatan.nama_kec',
+        'bulan.nama_bulan', 'tahun.tahun')
+        -> get();
+
+        // untuk pilih kec + desa + bulan ( res.kec_desa_bulan)
+        $kec_desa_bulan =  DB::table('data_pmks')
+        -> where(['data_pmks.id_bulan'=>$request->id_bulan, 'data_pmks.id_kec'=>$request->id_kec, 'data_pmks.id_desa'=>$request->id_desa])
+        -> join('kecamatan','data_pmks.id_kec','=','kecamatan.id_kec')
+        -> join('desa', 'data_pmks.id_desa', '=','desa.id_desa')
+        -> join('bulan','data_pmks.id_bulan','=','bulan.id_bulan')
+        -> join('tahun','data_pmks.id_tahun','=','tahun.id_tahun')
+        -> select('data_pmks.*','desa.nama_desa', 'kecamatan.nama_kec',
+        'bulan.nama_bulan', 'tahun.tahun')
+        -> get();
+
+        // untuk pilih kec + desa + bulan + tahun (res.kec_desa_bulan_tahun)
+        $kec_desa_bulan_tahun = DB::table('data_pmks')
+        -> where(['data_pmks.id_bulan'=>$request->id_bulan, 'data_pmks.id_kec'=>$request->id_kec, 'data_pmks.id_desa'=>$request->id_desa, 'data_pmks.id_tahun'=>$request->id_tahun])
+        -> join('kecamatan','data_pmks.id_kec','=','kecamatan.id_kec')
+        -> join('desa', 'data_pmks.id_desa', '=','desa.id_desa')
+        -> join('bulan','data_pmks.id_bulan','=','bulan.id_bulan')
+        -> join('tahun','data_pmks.id_tahun','=','tahun.id_tahun')
+        -> select('data_pmks.*','desa.nama_desa', 'kecamatan.nama_kec',
+        'bulan.nama_bulan', 'tahun.tahun')
+        -> get();
+
+        return response()->json(array(
+            'bulan' => $bulan,
+            'kec_bulan' =>$kec_bulan,
+            'kec_desa_bulan' => $kec_desa_bulan,
+            'kec_desa_bulan_tahun'=>$kec_desa_bulan_tahun,
+        ));
+
+       
+    }
+
     public function getDataKec(Request $request)
     {
         $kecOnly = DB::table('data_pmks')
@@ -107,31 +177,125 @@ class PmksController extends Controller
        
     }
 
-    // public function getDataPMKS(Request $request)
-    // {
-    //     dd($request->input());
-    //     Log::info($requests);
-    //     //return response()->json($desa);
+    public function getDataPMKS(Request $request)
+    {   $desa = DB::table('desa')
+        ->where('id_kec', $request->id_kec)
+        ->get();
 
-    // }
+        $kecamatan = DB::table('data_pmks')      
+        -> where('data_pmks.id_kec', $request->id_kec)
+        -> join('kecamatan','data_pmks.id_kec','=','kecamatan.id_kec')
+        -> join('desa', 'data_pmks.id_desa', '=','desa.id_desa')
+        -> join('bulan','data_pmks.id_bulan','=','bulan.id_bulan')
+        -> join('tahun','data_pmks.id_tahun','=','tahun.id_tahun')
+        -> select('data_pmks.*','desa.nama_desa', 'kecamatan.nama_kec',
+        'bulan.nama_bulan', 'tahun.tahun')
+        -> get();
 
-    // public function getDataPMKS(Request $request)
-    // {
-    //     //dd($request->input());
-        
-    //     $data = DB::table('data_pmks')->get();
-    //     //return view ('dashboard',['data'=>$data]);
-    //     //return view('rehsos.pmks', compact('data'));
+        $kecamatan_desa = DB::table('data_pmks')      
+        -> where(['data_pmks.id_kec'=>$request->id_kec, "data_pmks.id_desa"=>$request->id_desa])
+        -> join('kecamatan','data_pmks.id_kec','=','kecamatan.id_kec')
+        -> join('desa', 'data_pmks.id_desa', '=','desa.id_desa')
+        -> join('bulan','data_pmks.id_bulan','=','bulan.id_bulan')
+        -> join('tahun','data_pmks.id_tahun','=','tahun.id_tahun')
+        -> select('data_pmks.*','desa.nama_desa', 'kecamatan.nama_kec',
+        'bulan.nama_bulan', 'tahun.tahun')
+        -> get();
 
-    //     // -> JOIN ('kecamatan', 'data_pmks.id_kec',"=", 'kecamatan.id_kec')
-    //     // -> JOIN ('desa','data_pmks.id_desa',"=","desa.id_desa")
-    //     // -> JOIN ('bulan', 'data_pmks.id_bulan','=','buln.id_bulan')
-    //     // -> JOIN ('tahun','data_pmks.id_tahun',"=",'tahun.id_tahun')
-    //     // -> SELECT ('data.pmks.id_data','desa.nama_desa','desa.kecamatan','bulan.nama_bulan')
-    //     // -> WHERE ('data_pmks.id_desa', $request->id_desa)
-    //     // -> get();
-       
-    //     return response()->json($data);
-    // }
+        $bulan = DB::table('data_pmks')      
+        -> where('data_pmks.id_bulan', $request->id_bulan)
+        -> join('kecamatan','data_pmks.id_kec','=','kecamatan.id_kec')
+        -> join('desa', 'data_pmks.id_desa', '=','desa.id_desa')
+        -> join('bulan','data_pmks.id_bulan','=','bulan.id_bulan')
+        -> join('tahun','data_pmks.id_tahun','=','tahun.id_tahun')
+        -> select('data_pmks.*','desa.nama_desa', 'kecamatan.nama_kec',
+        'bulan.nama_bulan', 'tahun.tahun')
+        -> get();
 
+        $tahun = DB::table('data_pmks')
+        -> where('data_pmks.id_tahun', $request->id_tahun)
+        -> join('kecamatan','data_pmks.id_kec','=','kecamatan.id_kec')
+        -> join('desa', 'data_pmks.id_desa', '=','desa.id_desa')
+        -> join('bulan','data_pmks.id_bulan','=','bulan.id_bulan')
+        -> join('tahun','data_pmks.id_tahun','=','tahun.id_tahun')
+        -> select('data_pmks.*','desa.nama_desa', 'kecamatan.nama_kec',
+        'bulan.nama_bulan', 'tahun.tahun')
+        -> get();
+
+        $bulan_tahun = DB::table('data_pmks')      
+        -> where(['data_pmks.id_bulan'=>$request->id_bulan, 'data_pmks.id_tahun'=>$request->id_tahun])
+        -> join('kecamatan','data_pmks.id_kec','=','kecamatan.id_kec')
+        -> join('desa', 'data_pmks.id_desa', '=','desa.id_desa')
+        -> join('bulan','data_pmks.id_bulan','=','bulan.id_bulan')
+        -> join('tahun','data_pmks.id_tahun','=','tahun.id_tahun')
+        -> select('data_pmks.*','desa.nama_desa', 'kecamatan.nama_kec',
+        'bulan.nama_bulan', 'tahun.tahun')
+        -> get();
+
+        $kec_bulan = DB::table('data_pmks')      
+        -> where(['data_pmks.id_bulan'=>$request->id_bulan, 'data_pmks.id_kec'=>$request->id_kec])
+        -> join('kecamatan','data_pmks.id_kec','=','kecamatan.id_kec')
+        -> join('desa', 'data_pmks.id_desa', '=','desa.id_desa')
+        -> join('bulan','data_pmks.id_bulan','=','bulan.id_bulan')
+        -> join('tahun','data_pmks.id_tahun','=','tahun.id_tahun')
+        -> select('data_pmks.*','desa.nama_desa', 'kecamatan.nama_kec',
+        'bulan.nama_bulan', 'tahun.tahun')
+        -> get();
+
+        $kec_tahun = DB::table('data_pmks')      
+        -> where(['data_pmks.id_kec'=>$request->id_kec, 'data_pmks.id_tahun'=>$request->id_tahun])
+        -> join('kecamatan','data_pmks.id_kec','=','kecamatan.id_kec')
+        -> join('desa', 'data_pmks.id_desa', '=','desa.id_desa')
+        -> join('bulan','data_pmks.id_bulan','=','bulan.id_bulan')
+        -> join('tahun','data_pmks.id_tahun','=','tahun.id_tahun')
+        -> select('data_pmks.*','desa.nama_desa', 'kecamatan.nama_kec',
+        'bulan.nama_bulan', 'tahun.tahun')
+        -> get(); 
+
+        $kec_desa_bulan = DB::table('data_pmks')
+        -> where(['data_pmks.id_bulan'=>$request->id_bulan, 'data_pmks.id_kec'=>$request->id_kec, 'data_pmks.id_desa'=>$request->id_desa])
+        -> join('kecamatan','data_pmks.id_kec','=','kecamatan.id_kec')
+        -> join('desa', 'data_pmks.id_desa', '=','desa.id_desa')
+        -> join('bulan','data_pmks.id_bulan','=','bulan.id_bulan')
+        -> join('tahun','data_pmks.id_tahun','=','tahun.id_tahun')
+        -> select('data_pmks.*','desa.nama_desa', 'kecamatan.nama_kec',
+        'bulan.nama_bulan', 'tahun.tahun')
+        -> get();
+
+        $kec_desa_tahun = $kec_desa_bulan = DB::table('data_pmks')
+        -> where(['data_pmks.id_tahun'=>$request->id_tahun, 'data_pmks.id_kec'=>$request->id_kec, 'data_pmks.id_desa'=>$request->id_desa])
+        -> join('kecamatan','data_pmks.id_kec','=','kecamatan.id_kec')
+        -> join('desa', 'data_pmks.id_desa', '=','desa.id_desa')
+        -> join('bulan','data_pmks.id_bulan','=','bulan.id_bulan')
+        -> join('tahun','data_pmks.id_tahun','=','tahun.id_tahun')
+        -> select('data_pmks.*','desa.nama_desa', 'kecamatan.nama_kec',
+        'bulan.nama_bulan', 'tahun.tahun')
+        -> get();
+
+        $kec_desa_bulan_tahun = DB::table('data_pmks')
+        -> where(['data_pmks.id_bulan'=>$request->id_bulan, 'data_pmks.id_kec'=>$request->id_kec, 'data_pmks.id_desa'=>$request->id_desa, 'data_pmks.id_tahun'=>$request->id_tahun,])
+        -> join('kecamatan','data_pmks.id_kec','=','kecamatan.id_kec')
+        -> join('desa', 'data_pmks.id_desa', '=','desa.id_desa')
+        -> join('bulan','data_pmks.id_bulan','=','bulan.id_bulan')
+        -> join('tahun','data_pmks.id_tahun','=','tahun.id_tahun')
+        -> select('data_pmks.*','desa.nama_desa', 'kecamatan.nama_kec',
+        'bulan.nama_bulan', 'tahun.tahun')
+        -> get();
+
+        return response()->json(array(
+            'desa' =>$desa,
+            'kecamatan'=>$kecamatan,
+            'kecamatan_desa'=>$kecamatan_desa,
+            'bulan' => $bulan,
+            'tahun' => $tahun,
+            'bulan_tahun'=> $bulan_tahun,
+            'kec_bulan'=>$kec_bulan,
+            'kec_tahun'=>$kec_tahun,
+            'kec_desa_bulan'=>$kec_desa_bulan,
+            'kec_desa_tahun'=>$kec_desa_tahun,
+            'kec_desa_bulan_tahun' => $kec_desa_bulan_tahun,
+        ));
+
+    }
+    
 }
