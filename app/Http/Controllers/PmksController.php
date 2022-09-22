@@ -164,8 +164,6 @@ class PmksController extends Controller
             'kec_desa_bulan' => $kec_desa_bulan,
             'kec_desa_bulan_tahun'=>$kec_desa_bulan_tahun,
         ));
-
-       
     }
 
     public function getDataKec(Request $request)
@@ -252,8 +250,8 @@ class PmksController extends Controller
         'bulan.nama_bulan', 'tahun.tahun')
         -> get(); 
 
-        $kec_desa_bulan = DB::table('data_pmks')
-        -> where(['data_pmks.id_bulan'=>$request->id_bulan, 'data_pmks.id_kec'=>$request->id_kec, 'data_pmks.id_desa'=>$request->id_desa])
+        $desa_bulan = DB::table('data_pmks')      
+        -> where(['data_pmks.id_bulan'=>$request->id_bulan, 'data_pmks.id_desa'=>$request->id_desa])
         -> join('kecamatan','data_pmks.id_kec','=','kecamatan.id_kec')
         -> join('desa', 'data_pmks.id_desa', '=','desa.id_desa')
         -> join('bulan','data_pmks.id_bulan','=','bulan.id_bulan')
@@ -262,8 +260,8 @@ class PmksController extends Controller
         'bulan.nama_bulan', 'tahun.tahun')
         -> get();
 
-        $kec_desa_tahun = $kec_desa_bulan = DB::table('data_pmks')
-        -> where(['data_pmks.id_tahun'=>$request->id_tahun, 'data_pmks.id_kec'=>$request->id_kec, 'data_pmks.id_desa'=>$request->id_desa])
+        $desa_tahun =  DB::table('data_pmks')      
+        -> where(['data_pmks.id_tahun'=>$request->id_tahun, 'data_pmks.id_desa'=>$request->id_desa])
         -> join('kecamatan','data_pmks.id_kec','=','kecamatan.id_kec')
         -> join('desa', 'data_pmks.id_desa', '=','desa.id_desa')
         -> join('bulan','data_pmks.id_bulan','=','bulan.id_bulan')
@@ -272,8 +270,8 @@ class PmksController extends Controller
         'bulan.nama_bulan', 'tahun.tahun')
         -> get();
 
-        $kec_desa_bulan_tahun = DB::table('data_pmks')
-        -> where(['data_pmks.id_bulan'=>$request->id_bulan, 'data_pmks.id_kec'=>$request->id_kec, 'data_pmks.id_desa'=>$request->id_desa, 'data_pmks.id_tahun'=>$request->id_tahun,])
+        $desa_bulan_tahun = DB::table('data_pmks')      
+        -> where(['data_pmks.id_tahun'=>$request->id_tahun, 'data_pmks.id_desa'=>$request->id_desa])
         -> join('kecamatan','data_pmks.id_kec','=','kecamatan.id_kec')
         -> join('desa', 'data_pmks.id_desa', '=','desa.id_desa')
         -> join('bulan','data_pmks.id_bulan','=','bulan.id_bulan')
@@ -291,11 +289,55 @@ class PmksController extends Controller
             'bulan_tahun'=> $bulan_tahun,
             'kec_bulan'=>$kec_bulan,
             'kec_tahun'=>$kec_tahun,
-            'kec_desa_bulan'=>$kec_desa_bulan,
-            'kec_desa_tahun'=>$kec_desa_tahun,
-            'kec_desa_bulan_tahun' => $kec_desa_bulan_tahun,
+            'desa_bulan'=>$desa_bulan,
+            'desa_tahun'=>$desa_tahun,
+            'desa_bulan_tahun'=>$desa_bulan_tahun,
         ));
+        
 
     }
+    public function editPmks(Request $request){
+        
+        $kecamatan =DB::table('kecamatan')->get();
+        $bulan = DB::table('bulan')->get();
+        $tahun = DB::table('tahun')->get();
+
+        //mengambil data pmks berdasarkan id yang dipilih
+        $datapmks= DB::table('data_pmks')      
+        -> where('id_data',$request->id_data)
+        -> join('kecamatan','data_pmks.id_kec','=','kecamatan.id_kec')
+        -> join('desa', 'data_pmks.id_desa', '=','desa.id_desa')
+        -> join('bulan','data_pmks.id_bulan','=','bulan.id_bulan')
+        -> join('tahun','data_pmks.id_tahun','=','tahun.id_tahun')
+        -> select('data_pmks.*','desa.nama_desa', 'kecamatan.nama_kec',
+        'bulan.nama_bulan', 'tahun.tahun')
+        -> get();
+        return view('rehsos.editpmks',compact('kecamatan'))
+        ->with (['datapmks'=>$datapmks])
+        ->with (['bulan'=>$bulan])
+        ->with (['tahun'=>$tahun]);
+    }  
     
+    public function update(Request $request)
+     {
+      DB::table('data_pmks')->where('id_data', $request->id_data)
+      ->update([
+         'id_data' =>$request->id_data,
+         'id_kec'=>$request->kecamatan,
+         'id_desa'=>$request->desa,
+         'id_bulan'=>$request->bulan,
+         'id_tahun'=>$request->tahun,
+         'gelandangan'=>$request->gld,
+         'pengemis'=>$request->peng,
+         'punk'=>$request->punk,
+         'anak_jalanan'=>$request->anjal,
+         'orang_terlantar'=>$request->ot,
+         'anak_terlantar'=>$request->at,
+         'psk'=>$request->psk,
+         'waria'=>$request->waria,
+         'pria'=>$request->pria,
+         'wanita'=>$request->wanita,
+      ]);
+      return redirect('/pmks');
+     }
 }

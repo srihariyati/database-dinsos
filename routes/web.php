@@ -39,9 +39,9 @@ Route::group(['middleware' =>['auth']], function(){
         return view('rehsos/tambahpmks');
     });
 
-    Route::get('/editpmks', function () {
-        return view('rehsos/editpmks');
-    });
+    // Route::get('/editpmks', function () {
+    //     return view('rehsos/editpmks');
+    // });
 
     Route::get('/caripmks','PmksController@index');
 
@@ -75,10 +75,10 @@ Route::group(['middleware' =>['auth']], function(){
     Route::get('get-pmks-desa',[PmksController::class, 'getPmksDesa'])->name('getPmksDesa');
     Route::get('get-pmks-bulan',[PmksController::class,'getPmksBulan'])->name('getPmksBulan');
 
+    Route::get('/editpmks',[PmksController::class, 'editPmks'])->name('editPmks');
     
-    // Route::get('dtks', [DtksController::class, 'view'])->name('dropdownView');
-    // Route::get('get-desa',[DtksController::class, 'getDesa'])->name('getDesa');
-    // Route::get('get-data-dtks',[DtksController::class, 'getDataDTKS'])->name('getDataDTKS');
+    //update data pmks
+    Route::post('/editpmks/update',[PmksController::class, 'update'])->name('update');
 });
 
 

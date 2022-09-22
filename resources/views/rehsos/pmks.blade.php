@@ -11,8 +11,9 @@
                     </div>
         
                     <div class="col-auto" >
-                            <a class="btn btn-success" id="tambah" href="{{ url('/tambahpmks')}}" role="button">Tambah</a>
+                        <a class="btn btn-success" id="tambah" href="{{ url('/tambahpmks')}}" role="button">Tambah</a>
                     </div>
+                    
                 </div>
         </div>
 
@@ -55,6 +56,11 @@
                             </select>
                     </div>
 
+                    
+
+                    <div class="col-auto" style="width:170px ; margin-left:100px"> 
+                    
+                    </div>
                     <!-- <div  class="row" style="margin-top: 0.8rem; margin-left: 47rem;">
                         <div class="col-auto" >
                             <a class="btn btn-danger" id="edit-btn" href="{{ url('/editpmks')}}" role="button">Edit</a>
@@ -150,13 +156,16 @@
                             { 'data': 'pria' },
                             { 'data': 'wanita' },
                             { 'data': 'id_data' },
-                            { 'data': "", "defaultContent": "<button  class='btn btn-warning btn-sm' onclick='edititem();'>Edit</button>" },
+                            { 'data': "", "defaultContent": '<a class="btn btn-warning btn-sm" id="edit" href="{{ url('/editpmks?id_data=1')}}" role="button">Edit</a>'},
 
                         ]
+                        
                     });  
                 }
             });
         });
+
+       
 
         //ketika pilih desa
         $('#desa').on('change', function(){
@@ -191,7 +200,7 @@
                             { 'data': 'pria' },
                             { 'data': 'wanita' },
                             { 'data': 'id_data' },
-                            { 'data': "", "defaultContent": "<button  class='btn btn-warning btn-sm' onclick='edititem();'>Edit</button>" },
+                            { 'data': "", "defaultContent": '<a href="#" class="link-primary">Edit</a>'},
 
                         ]
                     }); 
@@ -276,7 +285,7 @@
         // ketika pilih bulan lalu tahun
         $('#bulan').on('change', function(){
             $('#tahun' ).on('change', function(){
-                var bulanId = bulan.value;
+            var bulanId = bulan.value;
             var tahunId = tahun.value;
             console.log(bulanId);
             console.log(tahunId);
@@ -354,20 +363,20 @@
         });
 
         // ketika pilih kec lalu bulan
-        $('#kecamatan').on('change', function(){
+        $('#desa').on('change', function(){
             $('#bulan').on('change', function(){
-                var kecId = kecamatan.value;
+                var desaId = desa.value;
                 var bulanId = bulan.value;
                 console.log(kecamatan.value, bulan.value);
                 $.ajax({
-                    url :'{{route('getDataPMKS')}}?id_kec='+kecId+'&id_bulan='+bulanId,
+                    url :'{{route('getDataPMKS')}}?id_desa='+desaId+'&id_bulan='+bulanId,
                     type :'get',
                     success : function(res){
-                        console.log(res.kec_bulan);
+                        console.log(res.desa_bulan);
 
                         var table = $('#tabel-data').DataTable({
                             destroy: true,
-                            data: res.kec_bulan,
+                            data: res.desa_bulan,
                             columns: [
                                 { 'data': 'nama_kec' },
                                 { 'data': 'nama_desa' },
@@ -384,7 +393,7 @@
                                 { 'data': 'pria' },
                                 { 'data': 'wanita' },
                                 { 'data': 'id_data' },
-                                { 'data': "", "defaultContent": "<button  class='btn btn-warning btn-sm' onclick='edititem();'>Edit</button>" },
+                                { 'data': "", "defaultContent": '<a href="#" class="link-primary">Edit</a>' },
                             ]
                         }); 
                     }
@@ -521,34 +530,34 @@
                     console.log(kecamatan.value, desa.value, bulan.value);
                     //res.kec_desa_bulan
                     $.ajax({
-                    url :'{{route('getDataPMKS')}}?id_kec='+kecId+'&id_desa='+desaId+'&id_bulan='+bulanId,
-                    type :'get',
-                    success : function(res){
-                        //console.log(res.kec_desa_bulan);
+                        url :'{{route('getDataPMKS')}}?id_kec='+kecId+'&id_desa='+desaId+'&id_bulan='+bulanId,
+                        type :'get',
+                        success : function(res){
+                            console.log(res.desa_bulan);
 
-                        var table =  $('#tabel-data').DataTable({
-                            destroy:true,
-                            data: res.kec_desa_bulan,
-                            columns: [
-                                { 'data': 'nama_kec' },
-                                { 'data': 'nama_desa' },
-                                { 'data': 'nama_bulan' },
-                                { 'data': 'tahun' },
-                                { 'data': 'gelandangan' },
-                                { 'data': 'pengemis' },
-                                { 'data': 'punk' },
-                                { 'data': 'anak_jalanan' },
-                                { 'data': 'orang_terlantar' },
-                                { 'data': 'anak_terlantar' },
-                                { 'data': 'psk' },
-                                { 'data': 'waria' },
-                                { 'data': 'pria' },
-                                { 'data': 'wanita' },
-                                { 'data': 'id_data' },
-                                { 'data': "", "defaultContent": "<button  class='btn btn-warning btn-sm' onclick='edititem();'>Edit</button>" },
-                            ]
-                        }); 
-                    }
+                            var table =  $('#tabel-data').DataTable({
+                                destroy:true,
+                                data: res.desa_bulan,
+                                columns: [
+                                    { 'data': 'nama_kec' },
+                                    { 'data': 'nama_desa' },
+                                    { 'data': 'nama_bulan' },
+                                    { 'data': 'tahun' },
+                                    { 'data': 'gelandangan' },
+                                    { 'data': 'pengemis' },
+                                    { 'data': 'punk' },
+                                    { 'data': 'anak_jalanan' },
+                                    { 'data': 'orang_terlantar' },
+                                    { 'data': 'anak_terlantar' },
+                                    { 'data': 'psk' },
+                                    { 'data': 'waria' },
+                                    { 'data': 'pria' },
+                                    { 'data': 'wanita' },
+                                    { 'data': 'id_data' },
+                                    { 'data': "", "defaultContent": '<a href="#" class="link-primary">Edit</a>' },
+                                ]
+                            }); 
+                        }
                     });
                 });
             });
@@ -568,11 +577,11 @@
                     url :'{{route('getDataPMKS')}}?id_kec='+kecId+'&id_desa='+desaId+'&id_tahun='+tahunId,
                     type :'get',
                     success : function(res){
-                        console.log(res.kec_desa_tahun);
+                        console.log(res.desa_tahun);
 
                         var table = $('#tabel-data').DataTable({
                             destroy: true,
-                            data: res.kec_desa_tahun,
+                            data: res.desa_tahun,
                             columns: [
                                 { 'data': 'nama_kec' },
                                 { 'data': 'nama_desa' },
@@ -616,11 +625,11 @@
                         url :'{{route('getDataPMKS')}}?id_kec='+kecId+'&id_desa='+desaId+'&id_bulan='+bulanId+'&id_tahun'+tahunId,
                         type :'get',
                         success : function(res){
-                            console.log(res.kec_desa_bulan_tahun);
+                            console.log(res.desa_bulan_tahun);
 
                             var table = $('#tabel-data').DataTable({
                                 destroy: true,
-                                data: res.kec_desa_bulan_tahun,
+                                data: res.desa_bulan_tahun,
                                 columns: [
                                     { 'data': 'nama_kec' },
                                     { 'data': 'nama_desa' },
@@ -661,11 +670,11 @@
                         url :'{{route('getDataPMKS')}}?id_kec='+kecId+'&id_desa='+desaId+'&id_bulan='+bulanId+'&id_tahun'+tahunId,
                         type :'get',
                         success : function(res){
-                            console.log(res.kec_desa_bulan_tahun);
+                            console.log(res.desa_bulan_tahun);
 
                             var table = $('#tabel-data').DataTable({
                                 destroy: true,
-                                data: res.kec_desa_bulan_tahun,
+                                data: res.desa_bulan_tahun,
                                 columns: [
                                     { 'data': 'nama_kec' },
                                     { 'data': 'nama_desa' },
