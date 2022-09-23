@@ -338,7 +338,7 @@ class PmksController extends Controller
          'pria'=>$request->pria,
          'wanita'=>$request->wanita,
       ]);
-      return redirect('/pmks');
+      return redirect('/pmks')->with('success', 'Berhasil Mengedit Data!');
     }
 
     public function tambah(Request $request)
@@ -371,6 +371,6 @@ class PmksController extends Controller
             'pria'=>$request->pria,
             'wanita'=>$request->wanita,
         ]);
-        return redirect('/pmks');
+        return redirect('/pmks')->with('success', 'Berhasil Menambahkan Data!');
     }
 }
