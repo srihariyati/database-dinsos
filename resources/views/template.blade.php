@@ -121,7 +121,7 @@
               <a href="#" class="d-flex align-items-center mb-2 mb-lg-0 text-dark text-decoration-none">
                 <!-- logo kota banda aceh -->
                 <img src="img\pemko_bna.png" width="25%" style="margin-right: 7px;">
-                <span class="fs-5 fw-bold" >Dinas Sosial Kota Banda Aceh</span>
+                <span class="fs-6 fw-bold" >Dinas Sosial Kota Banda Aceh </span>
               </a>
             </div>
           </header>
@@ -146,12 +146,12 @@
                   </div>
                 </li>
                 <li class="mb-1">
-                  <button class="btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed" data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
-                    Bidang Dayasos & PFM
+                  <button class=" btn btn-toggle d-inline-flex align-items-center rounded border-0 collapsed " data-bs-toggle="collapse" data-bs-target="#dashboard-collapse" aria-expanded="false">
+                    Bidang Dayasos
                   </button>
                   <div class="collapse show" id="dashboard-collapse">
                     <ul class="btn-toggle-nav list-unstyled fw-normal pb-1 small">
-                      <li><a href="{{ url('/dtks') }}" class="link-dark d-inline-flex text-decoration-none rounded">Data DTKS</a></li>
+                      <li><a href="{{ url('/dtks') }}" class="link-dark d-inline-flex text-decoration-none rounded"> Data DTKS</a></li>
                     </ul>
                   </div>
                 </li>

@@ -3,7 +3,7 @@
 
 @section('content')
     <div class="card w-75">
-        <div class="card-body">
+        <div class="card-body" style="margin-bottom: 10px;">
             <div class="container" >
                 <div class="row" style="margin-left: -40px;">
                     <div class="col-auto">
