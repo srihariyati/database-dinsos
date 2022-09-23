@@ -127,9 +127,9 @@
                             { 'data': 'tahun' },
                             { 'data': 'jiwa' },
                             { 'data': 'ruta' },
-                            { 'data': 'jmlh_aktif' },
-                            { 'data': 'jmlh_non_aktif' },
-                            { 'data': 'jmlh_bbl' },
+                            { 'data': 'jumlah_aktif' },
+                            { 'data': 'jumlah_nonaktif' },
+                            { 'data': 'jumlah_bbl' },
                             { 'data': "", "defaultContent": '<a class="btn btn-warning btn-sm" id="edit" href="{{ url('/editpmks?id_data=1')}}" role="button">Edit</a>'},
 
                         ]
