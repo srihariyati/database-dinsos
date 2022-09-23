@@ -191,6 +191,8 @@
 
       <div class="row">
             @yield('content')
+            @include('sweetalert::alert')
+
       </div>
   </div>
 </body>
@@ -203,5 +205,7 @@
 <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
 
 <script src="https://cdn.datatables.net/1.12.1/js/jquery.dataTables.min.js"></script>
+@include('sweetalert::alert')
+
 
 </html>
