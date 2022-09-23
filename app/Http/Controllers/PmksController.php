@@ -319,7 +319,7 @@ class PmksController extends Controller
     }  
     
     public function update(Request $request)
-     {
+    {
       DB::table('data_pmks')->where('id_data', $request->id_data)
       ->update([
          'id_data' =>$request->id_data,
@@ -339,5 +339,17 @@ class PmksController extends Controller
          'wanita'=>$request->wanita,
       ]);
       return redirect('/pmks');
-     }
+    }
+
+    public function tambah(Request $request)
+    {
+        $kecamatan =DB::table('kecamatan')->get();
+        $bulan = DB::table('bulan')->get();
+        $tahun = DB::table('tahun')->get();
+
+        return view('rehsos.tambahpmks',compact('kecamatan'))
+        ->with (['bulan'=>$bulan])
+        ->with (['tahun'=>$tahun]);
+
+    }
 }

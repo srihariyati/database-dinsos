@@ -18,7 +18,5 @@ class EditPmksController extends Controller
         return view('rehsos.editpmks', compact('kecamatan')) 
         ->with (['bulan'=>$bulan])
         ->with (['tahun'=>$tahun]);
-     }
-
-     
+     }     
 }
