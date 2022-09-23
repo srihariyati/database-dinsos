@@ -87,7 +87,7 @@
                 </div>
             </div> -->
             
-        <div class="table-responsive" style="height: 17.5rem; font-size:1.5vh;">
+        <div class="table-responsive" style="height: 17.5rem; font-size:2vh;">
             <table id="tabel-data" class="table table-striped table-bordered" width="100%" cellspacing="0" >
             <thead>
                 <tr>
