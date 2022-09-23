@@ -35,13 +35,9 @@ Route::group(['middleware' =>['auth']], function(){
     Route::get('/pmks','PmksController@index2');
     Route::get('/dtks','DtksController@index2');
 
-    Route::get('/tambahpmks', function () {
-        return view('rehsos/tambahpmks');
-    });
-
-    Route::get('/editpmks', function () {
-        return view('rehsos/editpmks');
-    });
+    // Route::get('/editpmks', function () {
+    //     return view('rehsos/editpmks');
+    // });
 
     Route::get('/caripmks','PmksController@index');
 
@@ -68,12 +64,20 @@ Route::group(['middleware' =>['auth']], function(){
     Route::get('/tambahpkh', function () {
         return view('linjamsos/tambahpkh');
     });
+    //mengambil data kecamatan untuk dropdown
+    Route::get('get-data-pmks',[PmksController::class, 'getDataPMKS'])->name('getDataPMKS');
 
     Route::get('pmks', [PmksController::class, 'view'])->name('dropdownView');
-    Route::get('get-desa',[PmksController::class, 'getDesa'])->name('getDesa');
-    Route::get('get-data-pmks',[PmksController::class, 'getDataPMKS'])->name('getDataPMKS');
+   
     Route::get('get-data-kec',[PmksController::class, 'getDataKec'])->name('getDataKec');
+    Route::get('get-pmks-desa',[PmksController::class, 'getPmksDesa'])->name('getPmksDesa');
+    Route::get('get-pmks-bulan',[PmksController::class,'getPmksBulan'])->name('getPmksBulan');
 
+
+    Route::get('/editpmks',[PmksController::class, 'editPmks'])->name('editPmks');
+    Route::get('/tambahpmks', [PmksController::class, 'tambah'])->name('tambah');
+    //update data pmks
+    Route::post('/editpmks/update',[PmksController::class, 'update'])->name('update');
 });
 
 

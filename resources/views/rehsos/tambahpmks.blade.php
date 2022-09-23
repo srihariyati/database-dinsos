@@ -18,17 +18,12 @@
                     <div class="row" style="margin-left: 0px;">
                         <div class="col-auto" style="width:290px">
                             <label style="font-size:2.2vh; margin-left: 0px; margin-bottom: 0.3rem">Kecamatan</label>
-                                <select class="form-select" id="autoSizingSelect" style="font-size:2.2vh;">
-                                    <option selected >Pilih Kecamatan</option>
-                                    <option value="1">Baiturrahman</option>
-                                    <option value="2">Banda Raya</option>
-                                    <option value="3">Jaya Baru</option>
-                                    <option value="4">Kuta Alam</option>
-                                    <option value="5">Kuta Raja</option>
-                                    <option value="6">Lueng Bata</option>
-                                    <option value="7">Meuraxa</option>
-                                    <option value="8">Syiah Kuala</option>
-                                    <option value="9">Ulee Kareng</option>
+                                <select class="form-select" id="kecamatan" name="kecamatan" style="font-size:2.2vh;">
+                                <option selected>Pilih Kecamatan</option>
+                                    @foreach ($kecamatan as $kec)
+                                    <option value="{{$kec->id_kec}}">{{$kec->nama_kec}}</option>
+                                    @endforeach ($kecamatan as $kec)  
+                                    
                                 </select>
                         </div>
 

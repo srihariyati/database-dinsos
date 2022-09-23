@@ -11,8 +11,9 @@
                     </div>
         
                     <div class="col-auto" >
-                            <a class="btn btn-success" id="tambah" href="{{ url('/tambahpmks')}}" role="button">Tambah</a>
+                        <a class="btn btn-success" id="tambah" href="{{ url('/tambahpmks')}}" role="button">Tambah</a>
                     </div>
+                    
                 </div>
         </div>
 
@@ -21,7 +22,7 @@
                     <div class="col-auto" style="width:290px">
                         <label class="fw-bold" style="margin-left: 0px; margin-bottom: 0.5rem">Kecamatan</label>
                             <select class="form-select" id="kecamatan" style="font-size:2.2vh;">
-                                <option selected >Pilih Kecamatan</option>
+                                <option value="" >Pilih Kecamatan</option>
                                     @foreach ($kecamatan as $kec)
                                     <option value="{{$kec->id_kec}}">{{$kec->nama_kec}}</option>
                                     @endforeach ($kecamatan as $kec)                              
@@ -38,7 +39,7 @@
                     <div class="col-auto" style="width:170px"> 
                         <label class="fw-bold" style="margin-bottom: 0.5rem">Bulan</label>
                             <select class="form-select" id="bulan" style="font-size:2.2vh;">
-                                <option selected>Pilih Bulan</option>
+                                <option  value="">Pilih Bulan</option>
                                 @foreach($bulan as $b)
                                 <option value="{{$b->id_bulan}}">{{$b->nama_bulan}}</option>
                                 @endforeach($bulan as $b)
@@ -48,13 +49,18 @@
                     <div class="col-auto" style="width:170px"> 
                         <label class="fw-bold" style="margin-bottom: 0.5rem">Tahun</label>
                             <select class="form-select" id="tahun" style="font-size:2.2vh;">
-                                <option selected>Pilih Tahun</option>
+                                <option value="">Pilih Tahun</option>
                                 @foreach($tahun as $t)
                                 <option value="{{$t->id_tahun}}">{{$t->tahun}}</option>
                                 @endforeach($tahun as $t)
                             </select>
                     </div>
 
+                    
+
+                    <div class="col-auto" style="width:170px ; margin-left:100px"> 
+                    
+                    </div>
                     <!-- <div  class="row" style="margin-top: 0.8rem; margin-left: 47rem;">
                         <div class="col-auto" >
                             <a class="btn btn-danger" id="edit-btn" href="{{ url('/editpmks')}}" role="button">Edit</a>
@@ -69,9 +75,9 @@
         </div>
     </div>
 
-    <div class="card w-75" style="margin-top: 5px;">
+    <div id="card2" class="card w-75" style="margin-top: 5px;">
         <div class="card-body">
-            <div  class="row" style="margin-top: 0.2rem; margin-left: 43rem; margin-bottom: 0.2rem">
+            <!-- <div  class="row" style="margin-top: 0.2rem; margin-left: 43rem; margin-bottom: 0.2rem">
                 <div class="col-auto" >
                     <a class="btn btn-warning" id="edit-btn" href="#" role="button">Cetak PDF</a>
                 </div> 
@@ -79,7 +85,7 @@
                         <a class="btn btn-success" id="Cari-btn" href="#" role="button">Cetak Excel</a>
                     </div> 
                 </div>
-            </div>
+            </div> -->
             
         <div class="table-responsive" style="height: 17.5rem; font-size:1.5vh;">
             <table id="tabel-data" class="table table-striped table-bordered" width="100%" cellspacing="0" >
@@ -110,6 +116,7 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
+        //ketika pilih kecamatan
         $('#kecamatan').on('change', function(){
             //ambil value dari id kecamatan     
             var kecId = this.value;
@@ -118,21 +125,103 @@
 
             $.ajax({
                 //kirim id ke controller getDesa untuk baca desa yang ada didalam kacamatan yang dipilih
-                url: '{{ route('getDesa') }}?id_kec='+kecId,
+                url: '{{ route('getDataPMKS') }}?id_kec='+kecId,
                 type :'get',             
                 success : function(res){
-                    $('#desa').html('<option value="">Pilih Desa</option>'); 
+                    $('#desa').html('<option value="">Pilih Desa</option> '); 
 
                     $.each(res.desa, function (key, value) {                                             
                         // buat option untuk pilih desa (desa berada di kecamatan yang  dipilih)
                         $('#desa').append('<option value="'+ value.id_desa + '">' + value.nama_desa + '</option>');                  
-                        
                     });
-                    console.log(res.datapmks);
 
-                    $('#tabel-data').DataTable({
+                    console.log(res.kecamatan);
+                    //menampilkan data pmks (hanya kecamatan yang dipilih)
+                    var table = $('#tabel-data').DataTable({
                         destroy: true,
-                        data: res.datapmks,
+                        data: res.kecamatan,
+                        columns: [
+                            { 'data': 'nama_kec' },
+                            { 'data': 'nama_desa' },
+                            { 'data': 'nama_bulan' },
+                            { 'data': 'tahun' },
+                            { 'data': 'gelandangan' },
+                            { 'data': 'pengemis' },
+                            { 'data': 'punk' },
+                            { 'data': 'anak_jalanan' },
+                            { 'data': 'orang_terlantar' },
+                            { 'data': 'anak_terlantar' },
+                            { 'data': 'psk' },
+                            { 'data': 'waria' },
+                            { 'data': 'pria' },
+                            { 'data': 'wanita' },
+                            { 'data': 'id_data' },
+                            { 'data': "", "defaultContent": '<a class="btn btn-warning btn-sm" id="edit" href="{{ url('/editpmks?id_data=1')}}" role="button">Edit</a>'},
+
+                        ]
+                        
+                    });  
+                }
+            });
+        });
+
+       
+
+        //ketika pilih desa
+        $('#desa').on('change', function(){
+            var desaId = desa.value;
+            var kecId =  kecamatan.value;
+            console.log(desaId);
+            console.log(kecId);
+
+            //tampilkan data dari desa dan kecamatan
+            $.ajax({
+                url :'{{route('getDataPMKS')}}?id_kec='+kecId+'&id_desa='+desaId,
+                type :'get',
+                success : function(res){
+                    console.log(res.kecamatan_desa);
+
+                    var table = $('#tabel-data').DataTable({
+                        destroy: true,
+                        data: res.kecamatan_desa,
+                        columns: [
+                            { 'data': 'nama_kec' },
+                            { 'data': 'nama_desa' },
+                            { 'data': 'nama_bulan' },
+                            { 'data': 'tahun' },
+                            { 'data': 'gelandangan' },
+                            { 'data': 'pengemis' },
+                            { 'data': 'punk' },
+                            { 'data': 'anak_jalanan' },
+                            { 'data': 'orang_terlantar' },
+                            { 'data': 'anak_terlantar' },
+                            { 'data': 'psk' },
+                            { 'data': 'waria' },
+                            { 'data': 'pria' },
+                            { 'data': 'wanita' },
+                            { 'data': 'id_data' },
+                            { 'data': "", "defaultContent": '<a href="#" class="link-primary">Edit</a>'},
+
+                        ]
+                    }); 
+                }
+            });
+        });
+
+        //ketika pilih bulan
+        $('#bulan').on('change', function(){
+            var bulanId = this.value;
+            console.log(bulanId);
+
+            $.ajax({
+                url :'{{route('getDataPMKS')}}?id_bulan='+bulanId,
+                type :'get',
+                success : function(res){
+                    console.log(res.bulan);
+
+                    var table = $('#tabel-data').DataTable({
+                        destroy: true,
+                        data: res.bulan,
                         columns: [
                             { 'data': 'nama_kec' },
                             { 'data': 'nama_desa' },
@@ -152,70 +241,468 @@
                             { 'data': "", "defaultContent": "<button  class='btn btn-warning btn-sm' onclick='edititem();'>Edit</button>" },
 
                         ]
-                    });
-        
-        // tampilkan datatables untuk data dimana kec
-
-       
-
-        // $('#tabel-data').DataTable( {
-        // "ajax": {
-        //     "url":  "{{ action('PmksController@getDataKec') }}",
-        //     "type": "GET",
-        //     "data": {
-        //              "id_kec": kecId,
-        //         },
-        //     "cache": true,
-        //     "datatype": 'json',
-        //     "success": function (data) {
-        //         console.log(data);
-        //     },
-        //     "complete": function(xhr, status){
-        //         console.log(status);
-        //     },
-        //     //masukkan data ke datatables
-        //     },
-        // });                    
+                    }); 
                 }
             });
-        });
+        });             
 
-        // cari data
-        $("#cari-btn").click(function(){
-            var kecId = document.getElementById("kecamatan").value;
-            var desaId = document.getElementById("desa").value;
-            var bulanId = document.getElementById("bulan").value;
-            var tahunId = document.getElementById("tahun").value;
-
-            console.log(kecId);
-            console.log(desaId);
-            console.log(bulanId);
+         //ketik pilih tahunn
+         $('#tahun').on('change', function(){
+            var tahunId = this.value;
             console.log(tahunId);
 
             $.ajax({
-                url: '{{ route('getDataPMKS') }}?id_kec='+kecId+'&id_desa='+desaId+'&id_bulan='+bulanId+'&tahun='+tahunId,
+                url :'{{route('getDataPMKS')}}?id_tahun='+tahunId,
                 type :'get',
                 success : function(res){
-                    $.each(res, function (key, value) {
-                        console.log("bisa ni");
-                        
+                    console.log(res.tahun);
 
-                        // // $('#data-pmks').html('<div id="card-satu"><div class="col-auto"><a href="" id="excel-btn" class="tombol btn-group text-white fw-bold form-control btn-lg mt-3" style="background-color:#1CCE2E; text-decoration: none; padding: 1vh 3vh;"> Cetak Excel </a></div></div>'); 
-                        // // $('#card-satu').append('<h1>'+ value.id_data + ','+value.id_tahun+'</h1>');
-
-
-                        // var markup = "<tr><td>" + value.id_data + "</td><td>" + value.id_tahun + "</td></tr>";
-                        // $("table tbody").append(markup);
-                        console.log(value.id_data);
-                    });
-                },
-                error :function(error){
-                    alert('ada yang salah');
+                    var table = $('#tabel-data').DataTable({
+                        destroy: true,
+                        data: res.tahun,
+                        columns: [
+                            { 'data': 'nama_kec' },
+                            { 'data': 'nama_desa' },
+                            { 'data': 'nama_bulan' },
+                            { 'data': 'tahun' },
+                            { 'data': 'gelandangan' },
+                            { 'data': 'pengemis' },
+                            { 'data': 'punk' },
+                            { 'data': 'anak_jalanan' },
+                            { 'data': 'orang_terlantar' },
+                            { 'data': 'anak_terlantar' },
+                            { 'data': 'psk' },
+                            { 'data': 'waria' },
+                            { 'data': 'pria' },
+                            { 'data': 'wanita' },
+                            { 'data': 'id_data' },
+                            { 'data': "", "defaultContent": "<button  class='btn btn-warning btn-sm' onclick='edititem();'>Edit</button>" },
+                        ]
+                    }); 
                 }
+            });      
+         });
+        // ketika pilih bulan lalu tahun
+        $('#bulan').on('change', function(){
+            $('#tahun' ).on('change', function(){
+            var bulanId = bulan.value;
+            var tahunId = tahun.value;
+            console.log(bulanId);
+            console.log(tahunId);
+                $.ajax({
+                    url :'{{route('getDataPMKS')}}?id_tahun='+tahunId+'&id_bulan='+bulanId,
+                    type :'get',
+                    success : function(res){
+                        console.log(res.bulan_tahun);
+
+                        var table = $('#tabel-data').DataTable({
+                            destroy: true,
+                            data: res.bulan_tahun,
+                            columns: [
+                                { 'data': 'nama_kec' },
+                                { 'data': 'nama_desa' },
+                                { 'data': 'nama_bulan' },
+                                { 'data': 'tahun' },
+                                { 'data': 'gelandangan' },
+                                { 'data': 'pengemis' },
+                                { 'data': 'punk' },
+                                { 'data': 'anak_jalanan' },
+                                { 'data': 'orang_terlantar' },
+                                { 'data': 'anak_terlantar' },
+                                { 'data': 'psk' },
+                                { 'data': 'waria' },
+                                { 'data': 'pria' },
+                                { 'data': 'wanita' },
+                                { 'data': 'id_data' },
+                                { 'data': "", "defaultContent": "<button  class='btn btn-warning btn-sm' onclick='edititem();'>Edit</button>" },
+                            ]
+                        }); 
+                    }
+                });      
             });
-            
         });
+
+        // ketika pilih tahun lalu bulan
+        $('#tahun' ).on('change', function(){
+            $('#bulan').on('change', function(){
+            var bulanId = bulan.value;
+            var tahunId = tahun.value;
+            console.log(bulanId);
+            console.log(tahunId);
+                $.ajax({
+                    url :'{{route('getDataPMKS')}}?id_tahun='+tahunId+'&id_bulan='+bulanId,
+                    type :'get',
+                    success : function(res){
+                        console.log(res.bulan_tahun);
+
+                        var table = $('#tabel-data').DataTable({
+                            destroy: true,
+                            data: res.bulan_tahun,
+                            columns: [
+                                { 'data': 'nama_kec' },
+                                { 'data': 'nama_desa' },
+                                { 'data': 'nama_bulan' },
+                                { 'data': 'tahun' },
+                                { 'data': 'gelandangan' },
+                                { 'data': 'pengemis' },
+                                { 'data': 'punk' },
+                                { 'data': 'anak_jalanan' },
+                                { 'data': 'orang_terlantar' },
+                                { 'data': 'anak_terlantar' },
+                                { 'data': 'psk' },
+                                { 'data': 'waria' },
+                                { 'data': 'pria' },
+                                { 'data': 'wanita' },
+                                { 'data': 'id_data' },
+                                { 'data': "", "defaultContent": "<button  class='btn btn-warning btn-sm' onclick='edititem();'>Edit</button>" },
+                            ]
+                        }); 
+                    }
+                });      
+            });
+        });
+
+        // ketika pilih kec lalu bulan
+        $('#desa').on('change', function(){
+            $('#bulan').on('change', function(){
+                var desaId = desa.value;
+                var bulanId = bulan.value;
+                console.log(kecamatan.value, bulan.value);
+                $.ajax({
+                    url :'{{route('getDataPMKS')}}?id_desa='+desaId+'&id_bulan='+bulanId,
+                    type :'get',
+                    success : function(res){
+                        console.log(res.desa_bulan);
+
+                        var table = $('#tabel-data').DataTable({
+                            destroy: true,
+                            data: res.desa_bulan,
+                            columns: [
+                                { 'data': 'nama_kec' },
+                                { 'data': 'nama_desa' },
+                                { 'data': 'nama_bulan' },
+                                { 'data': 'tahun' },
+                                { 'data': 'gelandangan' },
+                                { 'data': 'pengemis' },
+                                { 'data': 'punk' },
+                                { 'data': 'anak_jalanan' },
+                                { 'data': 'orang_terlantar' },
+                                { 'data': 'anak_terlantar' },
+                                { 'data': 'psk' },
+                                { 'data': 'waria' },
+                                { 'data': 'pria' },
+                                { 'data': 'wanita' },
+                                { 'data': 'id_data' },
+                                { 'data': "", "defaultContent": '<a href="#" class="link-primary">Edit</a>' },
+                            ]
+                        }); 
+                    }
+                });
+            });
+        });
+
+        //ketika pilih bulan lalu kecamatan
+        $('#bulan').on('change', function(){
+            $('#kecamatan').on('change', function(){
+                console.log(bulan.value, kecamatan.value);
+                var kecId = kecamatan.value;
+                var bulanId = bulan.value;
+                console.log(kecamatan.value, bulan.value);
+                $.ajax({
+                    url :'{{route('getDataPMKS')}}?id_kec='+kecId+'&id_bulan='+bulanId,
+                    type :'get',
+                    success : function(res){
+                        console.log(res.kec_bulan);
+
+                        var table = $('#tabel-data').DataTable({
+                            destroy: true,
+                            data: res.kec_bulan,
+                            columns: [
+                                { 'data': 'nama_kec' },
+                                { 'data': 'nama_desa' },
+                                { 'data': 'nama_bulan' },
+                                { 'data': 'tahun' },
+                                { 'data': 'gelandangan' },
+                                { 'data': 'pengemis' },
+                                { 'data': 'punk' },
+                                { 'data': 'anak_jalanan' },
+                                { 'data': 'orang_terlantar' },
+                                { 'data': 'anak_terlantar' },
+                                { 'data': 'psk' },
+                                { 'data': 'waria' },
+                                { 'data': 'pria' },
+                                { 'data': 'wanita' },
+                                { 'data': 'id_data' },
+                                { 'data': "", "defaultContent": "<button  class='btn btn-warning btn-sm' onclick='edititem();'>Edit</button>" },
+                            ]
+                        }); 
+                    }
+                });
+            });
+        });
+
+        //ketika pilih kec lalu tahun
+        $('#kecamatan').on('change', function(){
+            $('#tahun').on('change', function(){
+                console.log(kecamatan.value, tahun.value);
+                var kecId = kecamatan.value;
+                var tahunId = tahun.value;
+
+                $.ajax({
+                    url :'{{route('getDataPMKS')}}?id_kec='+kecId+'&id_tahun='+tahunId,
+                    type :'get',
+                    success : function(res){
+                        console.log(res.kec_tahun);
+
+                        var table = $('#tabel-data').DataTable({
+                            destroy: true,
+                            data: res.kec_tahun,
+                            columns: [
+                                { 'data': 'nama_kec' },
+                                { 'data': 'nama_desa' },
+                                { 'data': 'nama_bulan' },
+                                { 'data': 'tahun' },
+                                { 'data': 'gelandangan' },
+                                { 'data': 'pengemis' },
+                                { 'data': 'punk' },
+                                { 'data': 'anak_jalanan' },
+                                { 'data': 'orang_terlantar' },
+                                { 'data': 'anak_terlantar' },
+                                { 'data': 'psk' },
+                                { 'data': 'waria' },
+                                { 'data': 'pria' },
+                                { 'data': 'wanita' },
+                                { 'data': 'id_data' },
+                                { 'data': "", "defaultContent": "<button  class='btn btn-warning btn-sm' onclick='edititem();'>Edit</button>" },
+                            ]
+                        }); 
+                    }
+                });
+            });
+        });
+
+        //ketika pilih tahun lalu kec
+        $('#tahun').on('change', function(){
+            $('#kecamatan').on('change', function(){
+                console.log(tahun.value, kecamatan.value);
+
+                $.ajax({
+                    url :'{{route('getDataPMKS')}}?id_kec='+kecId+'&id_tahun='+tahunId,
+                    type :'get',
+                    success : function(res){
+                        console.log(res.kec_tahun);
+
+                        var table = $('#tabel-data').DataTable({
+                            destroy: true,
+                            data: res.kec_tahun,
+                            columns: [
+                                { 'data': 'nama_kec' },
+                                { 'data': 'nama_desa' },
+                                { 'data': 'nama_bulan' },
+                                { 'data': 'tahun' },
+                                { 'data': 'gelandangan' },
+                                { 'data': 'pengemis' },
+                                { 'data': 'punk' },
+                                { 'data': 'anak_jalanan' },
+                                { 'data': 'orang_terlantar' },
+                                { 'data': 'anak_terlantar' },
+                                { 'data': 'psk' },
+                                { 'data': 'waria' },
+                                { 'data': 'pria' },
+                                { 'data': 'wanita' },
+                                { 'data': 'id_data' },
+                                { 'data': "", "defaultContent": "<button  class='btn btn-warning btn-sm' onclick='edititem();'>Edit</button>" },
+                            ]
+                        }); 
+                    }
+                });
+            });
+        });
+
+        //kec->desa->bulan 
+        $('#kecamatan').on('change', function(){
+            $('#desa').on('change', function(){
+                $('#bulan').on('change', function(){
+                    var kecId = kecamatan.value;
+                    var desaId = desa.value;
+                    var bulanId = bulan.value;
+
+                    console.log(kecamatan.value, desa.value, bulan.value);
+                    //res.kec_desa_bulan
+                    $.ajax({
+                        url :'{{route('getDataPMKS')}}?id_kec='+kecId+'&id_desa='+desaId+'&id_bulan='+bulanId,
+                        type :'get',
+                        success : function(res){
+                            console.log(res.desa_bulan);
+
+                            var table =  $('#tabel-data').DataTable({
+                                destroy:true,
+                                data: res.desa_bulan,
+                                columns: [
+                                    { 'data': 'nama_kec' },
+                                    { 'data': 'nama_desa' },
+                                    { 'data': 'nama_bulan' },
+                                    { 'data': 'tahun' },
+                                    { 'data': 'gelandangan' },
+                                    { 'data': 'pengemis' },
+                                    { 'data': 'punk' },
+                                    { 'data': 'anak_jalanan' },
+                                    { 'data': 'orang_terlantar' },
+                                    { 'data': 'anak_terlantar' },
+                                    { 'data': 'psk' },
+                                    { 'data': 'waria' },
+                                    { 'data': 'pria' },
+                                    { 'data': 'wanita' },
+                                    { 'data': 'id_data' },
+                                    { 'data': "", "defaultContent": '<a href="#" class="link-primary">Edit</a>' },
+                                ]
+                            }); 
+                        }
+                    });
+                });
+            });
+        });
+
+        //kec->desa->tahun
+        $('#kecamatan').on('change', function(){
+            $('#desa').on('change', function(){
+                $('#tahun').on('change', function(){
+                    console.log(kecamatan.value, desa.value, tahun.value);
+                    //res.kec_desa_tahun
+                    var kecId = kecamatan.value;
+                    var desaId = desa.value;
+                    var tahunId = tahun.value;
+
+                    $.ajax({
+                    url :'{{route('getDataPMKS')}}?id_kec='+kecId+'&id_desa='+desaId+'&id_tahun='+tahunId,
+                    type :'get',
+                    success : function(res){
+                        console.log(res.desa_tahun);
+
+                        var table = $('#tabel-data').DataTable({
+                            destroy: true,
+                            data: res.desa_tahun,
+                            columns: [
+                                { 'data': 'nama_kec' },
+                                { 'data': 'nama_desa' },
+                                { 'data': 'nama_bulan' },
+                                { 'data': 'tahun' },
+                                { 'data': 'gelandangan' },
+                                { 'data': 'pengemis' },
+                                { 'data': 'punk' },
+                                { 'data': 'anak_jalanan' },
+                                { 'data': 'orang_terlantar' },
+                                { 'data': 'anak_terlantar' },
+                                { 'data': 'psk' },
+                                { 'data': 'waria' },
+                                { 'data': 'pria' },
+                                { 'data': 'wanita' },
+                                { 'data': 'id_data' },
+                                { 'data': "", "defaultContent": "<button  class='btn btn-warning btn-sm' onclick='edititem();'>Edit</button>" },
+                            ]
+                        }); 
+                    }
+                    });
+                    
+
+                });
+            });
+        });
+
+        //ketika pilih kec->desa->bulan->tahun
+        $('#kecamatan').on('change', function(){
+            $('#desa').on('change', function(){
+                $('#bulan').on('change', function(){
+                    $('#tahun').on('change', function(){
+                        console.log(kecamatan.value, desa.value, bulan.value, tahun.value);
+                        var kecId = kecamatan.value;
+                        var desaId = desa.value;
+                        var tahunId = tahun.value;
+                        var bulanId = bulan.value;
+
+                        //res.kec_desa_bulan_tahun
+                        $.ajax({
+                        url :'{{route('getDataPMKS')}}?id_kec='+kecId+'&id_desa='+desaId+'&id_bulan='+bulanId+'&id_tahun'+tahunId,
+                        type :'get',
+                        success : function(res){
+                            console.log(res.desa_bulan_tahun);
+
+                            var table = $('#tabel-data').DataTable({
+                                destroy: true,
+                                data: res.desa_bulan_tahun,
+                                columns: [
+                                    { 'data': 'nama_kec' },
+                                    { 'data': 'nama_desa' },
+                                    { 'data': 'nama_bulan' },
+                                    { 'data': 'tahun' },
+                                    { 'data': 'gelandangan' },
+                                    { 'data': 'pengemis' },
+                                    { 'data': 'punk' },
+                                    { 'data': 'anak_jalanan' },
+                                    { 'data': 'orang_terlantar' },
+                                    { 'data': 'anak_terlantar' },
+                                    { 'data': 'psk' },
+                                    { 'data': 'waria' },
+                                    { 'data': 'pria' },
+                                    { 'data': 'wanita' },
+                                    { 'data': 'id_data' },
+                                    { 'data': "", "defaultContent": "<button  class='btn btn-warning btn-sm' onclick='edititem();'>Edit</button>" },
+                                ]
+                            }); 
+                        }
+                    });
+                    });
+                });
+            });
+        });
+
+         //ketika pilih kec->desa->tahun->bulan
+         $('#kecamatan').on('change', function(){
+            $('#desa').on('change', function(){
+                $('#tahun').on('change', function(){
+                    $('#bulan').on('change', function(){
+                        console.log(kecamatan.value, desa.value, bulan.value, tahun.value);
+                        var kecId = kecamatan.value;
+                        var desaId = desa.value;
+                        var tahunId = tahun.value;
+                        var bulanId = bulan.value;
+                        $.ajax({
+                        url :'{{route('getDataPMKS')}}?id_kec='+kecId+'&id_desa='+desaId+'&id_bulan='+bulanId+'&id_tahun'+tahunId,
+                        type :'get',
+                        success : function(res){
+                            console.log(res.desa_bulan_tahun);
+
+                            var table = $('#tabel-data').DataTable({
+                                destroy: true,
+                                data: res.desa_bulan_tahun,
+                                columns: [
+                                    { 'data': 'nama_kec' },
+                                    { 'data': 'nama_desa' },
+                                    { 'data': 'nama_bulan' },
+                                    { 'data': 'tahun' },
+                                    { 'data': 'gelandangan' },
+                                    { 'data': 'pengemis' },
+                                    { 'data': 'punk' },
+                                    { 'data': 'anak_jalanan' },
+                                    { 'data': 'orang_terlantar' },
+                                    { 'data': 'anak_terlantar' },
+                                    { 'data': 'psk' },
+                                    { 'data': 'waria' },
+                                    { 'data': 'pria' },
+                                    { 'data': 'wanita' },
+                                    { 'data': 'id_data' },
+                                    { 'data': "", "defaultContent": "<button  class='btn btn-warning btn-sm' onclick='edititem();'>Edit</button>" },
+                                ]
+                            }); 
+                        }
+                    });
+                    });
+                });
+            });
+        });
+        
     });
+
 </script>
 
 @endsection
