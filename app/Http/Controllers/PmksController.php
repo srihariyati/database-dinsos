@@ -352,4 +352,25 @@ class PmksController extends Controller
         ->with (['tahun'=>$tahun]);
 
     }
+
+    public function store(Request $request)
+    {
+        DB::table('data_pmks')->insert([
+            'id_kec'=>$request->kecamatan,
+            'id_desa'=>$request->desa,
+            'id_bulan'=>$request->bulan,
+            'id_tahun'=>$request->tahun,
+            'gelandangan'=>$request->gld,
+            'pengemis'=>$request->peng,
+            'punk'=>$request->punk,
+            'anak_jalanan'=>$request->anjal,
+            'orang_terlantar'=>$request->ot,
+            'anak_terlantar'=>$request->at,
+            'psk'=>$request->psk,
+            'waria'=>$request->waria,
+            'pria'=>$request->pria,
+            'wanita'=>$request->wanita,
+        ]);
+        return redirect('/pmks');
+    }
 }

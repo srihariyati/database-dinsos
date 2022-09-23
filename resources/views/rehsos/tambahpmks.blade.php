@@ -13,7 +13,8 @@
                 </div>
             </div>
 
-            <form action="#">
+            <form action="/tambahpmks/store" method="post">
+            {{ csrf_field() }}
                 <div class="container" style="margin-top: 1rem;">
                     <div class="row" style="margin-left: 0px;">
                         <div class="col-auto" style="width:290px">
@@ -29,50 +30,28 @@
 
                         <div class="col-auto" style="font-size:2.2vh; margin-left: 0.2rem; width:290px">
                             <label style="margin-bottom: 0.3rem">Desa/Kelurahan</label>
-                                <select class="form-select" id="autoSizingSelect" style="font-size:2.2vh;">
+                                <select class="form-select"  id="desa" name="desa" style="font-size:2.2vh;">
                                     <option selected>Pilih Desa/Kelurahan</option>
-                                    <option value="1">Baiturrahman</option>
-                                    <option value="2">Banda Raya</option>
-                                    <option value="3">Jaya Baru</option>
-                                    <option value="4">Kuta Alam</option>
-                                    <option value="5">Kuta Raja</option>
-                                    <option value="6">Lueng Bata</option>
-                                    <option value="7">Meuraxa</option>
-                                    <option value="8">Syiah Kuala</option>
-                                    <option value="9">Ulee Kareng</option>
                                 </select>
                         </div>
 
                         <div class="col-auto" style="font-size:2.2vh; margin-left: 0.2rem; width:140px">
                             <label style="margin-bottom: 0.3rem">Bulan</label>
-                                <select class="form-select" id="autoSizingSelect" style="font-size:2.2vh;">
+                                <select class="form-select" id="bulan" name="bulan" style="font-size:2.2vh;">
                                     <option selected>Pilih Bulan</option>
-                                    <option value="1">Januari</option>
-                                    <option value="2">Februari</option>
-                                    <option value="3">Maret</option>
-                                    <option value="4">April</option>
-                                    <option value="5">Mei</option>
-                                    <option value="6">Juni</option>
-                                    <option value="7">Juli</option>
-                                    <option value="8">Agustus</option>
-                                    <option value="9">September</option>
-                                    <option value="10">Oktober</option>
-                                    <option value="11">November</option>
-                                    <option value="12">Desember</option>
+                                    @foreach($bulan as $b)
+                                    <option value="{{$b->id_bulan}}">{{$b->nama_bulan}}</option>
+                                    @endforeach($bulan as $b)
                                 </select>
                         </div>
 
                         <div class="col-auto" style="font-size:2.2vh; margin-left: 0.2rem; width:140px">
                             <label style="margin-bottom: 6px">Tahun</label>
-                                <select class="form-select" id="autoSizingSelect" style="font-size:2.2vh;">
+                                <select class="form-select" id="tahun" name="tahun" style="font-size:2.2vh;">
                                     <option selected>Pilih Tahun</option>
-                                    <option value="1">2022</option>
-                                    <option value="2">2021</option>
-                                    <option value="3">2020</option>
-                                    <option value="4">2019</option>
-                                    <option value="5">2018</option>
-                                    <option value="6">2017</option>
-                                    <option value="7">2016</option>
+                                    @foreach($tahun as $t)
+                                    <option value="{{$t->id_tahun}}">{{$t->tahun}}</option>
+                                    @endforeach($tahun as $t)
                                 </select>
                         </div>
                     </div>
@@ -122,7 +101,7 @@
                     <div class="row" style="margin-left: 0px;">
                         <div class="col-auto" style="width:290px">
                             <label style="font-size:13px; margin-left: 0px; margin-bottom: 6px">Pekerja Seks Komersial</label>
-                            <input type="number" name="pks" id="pks" class="form-control" placeholder="0" required>   
+                            <input type="number" name="psk" id="psk" class="form-control" placeholder="0" required>   
                         </div>
 
                         <div class="col-auto" style="font-size:13px; margin-left: 5px; width:290px">
@@ -147,14 +126,11 @@
 
                     </div>
                 </div>
-
-                 
-
                 
                 <div class="container">
                     <div class="row" style="margin-left: 48.5rem;">
                         <div class="col-auto">
-                            <a class="btn btn-success" id="tambah" href="" role="button">Simpan</a>
+                        <button class="btn btn-success" type="submit"> Simpan </button>
                         </div>
 
                     </div>
@@ -165,5 +141,29 @@
         </div>
 
     </div>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        //ketika pilih kecamatan
+        $('#kecamatan').on('change', function(){
+            //ambil value dari id kecamatan     
+            var kecId = this.value;
+            console.log(kecId);
+            $('#desa').html('');
 
+            $.ajax({
+                //kirim id ke controller getDesa untuk baca desa yang ada didalam kacamatan yang dipilih
+                url: '{{ route('getDataPMKS') }}?id_kec='+kecId,
+                type :'get',             
+                success : function(res){
+                    //$('#desa').html('<option value="">Pilih Desa</option> '); 
+
+                    $.each(res.desa, function (key, value) {                                             
+                        // buat option untuk pilih desa (desa berada di kecamatan yang  dipilih)
+                        $('#desa').append('<option value="'+ value.id_desa + '">' + value.nama_desa + '</option>');                  
+                    });
+                }
+            });
+        });
+    });
+    </script>
 @endsection

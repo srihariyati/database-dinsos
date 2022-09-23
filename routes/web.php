@@ -76,8 +76,12 @@ Route::group(['middleware' =>['auth']], function(){
 
     Route::get('/editpmks',[PmksController::class, 'editPmks'])->name('editPmks');
     Route::get('/tambahpmks', [PmksController::class, 'tambah'])->name('tambah');
+
     //update data pmks
     Route::post('/editpmks/update',[PmksController::class, 'update'])->name('update');
+
+    //store data pmks
+    Route::post('/tambahpmks/store',[PmksController::class, 'store'])->name('store');
 });
 
 
