@@ -312,6 +312,7 @@ class PmksController extends Controller
         -> select('data_pmks.*','desa.nama_desa', 'kecamatan.nama_kec',
         'bulan.nama_bulan', 'tahun.tahun')
         -> get();
+        
         return view('rehsos.editpmks',compact('kecamatan'))
         ->with (['datapmks'=>$datapmks])
         ->with (['bulan'=>$bulan])
