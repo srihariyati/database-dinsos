@@ -155,11 +155,10 @@
                             { 'data': 'waria' },
                             { 'data': 'pria' },
                             { 'data': 'wanita' },
-                            { 'data': 'id_data' },
-                            { 'data': "", "defaultContent": '<a class="btn btn-warning btn-sm" id="edit" href="{{ url('/editpmks?id_data=1')}}" role="button">Edit</a>'},
+                            { 'data': 'total' },
+                            { 'data': "","defaultContent": '<a class="btn btn-warning btn-sm" id="edit" href="{{ url('/editpmks?id_data=1')}}" role="button">Edit</a>'},
 
                         ]
-                        
                     });  
                 }
             });
@@ -199,7 +198,7 @@
                             { 'data': 'waria' },
                             { 'data': 'pria' },
                             { 'data': 'wanita' },
-                            { 'data': 'id_data' },
+                            { 'data': 'total' },
                             { 'data': "", "defaultContent": '<a href="#" class="link-primary">Edit</a>'},
 
                         ]
@@ -237,7 +236,7 @@
                             { 'data': 'waria' },
                             { 'data': 'pria' },
                             { 'data': 'wanita' },
-                            { 'data': 'id_data' },
+                            { 'data': 'total' },
                             { 'data': "", "defaultContent": "<button  class='btn btn-warning btn-sm' onclick='edititem();'>Edit</button>" },
 
                         ]
@@ -275,7 +274,7 @@
                             { 'data': 'waria' },
                             { 'data': 'pria' },
                             { 'data': 'wanita' },
-                            { 'data': 'id_data' },
+                            { 'data': 'total' },
                             { 'data': "", "defaultContent": "<button  class='btn btn-warning btn-sm' onclick='edititem();'>Edit</button>" },
                         ]
                     }); 
@@ -313,7 +312,7 @@
                                 { 'data': 'waria' },
                                 { 'data': 'pria' },
                                 { 'data': 'wanita' },
-                                { 'data': 'id_data' },
+                                { 'data': 'total' },
                                 { 'data': "", "defaultContent": "<button  class='btn btn-warning btn-sm' onclick='edititem();'>Edit</button>" },
                             ]
                         }); 
@@ -353,7 +352,7 @@
                                 { 'data': 'waria' },
                                 { 'data': 'pria' },
                                 { 'data': 'wanita' },
-                                { 'data': 'id_data' },
+                                { 'data': 'total' },
                                 { 'data': "", "defaultContent": "<button  class='btn btn-warning btn-sm' onclick='edititem();'>Edit</button>" },
                             ]
                         }); 
@@ -392,7 +391,7 @@
                                 { 'data': 'waria' },
                                 { 'data': 'pria' },
                                 { 'data': 'wanita' },
-                                { 'data': 'id_data' },
+                                { 'data': 'total' },
                                 { 'data': "", "defaultContent": '<a href="#" class="link-primary">Edit</a>' },
                             ]
                         }); 
@@ -432,7 +431,7 @@
                                 { 'data': 'waria' },
                                 { 'data': 'pria' },
                                 { 'data': 'wanita' },
-                                { 'data': 'id_data' },
+                                { 'data': 'total' },
                                 { 'data': "", "defaultContent": "<button  class='btn btn-warning btn-sm' onclick='edititem();'>Edit</button>" },
                             ]
                         }); 
@@ -472,7 +471,7 @@
                                 { 'data': 'waria' },
                                 { 'data': 'pria' },
                                 { 'data': 'wanita' },
-                                { 'data': 'id_data' },
+                                { 'data': 'total' },
                                 { 'data': "", "defaultContent": "<button  class='btn btn-warning btn-sm' onclick='edititem();'>Edit</button>" },
                             ]
                         }); 
@@ -510,7 +509,7 @@
                                 { 'data': 'waria' },
                                 { 'data': 'pria' },
                                 { 'data': 'wanita' },
-                                { 'data': 'id_data' },
+                                { 'data': 'total' },
                                 { 'data': "", "defaultContent": "<button  class='btn btn-warning btn-sm' onclick='edititem();'>Edit</button>" },
                             ]
                         }); 
@@ -553,7 +552,7 @@
                                     { 'data': 'waria' },
                                     { 'data': 'pria' },
                                     { 'data': 'wanita' },
-                                    { 'data': 'id_data' },
+                                    { 'data': 'total' },
                                     { 'data': "", "defaultContent": '<a href="#" class="link-primary">Edit</a>' },
                                 ]
                             }); 
@@ -597,7 +596,7 @@
                                 { 'data': 'waria' },
                                 { 'data': 'pria' },
                                 { 'data': 'wanita' },
-                                { 'data': 'id_data' },
+                                { 'data': 'total' },
                                 { 'data': "", "defaultContent": "<button  class='btn btn-warning btn-sm' onclick='edititem();'>Edit</button>" },
                             ]
                         }); 
@@ -645,7 +644,7 @@
                                     { 'data': 'waria' },
                                     { 'data': 'pria' },
                                     { 'data': 'wanita' },
-                                    { 'data': 'id_data' },
+                                    { 'data': 'total' },
                                     { 'data': "", "defaultContent": "<button  class='btn btn-warning btn-sm' onclick='edititem();'>Edit</button>" },
                                 ]
                             }); 
@@ -690,7 +689,7 @@
                                     { 'data': 'waria' },
                                     { 'data': 'pria' },
                                     { 'data': 'wanita' },
-                                    { 'data': 'id_data' },
+                                    { 'data': 'total' },
                                     { 'data': "", "defaultContent": "<button  class='btn btn-warning btn-sm' onclick='edititem();'>Edit</button>" },
                                 ]
                             }); 

@@ -22,6 +22,9 @@
                         <label class="fw-bold" style="margin-left: 0px; margin-bottom: 0.5rem">Kecamatan</label>
                             <select class="form-select" id="kecamatan" style="font-size:2.2vh;">
                                 <option selected >Pilih Kecamatan</option>
+                                    @foreach ($kecamatan as $kec)
+                                    <option value="{{$kec->id_kec}}">{{$kec->nama_kec}}</option>
+                                    @endforeach ($kecamatan as $kec)  
                                    
                             </select>
                     </div>
@@ -51,7 +54,7 @@
 
                     <div class="col-auto" style="width:290px; margin-top: 1.5rem; margin-bottom :1.5rem;"> 
                         <label class="fw-bold" >Jenis Bencana</label>
-                            <select class="form-select" id="tahun" style="font-size:2.2vh;">
+                            <select class="form-select" id="jenis_bencana" style="font-size:2.2vh;">
                                 <option selected>Pilih Jenis Bencana</option>
                              
                             </select>
@@ -59,7 +62,7 @@
 
                     <div class="col-auto" style="width:290px; margin-top: 1.5rem; margin-bottom: 1.5rem;"> 
                         <label class="fw-bold" >Sumber Dana</label>
-                            <select class="form-select" id="tahun" style="font-size:2.2vh;">
+                            <select class="form-select" id="sumber_dana" style="font-size:2.2vh;">
                                 <option selected>Pilih Sumber Dana</option>
                             </select>
                     </div>
@@ -99,5 +102,52 @@
             </tbody>
         </div>
     </div>
+
+
+    <script type="text/javascript">
+     $(document).ready(function(){
+        //ketika pilih kecamatan
+        $('#kecamatan').on('change', function(){
+            //ambil value dari id kecamatan     
+            var kecId = this.value;
+            console.log(kecId);
+            $('#desa').html('');
+
+            $.ajax({
+                //kirim id ke controller getDesa untuk baca desa yang ada didalam kacamatan yang dipilih
+                url: '{{ route('getDataBencana') }}?id_kec='+kecId,
+                type :'get',             
+                success : function(res){
+                    console.log(res.desa);
+                    $('#desa').html('<option value="">Pilih Desa</option> '); 
+
+                    $.each(res.desa, function (key, value) {                                             
+                        // buat option untuk pilih desa (desa berada di kecamatan yang  dipilih)
+                        $('#desa').append('<option value="'+ value.id_desa + '">' + value.nama_desa + '</option>');                  
+                    });
+
+                    console.log(res.kecamatan);
+                    //menampilkan data pmks (hanya kecamatan yang dipilih)
+                    var table = $('#tabel-data').DataTable({
+                        destroy: true,
+                        data: res.kecamatan,
+                        columns: [
+                            { 'data': 'nama_kec' },
+                            { 'data': 'nama_desa' },
+                            { 'data': 'nama_bulan' },
+                            { 'data': 'tahun' },
+                            { 'data': 'jenis_bencana' },
+                            { 'data': 'sumber_dana' },
+                            { 'data': 'jumlah_penerima' },
+                            { 'data': "", "defaultContent": '<a class="btn btn-warning btn-sm" id="edit" href="{{ url('/editpmks?id_data=1')}}" role="button">Edit</a>'},
+
+                        ]
+                        
+                    }); 
+                }
+            });
+        });
+    });
+</script>
            
 @endsection

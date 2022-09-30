@@ -9,6 +9,8 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\PmksController;
 use App\Http\Controllers\DtksController;
+use App\Http\Controllers\PkhController;
+use App\Http\Controllers\BencanaController;
 use App\Http\Middleware;
 
 /*
@@ -47,18 +49,12 @@ Route::group(['middleware' =>['auth']], function(){
         return view('dayasos/tambahdtks');
     });
 
-    Route::get('/bencana', function () {
-        return view('linjamsos/bencana');
-    });
-
+    
     Route::get('/tambahdatabencana', function () {
         return view('linjamsos/tambahdatabencana');
     });
 
-    Route::get('/pkh', function () {
-        return view('linjamsos/pkh');
-    });
-
+ 
     Route::get('/tambahpkh', function () {
         return view('linjamsos/tambahpkh');
     });
@@ -83,6 +79,14 @@ Route::group(['middleware' =>['auth']], function(){
     //lihat data dtks
     Route::get('/dtks', [DtksController::class, 'getViewDTKS'])->name('getViewDTKS');
     Route::get('get-data-dtks',[DtksController::class,'getDataDTKS'])->name('getDataDTKS');
+
+    //lihat data pkh
+    Route::get('/pkh',[PkhController::class, 'getViewPKH'])->name('getViewPKH');
+    Route::get('get-data-pkh',[PkhController::class,'getDataPKH'])->name('getDataPKH');
+
+    //lihat data bencana
+    Route::get('/bencana',[BencanaController::class, 'getViewBencana'])->name('getViewBencana');
+    Route::get('get-data-bencana', [BencanaController::class, 'getDataBencana'])->name('getDataBencana');
 });
 
 
