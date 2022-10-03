@@ -50,9 +50,7 @@ Route::group(['middleware' =>['auth']], function(){
     });
 
     
-    Route::get('/tambahdatabencana', function () {
-        return view('linjamsos/tambahdatabencana');
-    });
+    
 
  
     Route::get('/tambahpkh', function () {
@@ -90,6 +88,9 @@ Route::group(['middleware' =>['auth']], function(){
     //lihat data bencana
     Route::get('/bencana',[BencanaController::class, 'getViewBencana'])->name('getViewBencana');
     Route::get('get-data-bencana', [BencanaController::class, 'getDataBencana'])->name('getDataBencana');
+
+    //tambh data bencana
+    Route::get('/tambahdatabencana', [BencanaController::class, 'tambah'])->name('tambah');
 
 });
 
