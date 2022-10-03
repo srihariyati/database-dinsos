@@ -165,7 +165,7 @@
                             { 'data': 'jumlah_aktif' },
                             { 'data': 'jumlah_nonaktif' },
                             { 'data': 'jumlah_bbl' },
-                            { 'data': "", "defaultContent": '<a class="btn btn-warning btn-sm" id="edit" href="{{ url('/editpmks?id_data=1')}}" role="button">Edit</a>'},
+                            { 'data': "", "defaultContent": '<a class="btn btn-warning btn-sm" id="edit" href="{{ url('/editdtks?id_data=1')}}" role="button">Edit</a>'},
 
                         ]
                         
@@ -318,6 +318,7 @@
                 type :'get',
                 success : function(res){
                     console.log(res.tahun);
+
                     var table = $('#tabel-data').DataTable({
                         destroy: true,
                         dom: 'Bfrtip',
@@ -380,16 +381,275 @@
             var tahunId = tahun.value;
             console.log(bulanId);
             console.log(tahunId);
-                $.ajax({
-                        url :'{{route('getDataPMKS')}}?id_tahun='+tahunId+'&id_bulan='+bulanId,
-                        type :'get',
-                        success : function(res){
-                            console.log(res.bulan_tahun);
-                        }
 
+                $.ajax({
+                    url :'{{route('getDataDTKS')}}?id_tahun='+tahunId+'&id_bulan='+bulanId,
+                    type :'get',
+                    success : function(res){
+                        console.log(res.bulan_tahun);
+
+                        var table = $('#tabel-data').DataTable({
+                            destroy: true,
+                            dom: 'Bfrtip',
+                            buttons: [
+                                {
+                                    //export excel
+                                    extend: 'excel',
+                                    text: 'Simpan Excel',
+                                    title: 'Data DTKS',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                                    }
+                                },
+                                {
+                                    //export pdf
+                                    extend: 'pdf',
+                                    text: 'Simpan PDF',
+                                    title: 'Data DTKS',
+                                    orientation: 'landscape',
+                                    messageTop: 'Data DTKS - Dinas Sosial Kota Banda Aceh',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                                    }
+                                },
+                                {
+                                    //export print
+                                    extend: 'print',
+                                    text: 'Cetak',
+                                    title: 'Data DTKS',
+                                    orientation: 'landscape',
+                                    messageTop: 'Data DTKS - Dinas Sosial Kota Banda Aceh',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                                    }
+                                },
+                            ],
+
+                            data: res.bulan_tahun,
+                            columns: [
+                                { 'data': 'nama_kec' },
+                                { 'data': 'nama_desa' },
+                                { 'data': 'nama_bulan' },
+                                { 'data': 'tahun' },
+                                { 'data': 'jiwa' },
+                                { 'data': 'ruta' },
+                                { 'data': 'jumlah_aktif' },
+                                { 'data': 'jumlah_nonaktif' },
+                                { 'data': 'jumlah_bbl' },
+                                { 'data': "", "defaultContent": '<a class="btn btn-warning btn-sm" id="edit" href="{{ url('/editpmks?id_data=1')}}" role="button">Edit</a>'},
+                            ]
+                        });
+                    }
                 });
+            });
         });
 
+        //ketika piilh tahun lalu bulan
+        $('#tahun' ).on('change', function(){
+            $('#bulan').on('change', function(){
+                var bulanId = bulan.value;
+            var tahunId = tahun.value;
+            console.log(bulanId);
+            console.log(tahunId);
+
+                $.ajax({
+                    url :'{{route('getDataDTKS')}}?id_tahun='+tahunId+'&id_bulan='+bulanId,
+                    type :'get',
+                    success : function(res){
+                        console.log(res.bulan_tahun);
+
+                        var table = $('#tabel-data').DataTable({
+                            destroy: true,
+                            dom: 'Bfrtip',
+                            buttons: [
+                                {
+                                    //export excel
+                                    extend: 'excel',
+                                    text: 'Simpan Excel',
+                                    title: 'Data DTKS',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                                    }
+                                },
+                                {
+                                    //export pdf
+                                    extend: 'pdf',
+                                    text: 'Simpan PDF',
+                                    title: 'Data DTKS',
+                                    orientation: 'landscape',
+                                    messageTop: 'Data DTKS - Dinas Sosial Kota Banda Aceh',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                                    }
+                                },
+                                {
+                                    //export print
+                                    extend: 'print',
+                                    text: 'Cetak',
+                                    title: 'Data DTKS',
+                                    orientation: 'landscape',
+                                    messageTop: 'Data DTKS - Dinas Sosial Kota Banda Aceh',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                                    }
+                                },
+                            ],
+
+                            data: res.bulan_tahun,
+                            columns: [
+                                { 'data': 'nama_kec' },
+                                { 'data': 'nama_desa' },
+                                { 'data': 'nama_bulan' },
+                                { 'data': 'tahun' },
+                                { 'data': 'jiwa' },
+                                { 'data': 'ruta' },
+                                { 'data': 'jumlah_aktif' },
+                                { 'data': 'jumlah_nonaktif' },
+                                { 'data': 'jumlah_bbl' },
+                                { 'data': "", "defaultContent": '<a class="btn btn-warning btn-sm" id="edit" href="{{ url('/editpmks?id_data=1')}}" role="button">Edit</a>'},
+                            ]
+                        });
+                    }
+                });
+            });
+        });
+
+        //ketika pilih kec lalu bulan 
+        $('#desa').on('change', function(){
+            $('#bulan').on('change', function(){
+                var desaId = desa.value;
+                var bulanId = bulan.value;
+                console.log(kecamatan.value, bulan.value);
+                $.ajax({
+                    url :'{{route('getDataDTKS')}}?id_desa='+desaId+'&id_bulan='+bulanId,
+                    type :'get',
+                    success : function(res){
+                        console.log(res.desa_bulan);
+                        var table = $('#tabel-data').DataTable({
+                            destroy: true,
+                            dom: 'Bfrtip',
+                            buttons: [
+                                {
+                                    //export excel
+                                    extend: 'excel',
+                                    text: 'Simpan Excel',
+                                    title: 'Data DTKS',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                                    }
+                                },
+                                {
+                                    //export pdf
+                                    extend: 'pdf',
+                                    text: 'Simpan PDF',
+                                    title: 'Data DTKS',
+                                    orientation: 'landscape',
+                                    messageTop: 'Data DTKS - Dinas Sosial Kota Banda Aceh',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                                    }
+                                },
+                                {
+                                    //export print
+                                    extend: 'print',
+                                    text: 'Cetak',
+                                    title: 'Data DTKS',
+                                    orientation: 'landscape',
+                                    messageTop: 'Data DTKS - Dinas Sosial Kota Banda Aceh',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                                    }
+                                },
+                            ],
+
+                            data: res.desa_bulan,
+                            columns: [
+                                { 'data': 'nama_kec' },
+                                { 'data': 'nama_desa' },
+                                { 'data': 'nama_bulan' },
+                                { 'data': 'tahun' },
+                                { 'data': 'jiwa' },
+                                { 'data': 'ruta' },
+                                { 'data': 'jumlah_aktif' },
+                                { 'data': 'jumlah_nonaktif' },
+                                { 'data': 'jumlah_bbl' },
+                                { 'data': "", "defaultContent": '<a class="btn btn-warning btn-sm" id="edit" href="{{ url('/editpmks?id_data=1')}}" role="button">Edit</a>'},
+                            ]
+                        });
+                    }
+                });
+            });
+        });
+
+        //ketika pilih bulan lalu kecamatan
+        $('#bulan').on('change', function(){
+            $('#kecamatan').on('change', function(){
+                console.log(bulan.value, kecamatan.value);
+                var kecId = kecamatan.value;
+                var bulanId = bulan.value;
+                console.log(kecamatan.value, bulan.value);
+
+                $.ajax({
+                    url :'{{route('getDataDTKS')}}?id_kec='+kecId+'&id_bulan='+bulanId,
+                    type :'get',
+                    success : function(res){
+                        console.log(res.kec_bulan);
+                        var table = $('#tabel-data').DataTable({
+                            destroy: true,
+                            dom: 'Bfrtip',
+                            buttons: [
+                                {
+                                    //export excel
+                                    extend: 'excel',
+                                    text: 'Simpan Excel',
+                                    title: 'Data DTKS',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                                    }
+                                },
+                                {
+                                    //export pdf
+                                    extend: 'pdf',
+                                    text: 'Simpan PDF',
+                                    title: 'Data DTKS',
+                                    orientation: 'landscape',
+                                    messageTop: 'Data DTKS - Dinas Sosial Kota Banda Aceh',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                                    }
+                                },
+                                {
+                                    //export print
+                                    extend: 'print',
+                                    text: 'Cetak',
+                                    title: 'Data DTKS',
+                                    orientation: 'landscape',
+                                    messageTop: 'Data DTKS - Dinas Sosial Kota Banda Aceh',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                                    }
+                                },
+                            ],
+
+                            data: res.kec_bulan,
+                            columns: [
+                                { 'data': 'nama_kec' },
+                                { 'data': 'nama_desa' },
+                                { 'data': 'nama_bulan' },
+                                { 'data': 'tahun' },
+                                { 'data': 'jiwa' },
+                                { 'data': 'ruta' },
+                                { 'data': 'jumlah_aktif' },
+                                { 'data': 'jumlah_nonaktif' },
+                                { 'data': 'jumlah_bbl' },
+                                { 'data': "", "defaultContent": '<a class="btn btn-warning btn-sm" id="edit" href="{{ url('/editpmks?id_data=1')}}" role="button">Edit</a>'},
+                            ]
+                        });
+                    }
+                });
+            });
+        });
+        
     });
     
     </script>

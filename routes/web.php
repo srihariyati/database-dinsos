@@ -79,6 +79,9 @@ Route::group(['middleware' =>['auth']], function(){
     //lihat data dtks
     Route::get('/dtks', [DtksController::class, 'getViewDTKS'])->name('getViewDTKS');
     Route::get('get-data-dtks',[DtksController::class,'getDataDTKS'])->name('getDataDTKS');
+    
+    //edit data dtks
+    Route::get('/editdtks',[DtksController::class, 'editDtks'])->name('editDtks');
 
     //lihat data pkh
     Route::get('/pkh',[PkhController::class, 'getViewPKH'])->name('getViewPKH');
@@ -87,6 +90,7 @@ Route::group(['middleware' =>['auth']], function(){
     //lihat data bencana
     Route::get('/bencana',[BencanaController::class, 'getViewBencana'])->name('getViewBencana');
     Route::get('get-data-bencana', [BencanaController::class, 'getDataBencana'])->name('getDataBencana');
+
 });
 
 
