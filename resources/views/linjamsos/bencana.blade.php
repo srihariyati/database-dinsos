@@ -74,15 +74,6 @@
 
     <div class="card w-75" style="margin-top: 5px;">
         <div class="card-body">
-            <div  class="row" style="margin-top: 0.2rem; margin-left: 43rem; margin-bottom: 0.2rem">
-                <div class="col-auto" >
-                    <a class="btn btn-warning" id="edit-btn" href="#" role="button">Cetak PDF</a>
-                </div> 
-                    <div class="col-auto" >
-                        <a class="btn btn-success" id="Cari-btn" href="#" role="button">Cetak Excel</a>
-                    </div> 
-                </div>
-            </div>
             
         <div class="table-responsive" style="height: 17.5rem; font-size:2vh;">
             <table id="tabel-data" class="table table-striped table-bordered" width="100%" cellspacing="0" >
@@ -90,7 +81,6 @@
                 <tr>
                     <th>Kecamatan</th>
                     <th>Desa/Kelurahan</th>
-                    <th>Tanggal</th>
                     <th>Bulan</th>
                     <th>Tahun</th>
                     <th>Jenis Bencana</th>
@@ -130,6 +120,41 @@
                     //menampilkan data pmks (hanya kecamatan yang dipilih)
                     var table = $('#tabel-data').DataTable({
                         destroy: true,
+                        dom: 'Bfrtip',
+                            buttons: [
+                                {
+                                    //export excel
+                                    extend: 'excel',
+                                    text: 'Simpan Excel',
+                                    title: 'Data Bansos Tanggap Darurat - Bencana',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6]
+                                    }
+                                },
+                                {
+                                    //export pdf
+                                    extend: 'pdf',
+                                    text: 'Simpan PDF',
+                                    title: 'Data Bansos Tanggap Darurat - Bencana',
+                                    orientation: 'landscape',
+                                    messageTop: 'Data Bansos Tanggap Darurat - Bencana - Dinas Sosial Kota Banda Aceh',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6]
+                                    }
+                                },
+                                {
+                                    //export print
+                                    extend: 'print',
+                                    text: 'Cetak',
+                                    title: 'Data Bansos Tanggap Darurat - Bencana',
+                                    orientation: 'landscape',
+                                    messageTop: 'Data Bansos Tanggap Darurat - Bencana - Dinas Sosial Kota Banda Aceh',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6]
+                                    }
+                                },
+                                
+                            ],
                         data: res.kecamatan,
                         columns: [
                             { 'data': 'nama_kec' },
@@ -147,6 +172,13 @@
                 }
             });
         });
+
+        //ketika pilih desa
+
+        //ketika pilih bulan
+        //ketika pilih tahun
+        //ketika pilih jenis bencana
+        //ketika pilih sumber dana
     });
 </script>
            

@@ -56,17 +56,7 @@
     </div>
 
     <div class="card w-75" style="margin-top: 5px;">
-        <div class="card-body">
-            <div  class="row" style="margin-top: 0.2rem; margin-left: 43rem; margin-bottom: 0.2rem">
-                <div class="col-auto" >
-                    <a class="btn btn-warning" id="edit-btn" href="#" role="button">Cetak PDF</a>
-                </div> 
-                    <div class="col-auto" >
-                        <a class="btn btn-success" id="Cari-btn" href="#" role="button">Cetak Excel</a>
-                    </div> 
-                </div>
-            </div>
-        
+        <div class="card-body">      
             
         <div class="table-responsive" style="height: 17.5rem; font-size:1.8vh;">
             <table id="tabel-data" class="table table-striped table-bordered" width="100%" cellspacing="0" >
@@ -110,9 +100,44 @@
                     });
 
                     console.log(res.kecamatan);
-                    //menampilkan data pmks (hanya kecamatan yang dipilih)
+                    //menampilkan data PKH (hanya kecamatan yang dipilih)
                     var table = $('#tabel-data').DataTable({
                         destroy: true,
+                        dom: 'Bfrtip',
+                            buttons: [
+                                {
+                                    //export excel
+                                    extend: 'excel',
+                                    text: 'Simpan Excel',
+                                    title: 'Data PKH',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8]
+                                    }
+                                },
+                                {
+                                    //export pdf
+                                    extend: 'pdf',
+                                    text: 'Simpan PDF',
+                                    title: 'Data PKH',
+                                    orientation: 'landscape',
+                                    messageTop: 'Data PKH - Dinas Sosial Kota Banda Aceh',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8]
+                                    }
+                                },
+                                {
+                                    //export print
+                                    extend: 'print',
+                                    text: 'Cetak',
+                                    title: 'Data PKH',
+                                    orientation: 'landscape',
+                                    messageTop: 'Data PKH - Dinas Sosial Kota Banda Aceh',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8]
+                                    }
+                                },
+                                
+                            ],
                         data: res.kecamatan,
                         columns: [
                             { 'data': 'nama_kec' },
@@ -124,13 +149,87 @@
                             { 'data': 'pbi_jaminan_kesehatan' },
                             { 'data': 'kpm_pkh_p2k2' },
                             { 'data': 'kpm_bumil_busui_baduta' },
-                            { 'data': "", "defaultContent": '<a class="btn btn-warning btn-sm" id="edit" href="{{ url('/editpmks?id_data=1')}}" role="button">Edit</a>'},
+                            { 'data': "", "defaultContent": '<a class="btn btn-warning btn-sm" id="edit" href="{{ url('/editPKH?id_data=1')}}" role="button">Edit</a>'},
 
                         ]
                         
                     }); 
                 }
             });
+        });
+
+        //ketika pilih desa
+        $('#desa').on('change', function(){
+            var desaId = desa.value;
+            var kecId =  kecamatan.value;
+            console.log(desaId);
+            console.log(kecId);
+
+            
+            //tampilkan data dari desa dan kecamatan
+            $.ajax({
+                url :'{{route('getDataPKH')}}?id_kec='+kecId+'&id_desa='+desaId,
+                type :'get',
+                success : function(res){
+                    console.log(res.kecamatan_desa);
+                    var table = $('#tabel-data').DataTable({
+                        destroy: true,
+                        dom: 'Bfrtip',
+                            buttons: [
+                                {
+                                    //export excel
+                                    extend: 'excel',
+                                    text: 'Simpan Excel',
+                                    title: 'Data PKH',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8]
+                                    }
+                                },
+                                {
+                                    //export pdf
+                                    extend: 'pdf',
+                                    text: 'Simpan PDF',
+                                    title: 'Data PKH',
+                                    orientation: 'landscape',
+                                    messageTop: 'Data PKH - Dinas Sosial Kota Banda Aceh',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8]
+                                    }
+                                },
+                                {
+                                    //export print
+                                    extend: 'print',
+                                    text: 'Cetak',
+                                    title: 'Data PKH',
+                                    orientation: 'landscape',
+                                    messageTop: 'Data PKH - Dinas Sosial Kota Banda Aceh',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8]
+                                    }
+                                },
+                                
+                            ],
+                        data: res.kecamatan_desa,
+                        columns: [
+                            { 'data': 'nama_kec' },
+                            { 'data': 'nama_desa' },
+                            { 'data': 'nama_bulan' },
+                            { 'data': 'tahun' },
+                            { 'data': 'penerima_bantuan_tunai_bersyarat' },
+                            { 'data': 'penerima_bpnt' },
+                            { 'data': 'pbi_jaminan_kesehatan' },
+                            { 'data': 'kpm_pkh_p2k2' },
+                            { 'data': 'kpm_bumil_busui_baduta' },
+                            { 'data': "", "defaultContent": '<a class="btn btn-warning btn-sm" id="edit" href="{{ url('/editPKH?id_data=1')}}" role="button">Edit</a>'},
+
+                        ]
+                        
+                    }); 
+                }
+
+
+            });
+
         });
     });
 </script>
