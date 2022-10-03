@@ -139,6 +139,41 @@
                     //menampilkan data pmks (hanya kecamatan yang dipilih)
                     var table = $('#tabel-data').DataTable({
                         destroy: true,
+                        dom: 'Bfrtip',
+                        buttons: [
+                            {
+                                //export excel
+                                extend: 'excel',
+                                text: 'Simpan Excel',
+                                title: 'Data PMKS',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                }
+                            },
+                            {
+                                //export pdf
+                                extend: 'pdf',
+                                text: 'Simpan PDF',
+                                title: 'Data PMKS',
+                                orientation: 'landscape',
+                                messageTop: 'Data PMKS - Dinas Sosial Kota Banda Aceh',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                }
+                            },
+                            {
+                                //export print
+                                extend: 'print',
+                                text: 'Cetak',
+                                title: 'Data PMKS',
+                                orientation: 'landscape',
+                                messageTop: 'Data PMKS - Dinas Sosial Kota Banda Aceh',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                }
+                            },
+                            
+                        ],
                         data: res.kecamatan,
                         columns: [
                             { 'data': 'nama_kec' },
@@ -162,9 +197,7 @@
                     });  
                 }
             });
-        });
-
-       
+        });       
 
         //ketika pilih desa
         $('#desa').on('change', function(){
@@ -182,6 +215,41 @@
 
                     var table = $('#tabel-data').DataTable({
                         destroy: true,
+                        dom: 'Bfrtip',
+                        buttons: [
+                            {
+                                //export excel
+                                extend: 'excel',
+                                text: 'Simpan Excel',
+                                title: 'Data PMKS',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                }
+                            },
+                            {
+                                //export pdf
+                                extend: 'pdf',
+                                text: 'Simpan PDF',
+                                title: 'Data PMKS',
+                                orientation: 'landscape',
+                                messageTop: 'Data PMKS - Dinas Sosial Kota Banda Aceh',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                }
+                            },
+                            {
+                                //export print
+                                extend: 'print',
+                                text: 'Cetak',
+                                title: 'Data PMKS',
+                                orientation: 'landscape',
+                                messageTop: 'Data PMKS - Dinas Sosial Kota Banda Aceh',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                }
+                            },
+                            
+                        ],
                         data: res.kecamatan_desa,
                         columns: [
                             { 'data': 'nama_kec' },
@@ -220,6 +288,41 @@
 
                     var table = $('#tabel-data').DataTable({
                         destroy: true,
+                        dom: 'Bfrtip',
+                        buttons: [
+                            {
+                                //export excel
+                                extend: 'excel',
+                                text: 'Simpan Excel',
+                                title: 'Data PMKS',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                }
+                            },
+                            {
+                                //export pdf
+                                extend: 'pdf',
+                                text: 'Simpan PDF',
+                                title: 'Data PMKS',
+                                orientation: 'landscape',
+                                messageTop: 'Data PMKS - Dinas Sosial Kota Banda Aceh',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                }
+                            },
+                            {
+                                //export print
+                                extend: 'print',
+                                text: 'Cetak',
+                                title: 'Data PMKS',
+                                orientation: 'landscape',
+                                messageTop: 'Data PMKS - Dinas Sosial Kota Banda Aceh',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                }
+                            },
+                            
+                        ],
                         data: res.bulan,
                         columns: [
                             { 'data': 'nama_kec' },
@@ -258,6 +361,41 @@
 
                     var table = $('#tabel-data').DataTable({
                         destroy: true,
+                        dom: 'Bfrtip',
+                        buttons: [
+                            {
+                                //export excel
+                                extend: 'excel',
+                                text: 'Simpan Excel',
+                                title: 'Data PMKS',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                }
+                            },
+                            {
+                                //export pdf
+                                extend: 'pdf',
+                                text: 'Simpan PDF',
+                                title: 'Data PMKS',
+                                orientation: 'landscape',
+                                messageTop: 'Data PMKS - Dinas Sosial Kota Banda Aceh',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                }
+                            },
+                            {
+                                //export print
+                                extend: 'print',
+                                text: 'Cetak',
+                                title: 'Data PMKS',
+                                orientation: 'landscape',
+                                messageTop: 'Data PMKS - Dinas Sosial Kota Banda Aceh',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                }
+                            },
+                            
+                        ],
                         data: res.tahun,
                         columns: [
                             { 'data': 'nama_kec' },
@@ -296,6 +434,41 @@
 
                         var table = $('#tabel-data').DataTable({
                             destroy: true,
+                            dom: 'Bfrtip',
+                            buttons: [
+                                {
+                                    //export excel
+                                    extend: 'excel',
+                                    text: 'Simpan Excel',
+                                    title: 'Data PMKS',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                    }
+                                },
+                                {
+                                    //export pdf
+                                    extend: 'pdf',
+                                    text: 'Simpan PDF',
+                                    title: 'Data PMKS',
+                                    orientation: 'landscape',
+                                    messageTop: 'Data PMKS - Dinas Sosial Kota Banda Aceh',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                    }
+                                },
+                                {
+                                    //export print
+                                    extend: 'print',
+                                    text: 'Cetak',
+                                    title: 'Data PMKS',
+                                    orientation: 'landscape',
+                                    messageTop: 'Data PMKS - Dinas Sosial Kota Banda Aceh',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                    }
+                                },
+                                
+                            ],
                             data: res.bulan_tahun,
                             columns: [
                                 { 'data': 'nama_kec' },
@@ -336,6 +509,41 @@
 
                         var table = $('#tabel-data').DataTable({
                             destroy: true,
+                            dom: 'Bfrtip',
+                            buttons: [
+                                {
+                                    //export excel
+                                    extend: 'excel',
+                                    text: 'Simpan Excel',
+                                    title: 'Data PMKS',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                    }
+                                },
+                                {
+                                    //export pdf
+                                    extend: 'pdf',
+                                    text: 'Simpan PDF',
+                                    title: 'Data PMKS',
+                                    orientation: 'landscape',
+                                    messageTop: 'Data PMKS - Dinas Sosial Kota Banda Aceh',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                    }
+                                },
+                                {
+                                    //export print
+                                    extend: 'print',
+                                    text: 'Cetak',
+                                    title: 'Data PMKS',
+                                    orientation: 'landscape',
+                                    messageTop: 'Data PMKS - Dinas Sosial Kota Banda Aceh',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                    }
+                                },
+                                
+                            ],
                             data: res.bulan_tahun,
                             columns: [
                                 { 'data': 'nama_kec' },
@@ -375,6 +583,41 @@
 
                         var table = $('#tabel-data').DataTable({
                             destroy: true,
+                            dom: 'Bfrtip',
+                            buttons: [
+                                {
+                                    //export excel
+                                    extend: 'excel',
+                                    text: 'Simpan Excel',
+                                    title: 'Data PMKS',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                    }
+                                },
+                                {
+                                    //export pdf
+                                    extend: 'pdf',
+                                    text: 'Simpan PDF',
+                                    title: 'Data PMKS',
+                                    orientation: 'landscape',
+                                    messageTop: 'Data PMKS - Dinas Sosial Kota Banda Aceh',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                    }
+                                },
+                                {
+                                    //export print
+                                    extend: 'print',
+                                    text: 'Cetak',
+                                    title: 'Data PMKS',
+                                    orientation: 'landscape',
+                                    messageTop: 'Data PMKS - Dinas Sosial Kota Banda Aceh',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                    }
+                                },
+                                
+                            ],
                             data: res.desa_bulan,
                             columns: [
                                 { 'data': 'nama_kec' },
@@ -415,6 +658,41 @@
 
                         var table = $('#tabel-data').DataTable({
                             destroy: true,
+                            dom: 'Bfrtip',
+                            buttons: [
+                                {
+                                    //export excel
+                                    extend: 'excel',
+                                    text: 'Simpan Excel',
+                                    title: 'Data PMKS',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                    }
+                                },
+                                {
+                                    //export pdf
+                                    extend: 'pdf',
+                                    text: 'Simpan PDF',
+                                    title: 'Data PMKS',
+                                    orientation: 'landscape',
+                                    messageTop: 'Data PMKS - Dinas Sosial Kota Banda Aceh',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                    }
+                                },
+                                {
+                                    //export print
+                                    extend: 'print',
+                                    text: 'Cetak',
+                                    title: 'Data PMKS',
+                                    orientation: 'landscape',
+                                    messageTop: 'Data PMKS - Dinas Sosial Kota Banda Aceh',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                    }
+                                },
+                                
+                            ],
                             data: res.kec_bulan,
                             columns: [
                                 { 'data': 'nama_kec' },
@@ -455,6 +733,41 @@
 
                         var table = $('#tabel-data').DataTable({
                             destroy: true,
+                            dom: 'Bfrtip',
+                            buttons: [
+                                {
+                                    //export excel
+                                    extend: 'excel',
+                                    text: 'Simpan Excel',
+                                    title: 'Data PMKS',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                    }
+                                },
+                                {
+                                    //export pdf
+                                    extend: 'pdf',
+                                    text: 'Simpan PDF',
+                                    title: 'Data PMKS',
+                                    orientation: 'landscape',
+                                    messageTop: 'Data PMKS - Dinas Sosial Kota Banda Aceh',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                    }
+                                },
+                                {
+                                    //export print
+                                    extend: 'print',
+                                    text: 'Cetak',
+                                    title: 'Data PMKS',
+                                    orientation: 'landscape',
+                                    messageTop: 'Data PMKS - Dinas Sosial Kota Banda Aceh',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                    }
+                                },
+                                
+                            ],
                             data: res.kec_tahun,
                             columns: [
                                 { 'data': 'nama_kec' },
@@ -493,6 +806,41 @@
 
                         var table = $('#tabel-data').DataTable({
                             destroy: true,
+                            dom: 'Bfrtip',
+                            buttons: [
+                                {
+                                    //export excel
+                                    extend: 'excel',
+                                    text: 'Simpan Excel',
+                                    title: 'Data PMKS',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                    }
+                                },
+                                {
+                                    //export pdf
+                                    extend: 'pdf',
+                                    text: 'Simpan PDF',
+                                    title: 'Data PMKS',
+                                    orientation: 'landscape',
+                                    messageTop: 'Data PMKS - Dinas Sosial Kota Banda Aceh',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                    }
+                                },
+                                {
+                                    //export print
+                                    extend: 'print',
+                                    text: 'Cetak',
+                                    title: 'Data PMKS',
+                                    orientation: 'landscape',
+                                    messageTop: 'Data PMKS - Dinas Sosial Kota Banda Aceh',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                    }
+                                },
+                                
+                            ],
                             data: res.kec_tahun,
                             columns: [
                                 { 'data': 'nama_kec' },
@@ -536,6 +884,41 @@
 
                             var table =  $('#tabel-data').DataTable({
                                 destroy:true,
+                                dom: 'Bfrtip',
+                                buttons: [
+                                    {
+                                        //export excel
+                                        extend: 'excel',
+                                        text: 'Simpan Excel',
+                                        title: 'Data PMKS',
+                                        exportOptions: {
+                                            columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                        }
+                                    },
+                                    {
+                                        //export pdf
+                                        extend: 'pdf',
+                                        text: 'Simpan PDF',
+                                        title: 'Data PMKS',
+                                        orientation: 'landscape',
+                                        messageTop: 'Data PMKS - Dinas Sosial Kota Banda Aceh',
+                                        exportOptions: {
+                                            columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                        }
+                                    },
+                                    {
+                                        //export print
+                                        extend: 'print',
+                                        text: 'Cetak',
+                                        title: 'Data PMKS',
+                                        orientation: 'landscape',
+                                        messageTop: 'Data PMKS - Dinas Sosial Kota Banda Aceh',
+                                        exportOptions: {
+                                            columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                        }
+                                    },
+                                    
+                                ],
                                 data: res.desa_bulan,
                                 columns: [
                                     { 'data': 'nama_kec' },
@@ -580,6 +963,41 @@
 
                         var table = $('#tabel-data').DataTable({
                             destroy: true,
+                            dom: 'Bfrtip',
+                            buttons: [
+                                {
+                                    //export excel
+                                    extend: 'excel',
+                                    text: 'Simpan Excel',
+                                    title: 'Data PMKS',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                    }
+                                },
+                                {
+                                    //export pdf
+                                    extend: 'pdf',
+                                    text: 'Simpan PDF',
+                                    title: 'Data PMKS',
+                                    orientation: 'landscape',
+                                    messageTop: 'Data PMKS - Dinas Sosial Kota Banda Aceh',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                    }
+                                },
+                                {
+                                    //export print
+                                    extend: 'print',
+                                    text: 'Cetak',
+                                    title: 'Data PMKS',
+                                    orientation: 'landscape',
+                                    messageTop: 'Data PMKS - Dinas Sosial Kota Banda Aceh',
+                                    exportOptions: {
+                                        columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                    }
+                                },
+                                
+                            ],
                             data: res.desa_tahun,
                             columns: [
                                 { 'data': 'nama_kec' },
@@ -628,6 +1046,41 @@
 
                             var table = $('#tabel-data').DataTable({
                                 destroy: true,
+                                dom: 'Bfrtip',
+                                buttons: [
+                                    {
+                                        //export excel
+                                        extend: 'excel',
+                                        text: 'Simpan Excel',
+                                        title: 'Data PMKS',
+                                        exportOptions: {
+                                            columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                        }
+                                    },
+                                    {
+                                        //export pdf
+                                        extend: 'pdf',
+                                        text: 'Simpan PDF',
+                                        title: 'Data PMKS',
+                                        orientation: 'landscape',
+                                        messageTop: 'Data PMKS - Dinas Sosial Kota Banda Aceh',
+                                        exportOptions: {
+                                            columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                        }
+                                    },
+                                    {
+                                        //export print
+                                        extend: 'print',
+                                        text: 'Cetak',
+                                        title: 'Data PMKS',
+                                        orientation: 'landscape',
+                                        messageTop: 'Data PMKS - Dinas Sosial Kota Banda Aceh',
+                                        exportOptions: {
+                                            columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                        }
+                                    },
+                                    
+                                ],
                                 data: res.desa_bulan_tahun,
                                 columns: [
                                     { 'data': 'nama_kec' },
@@ -655,8 +1108,8 @@
             });
         });
 
-         //ketika pilih kec->desa->tahun->bulan
-         $('#kecamatan').on('change', function(){
+        //ketika pilih kec->desa->tahun->bulan
+        $('#kecamatan').on('change', function(){
             $('#desa').on('change', function(){
                 $('#tahun').on('change', function(){
                     $('#bulan').on('change', function(){
@@ -665,41 +1118,76 @@
                         var desaId = desa.value;
                         var tahunId = tahun.value;
                         var bulanId = bulan.value;
+                        
                         $.ajax({
-                        url :'{{route('getDataPMKS')}}?id_kec='+kecId+'&id_desa='+desaId+'&id_bulan='+bulanId+'&id_tahun'+tahunId,
-                        type :'get',
-                        success : function(res){
-                            console.log(res.desa_bulan_tahun);
+                            url :'{{route('getDataPMKS')}}?id_kec='+kecId+'&id_desa='+desaId+'&id_bulan='+bulanId+'&id_tahun'+tahunId,
+                            type :'get',
+                            success : function(res){
+                                console.log(res.desa_bulan_tahun);
 
-                            var table = $('#tabel-data').DataTable({
-                                destroy: true,
-                                data: res.desa_bulan_tahun,
-                                columns: [
-                                    { 'data': 'nama_kec' },
-                                    { 'data': 'nama_desa' },
-                                    { 'data': 'nama_bulan' },
-                                    { 'data': 'tahun' },
-                                    { 'data': 'gelandangan' },
-                                    { 'data': 'pengemis' },
-                                    { 'data': 'punk' },
-                                    { 'data': 'anak_jalanan' },
-                                    { 'data': 'orang_terlantar' },
-                                    { 'data': 'anak_terlantar' },
-                                    { 'data': 'psk' },
-                                    { 'data': 'waria' },
-                                    { 'data': 'pria' },
-                                    { 'data': 'wanita' },
-                                    { 'data': 'total' },
-                                    { 'data': "", "defaultContent": "<button  class='btn btn-warning btn-sm' onclick='edititem();'>Edit</button>" },
-                                ]
-                            }); 
-                        }
-                    });
+                                var table = $('#tabel-data').DataTable({
+                                    destroy: true,
+                                    dom: 'Bfrtip',
+                                    buttons: [
+                                        {
+                                            //export excel
+                                            extend: 'excel',
+                                            text: 'Simpan Excel',
+                                            title: 'Data PMKS',
+                                            exportOptions: {
+                                                columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                            }
+                                        },
+                                        {
+                                            //export pdf
+                                            extend: 'pdf',
+                                            text: 'Simpan PDF',
+                                            title: 'Data PMKS',
+                                            orientation: 'landscape',
+                                            messageTop: 'Data PMKS - Dinas Sosial Kota Banda Aceh',
+                                            exportOptions: {
+                                                columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                            }
+                                        },
+                                        {
+                                            //export print
+                                            extend: 'print',
+                                            text: 'Cetak',
+                                            title: 'Data PMKS',
+                                            orientation: 'landscape',
+                                            messageTop: 'Data PMKS - Dinas Sosial Kota Banda Aceh',
+                                            exportOptions: {
+                                                columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                            }
+                                        },
+                                        
+                                    ],
+                                    data: res.desa_bulan_tahun,
+                                    columns: [
+                                        { 'data': 'nama_kec' },
+                                        { 'data': 'nama_desa' },
+                                        { 'data': 'nama_bulan' },
+                                        { 'data': 'tahun' },
+                                        { 'data': 'gelandangan' },
+                                        { 'data': 'pengemis' },
+                                        { 'data': 'punk' },
+                                        { 'data': 'anak_jalanan' },
+                                        { 'data': 'orang_terlantar' },
+                                        { 'data': 'anak_terlantar' },
+                                        { 'data': 'psk' },
+                                        { 'data': 'waria' },
+                                        { 'data': 'pria' },
+                                        { 'data': 'wanita' },
+                                        { 'data': 'total' },
+                                        { 'data': "", "defaultContent": "<button  class='btn btn-warning btn-sm' onclick='edititem();'>Edit</button>" },
+                                    ]
+                                }); 
+                            }
+                        });
                     });
                 });
             });
-        });
-        
+        });   
     });
 
 </script>

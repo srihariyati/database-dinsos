@@ -36,10 +36,48 @@ class DtksController extends Controller
         'bulan.nama_bulan', 'tahun.tahun')
         -> get();
 
+        $kecamatan_desa = DB::table('data_dtks')      
+        -> where(['data_dtks.id_kec'=>$request->id_kec, 'data_dtks.id_desa'=>$request->id_desa])
+        -> join('kecamatan','data_dtks.id_kec','=','kecamatan.id_kec')
+        -> join('desa', 'data_dtks.id_desa', '=','desa.id_desa')
+        -> join('bulan','data_dtks.id_bulan','=','bulan.id_bulan')
+        -> join('tahun','data_dtks.id_tahun','=','tahun.id_tahun')
+        -> join ('data_pbi', 'data_dtks.id_data','=', 'data_pbi.id_data')
+        -> select('data_dtks.*','data_pbi.*','desa.nama_desa', 'kecamatan.nama_kec',
+        'bulan.nama_bulan', 'tahun.tahun')
+        -> get();
+
+        $bulan = DB::table('data_dtks')
+        -> where('data_dtks.id_bulan', $request->id_bulan)
+        -> join('kecamatan','data_dtks.id_kec','=','kecamatan.id_kec')
+        -> join('desa', 'data_dtks.id_desa', '=','desa.id_desa')
+        -> join('bulan','data_dtks.id_bulan','=','bulan.id_bulan')
+        -> join('tahun','data_dtks.id_tahun','=','tahun.id_tahun')
+        -> join ('data_pbi', 'data_dtks.id_data','=', 'data_pbi.id_data')
+        -> select('data_dtks.*','data_pbi.*','desa.nama_desa', 'kecamatan.nama_kec',
+        'bulan.nama_bulan', 'tahun.tahun')
+        -> get();
+
+        $tahun = DB::table('data_dtks')
+        -> where('data_dtks.id_tahun', $request->id_tahun)
+        -> join('kecamatan','data_dtks.id_kec','=','kecamatan.id_kec')
+        -> join('desa', 'data_dtks.id_desa', '=','desa.id_desa')
+        -> join('bulan','data_dtks.id_bulan','=','bulan.id_bulan')
+        -> join('tahun','data_dtks.id_tahun','=','tahun.id_tahun')
+        -> join ('data_pbi', 'data_dtks.id_data','=', 'data_pbi.id_data')
+        -> select('data_dtks.*','data_pbi.*','desa.nama_desa', 'kecamatan.nama_kec',
+        'bulan.nama_bulan', 'tahun.tahun')
+        -> get();
+
         return response()->json(array(
             'desa' =>$desa,
             'kecamatan'=>$kecamatan,
+            'kecamatan_desa'=>$kecamatan_desa,
+            'bulan'=>$bulan,
+            'tahun'=>$tahun,
         ));
+
+
 
         // return response()->json($desa);
     }

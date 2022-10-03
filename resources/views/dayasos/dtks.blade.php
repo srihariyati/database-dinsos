@@ -119,6 +119,41 @@
                     //menampilkan data pmks (hanya kecamatan yang dipilih)
                     var table = $('#tabel-data').DataTable({
                         destroy: true,
+                        dom: 'Bfrtip',
+                        buttons: [
+                            {
+                                //export excel
+                                extend: 'excel',
+                                text: 'Simpan Excel',
+                                title: 'Data DTKS',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                                }
+                            },
+                            {
+                                //export pdf
+                                extend: 'pdf',
+                                text: 'Simpan PDF',
+                                title: 'Data DTKS',
+                                orientation: 'landscape',
+                                messageTop: 'Data DTKS - Dinas Sosial Kota Banda Aceh',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8]
+                                }
+                            },
+                            {
+                                //export print
+                                extend: 'print',
+                                text: 'Cetak',
+                                title: 'Data DTKS',
+                                orientation: 'landscape',
+                                messageTop: 'Data DTKS - Dinas Sosial Kota Banda Aceh',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                                }
+                            },
+                            
+                        ],
                         data: res.kecamatan,
                         columns: [
                             { 'data': 'nama_kec' },
@@ -138,6 +173,223 @@
                 }
             });
         });
+        //ketika pilih desa
+        $('#desa').on('change', function(){
+            var desaId = desa.value;
+            var kecId =  kecamatan.value;
+            console.log(desaId);
+            console.log(kecId);
+
+            //tampilkan data dari desa dan kecamatan
+            $.ajax({
+                url :'{{route('getDataDTKS')}}?id_kec='+kecId+'&id_desa='+desaId,
+                type :'get',
+                success : function(res){
+                    console.log(res.kecamatan_desa);
+
+                    var table = $('#tabel-data').DataTable({
+                        destroy: true,
+                        dom: 'Bfrtip',
+                        buttons: [
+                            {
+                                //export excel
+                                extend: 'excel',
+                                text: 'Simpan Excel',
+                                title: 'Data DTKS',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                                }
+                            },
+                            {
+                                //export pdf
+                                extend: 'pdf',
+                                text: 'Simpan PDF',
+                                title: 'Data DTKS',
+                                orientation: 'landscape',
+                                messageTop: 'Data DTKS - Dinas Sosial Kota Banda Aceh',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                                }
+                            },
+                            {
+                                //export print
+                                extend: 'print',
+                                text: 'Cetak',
+                                title: 'Data DTKS',
+                                orientation: 'landscape',
+                                messageTop: 'Data DTKS - Dinas Sosial Kota Banda Aceh',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                                }
+                            },
+                        ],
+                        data: res.kecamatan_desa,
+                        columns: [
+                            { 'data': 'nama_kec' },
+                            { 'data': 'nama_desa' },
+                            { 'data': 'nama_bulan' },
+                            { 'data': 'tahun' },
+                            { 'data': 'jiwa' },
+                            { 'data': 'ruta' },
+                            { 'data': 'jumlah_aktif' },
+                            { 'data': 'jumlah_nonaktif' },
+                            { 'data': 'jumlah_bbl' },
+                            { 'data': "", "defaultContent": '<a class="btn btn-warning btn-sm" id="edit" href="{{ url('/editpmks?id_data=1')}}" role="button">Edit</a>'},
+
+                        ]
+                    });
+                }
+            });
+        });
+
+        //ketika pilih bulan
+        $('#bulan').on('change', function(){
+            var bulanId = this.value;
+            console.log(bulanId);
+
+            $.ajax({
+                url :'{{route('getDataDTKS')}}?id_bulan='+bulanId,
+                type :'get',
+                success : function(res){
+                    console.log(res.bulan);
+
+                    var table = $('#tabel-data').DataTable({
+                        destroy: true,
+                        dom: 'Bfrtip',
+                        buttons: [
+                            {
+                                //export excel
+                                extend: 'excel',
+                                text: 'Simpan Excel',
+                                title: 'Data DTKS',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                                }
+                            },
+                            {
+                                //export pdf
+                                extend: 'pdf',
+                                text: 'Simpan PDF',
+                                title: 'Data DTKS',
+                                orientation: 'landscape',
+                                messageTop: 'Data DTKS - Dinas Sosial Kota Banda Aceh',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                                }
+                            },
+                            {
+                                //export print
+                                extend: 'print',
+                                text: 'Cetak',
+                                title: 'Data DTKS',
+                                orientation: 'landscape',
+                                messageTop: 'Data DTKS - Dinas Sosial Kota Banda Aceh',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                                }
+                            },
+                        ],
+
+                        data: res.bulan,
+                        columns: [
+                            { 'data': 'nama_kec' },
+                            { 'data': 'nama_desa' },
+                            { 'data': 'nama_bulan' },
+                            { 'data': 'tahun' },
+                            { 'data': 'jiwa' },
+                            { 'data': 'ruta' },
+                            { 'data': 'jumlah_aktif' },
+                            { 'data': 'jumlah_nonaktif' },
+                            { 'data': 'jumlah_bbl' },
+                            { 'data': "", "defaultContent": '<a class="btn btn-warning btn-sm" id="edit" href="{{ url('/editpmks?id_data=1')}}" role="button">Edit</a>'},
+                        ]
+                    });
+                }
+            });
+        });
+
+        //ketika pilih tahun
+        $('#tahun').on('change', function(){
+            var tahunId = this.value;
+            console.log(tahunId);
+
+            $.ajax({
+                url :'{{route('getDataDTKS')}}?id_tahun='+tahunId,
+                type :'get',
+                success : function(res){
+                    console.log(res.tahun);
+                    var table = $('#tabel-data').DataTable({
+                        destroy: true,
+                        dom: 'Bfrtip',
+                        buttons: [
+                            {
+                                //export excel
+                                extend: 'excel',
+                                text: 'Simpan Excel',
+                                title: 'Data DTKS',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                                }
+                            },
+                            {
+                                //export pdf
+                                extend: 'pdf',
+                                text: 'Simpan PDF',
+                                title: 'Data DTKS',
+                                orientation: 'landscape',
+                                messageTop: 'Data DTKS - Dinas Sosial Kota Banda Aceh',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                                }
+                            },
+                            {
+                                //export print
+                                extend: 'print',
+                                text: 'Cetak',
+                                title: 'Data DTKS',
+                                orientation: 'landscape',
+                                messageTop: 'Data DTKS - Dinas Sosial Kota Banda Aceh',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8 ]
+                                }
+                            },
+                        ],
+
+                        data: res.tahun,
+                        columns: [
+                            { 'data': 'nama_kec' },
+                            { 'data': 'nama_desa' },
+                            { 'data': 'nama_bulan' },
+                            { 'data': 'tahun' },
+                            { 'data': 'jiwa' },
+                            { 'data': 'ruta' },
+                            { 'data': 'jumlah_aktif' },
+                            { 'data': 'jumlah_nonaktif' },
+                            { 'data': 'jumlah_bbl' },
+                            { 'data': "", "defaultContent": '<a class="btn btn-warning btn-sm" id="edit" href="{{ url('/editpmks?id_data=1')}}" role="button">Edit</a>'},
+                        ]
+                    });
+                }
+            });
+        });
+
+        //ketika pilih bulan lalu tahun
+        $('#bulan').on('change', function(){
+            $('#tahun' ).on('change', function(){
+            var bulanId = bulan.value;
+            var tahunId = tahun.value;
+            console.log(bulanId);
+            console.log(tahunId);
+                $.ajax({
+                        url :'{{route('getDataPMKS')}}?id_tahun='+tahunId+'&id_bulan='+bulanId,
+                        type :'get',
+                        success : function(res){
+                            console.log(res.bulan_tahun);
+                        }
+
+                });
+        });
+
     });
     
     </script>
