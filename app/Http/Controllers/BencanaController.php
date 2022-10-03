@@ -44,4 +44,16 @@ class BencanaController extends Controller
         ));
         
     } 
+
+    public function tambah(Request $request)
+    {
+        $kecamatan =DB::table('kecamatan')->get();
+        $bulan = DB::table('bulan')->get();
+        $tahun = DB::table('tahun')->get();
+
+        return view('linjamsos.tambahdatabencana',compact('kecamatan'))
+        ->with (['bulan'=>$bulan])
+        ->with (['tahun'=>$tahun]);
+
+    }
 }

@@ -61,14 +61,6 @@
                     <div class="col-auto" style="width:170px ; margin-left:100px"> 
                     
                     </div>
-                    <!-- <div  class="row" style="margin-top: 0.8rem; margin-left: 47rem;">
-                        <div class="col-auto" >
-                            <a class="btn btn-danger" id="edit-btn" href="{{ url('/editpmks')}}" role="button">Edit</a>
-                        </div> 
-                        <div class="col-auto" >
-                            <a class="btn btn-primary" id="Cari-btn" href="{{ url('/caripmks')}}" role="button">Cari</a>
-                        </div> 
-                    </div> -->
 
                 </div>
             </div>
@@ -77,15 +69,6 @@
 
     <div id="card2" class="card w-75" style="margin-top: 5px;">
         <div class="card-body">
-            <!-- <div  class="row" style="margin-top: 0.2rem; margin-left: 43rem; margin-bottom: 0.2rem">
-                <div class="col-auto" >
-                    <a class="btn btn-warning" id="edit-btn" href="#" role="button">Cetak PDF</a>
-                </div> 
-                    <div class="col-auto" >
-                        <a class="btn btn-success" id="Cari-btn" href="#" role="button">Cetak Excel</a>
-                    </div> 
-                </div>
-            </div> -->
             
         <div class="table-responsive" style="height: 17.5rem; font-size:1.5vh;">
             <table id="tabel-data" class="table table-striped table-bordered" width="100%" cellspacing="0" >
@@ -267,7 +250,8 @@
                             { 'data': 'pria' },
                             { 'data': 'wanita' },
                             { 'data': 'total' },
-                            { 'data': "", "defaultContent": '<a href="#" class="link-primary">Edit</a>'},
+                            { 'data': "","defaultContent": '<a class="btn btn-warning btn-sm" id="edit" href="{{ url('/editpmks?id_data=1')}}" role="button">Edit</a>'},
+
 
                         ]
                     }); 
@@ -340,7 +324,8 @@
                             { 'data': 'pria' },
                             { 'data': 'wanita' },
                             { 'data': 'total' },
-                            { 'data': "", "defaultContent": "<button  class='btn btn-warning btn-sm' onclick='edititem();'>Edit</button>" },
+                            { 'data': "","defaultContent": '<a class="btn btn-warning btn-sm" id="edit" href="{{ url('/editpmks?id_data=1')}}" role="button">Edit</a>'},
+
 
                         ]
                     }); 
@@ -413,7 +398,8 @@
                             { 'data': 'pria' },
                             { 'data': 'wanita' },
                             { 'data': 'total' },
-                            { 'data': "", "defaultContent": "<button  class='btn btn-warning btn-sm' onclick='edititem();'>Edit</button>" },
+                            { 'data': "","defaultContent": '<a class="btn btn-warning btn-sm" id="edit" href="{{ url('/editpmks?id_data=1')}}" role="button">Edit</a>'},
+,
                         ]
                     }); 
                 }
@@ -486,7 +472,8 @@
                                 { 'data': 'pria' },
                                 { 'data': 'wanita' },
                                 { 'data': 'total' },
-                                { 'data': "", "defaultContent": "<button  class='btn btn-warning btn-sm' onclick='edititem();'>Edit</button>" },
+                                { 'data': "","defaultContent": '<a class="btn btn-warning btn-sm" id="edit" href="{{ url('/editpmks?id_data=1')}}" role="button">Edit</a>'},
+
                             ]
                         }); 
                     }
@@ -561,7 +548,8 @@
                                 { 'data': 'pria' },
                                 { 'data': 'wanita' },
                                 { 'data': 'total' },
-                                { 'data': "", "defaultContent": "<button  class='btn btn-warning btn-sm' onclick='edititem();'>Edit</button>" },
+                                { 'data': "","defaultContent": '<a class="btn btn-warning btn-sm" id="edit" href="{{ url('/editpmks?id_data=1')}}" role="button">Edit</a>'},
+
                             ]
                         }); 
                     }
@@ -635,7 +623,8 @@
                                 { 'data': 'pria' },
                                 { 'data': 'wanita' },
                                 { 'data': 'total' },
-                                { 'data': "", "defaultContent": '<a href="#" class="link-primary">Edit</a>' },
+                                { 'data': "","defaultContent": '<a class="btn btn-warning btn-sm" id="edit" href="{{ url('/editpmks?id_data=1')}}" role="button">Edit</a>'},
+
                             ]
                         }); 
                     }
@@ -710,7 +699,8 @@
                                 { 'data': 'pria' },
                                 { 'data': 'wanita' },
                                 { 'data': 'total' },
-                                { 'data': "", "defaultContent": "<button  class='btn btn-warning btn-sm' onclick='edititem();'>Edit</button>" },
+                                { 'data': "","defaultContent": '<a class="btn btn-warning btn-sm" id="edit" href="{{ url('/editpmks?id_data=1')}}" role="button">Edit</a>'},
+
                             ]
                         }); 
                     }
@@ -785,7 +775,8 @@
                                 { 'data': 'pria' },
                                 { 'data': 'wanita' },
                                 { 'data': 'total' },
-                                { 'data': "", "defaultContent": "<button  class='btn btn-warning btn-sm' onclick='edititem();'>Edit</button>" },
+                                { 'data': "","defaultContent": '<a class="btn btn-warning btn-sm" id="edit" href="{{ url('/editpmks?id_data=1')}}" role="button">Edit</a>'},
+
                             ]
                         }); 
                     }
@@ -858,7 +849,8 @@
                                 { 'data': 'pria' },
                                 { 'data': 'wanita' },
                                 { 'data': 'total' },
-                                { 'data': "", "defaultContent": "<button  class='btn btn-warning btn-sm' onclick='edititem();'>Edit</button>" },
+                                { 'data': "","defaultContent": '<a class="btn btn-warning btn-sm" id="edit" href="{{ url('/editpmks?id_data=1')}}" role="button">Edit</a>'},
+
                             ]
                         }); 
                     }
@@ -936,7 +928,8 @@
                                     { 'data': 'pria' },
                                     { 'data': 'wanita' },
                                     { 'data': 'total' },
-                                    { 'data': "", "defaultContent": '<a href="#" class="link-primary">Edit</a>' },
+                                    { 'data': "","defaultContent": '<a class="btn btn-warning btn-sm" id="edit" href="{{ url('/editpmks?id_data=1')}}" role="button">Edit</a>'},
+
                                 ]
                             }); 
                         }
@@ -1015,7 +1008,8 @@
                                 { 'data': 'pria' },
                                 { 'data': 'wanita' },
                                 { 'data': 'total' },
-                                { 'data': "", "defaultContent": "<button  class='btn btn-warning btn-sm' onclick='edititem();'>Edit</button>" },
+                                { 'data': "","defaultContent": '<a class="btn btn-warning btn-sm" id="edit" href="{{ url('/editpmks?id_data=1')}}" role="button">Edit</a>'},
+
                             ]
                         }); 
                     }
@@ -1098,7 +1092,8 @@
                                     { 'data': 'pria' },
                                     { 'data': 'wanita' },
                                     { 'data': 'total' },
-                                    { 'data': "", "defaultContent": "<button  class='btn btn-warning btn-sm' onclick='edititem();'>Edit</button>" },
+                                    { 'data': "","defaultContent": '<a class="btn btn-warning btn-sm" id="edit" href="{{ url('/editpmks?id_data=1')}}" role="button">Edit</a>'},
+
                                 ]
                             }); 
                         }
@@ -1179,7 +1174,8 @@
                                         { 'data': 'pria' },
                                         { 'data': 'wanita' },
                                         { 'data': 'total' },
-                                        { 'data': "", "defaultContent": "<button  class='btn btn-warning btn-sm' onclick='edititem();'>Edit</button>" },
+                                        { 'data': "","defaultContent": '<a class="btn btn-warning btn-sm" id="edit" href="{{ url('/editpmks?id_data=1')}}" role="button">Edit</a>'},
+
                                     ]
                                 }); 
                             }
