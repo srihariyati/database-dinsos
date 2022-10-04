@@ -312,6 +312,7 @@ class PmksController extends Controller
         -> select('data_pmks.*','desa.nama_desa', 'kecamatan.nama_kec',
         'bulan.nama_bulan', 'tahun.tahun')
         -> get();
+        
         return view('rehsos.editpmks',compact('kecamatan'))
         ->with (['datapmks'=>$datapmks])
         ->with (['bulan'=>$bulan])
@@ -320,6 +321,7 @@ class PmksController extends Controller
     
     public function update(Request $request)
     {
+        $total=$request->gld+$request->peng+$request->punk+$request->anjal+$request->ot+$request->at+$request->psk+$request->waria+$request->pria+$request->wanita;
       DB::table('data_pmks')->where('id_data', $request->id_data)
       ->update([
          'id_data' =>$request->id_data,
@@ -337,6 +339,7 @@ class PmksController extends Controller
          'waria'=>$request->waria,
          'pria'=>$request->pria,
          'wanita'=>$request->wanita,
+         'total'=>$total,
       ]);
       return redirect('/pmks')->with('success', 'Berhasil Mengedit Data!');
     }
@@ -355,6 +358,7 @@ class PmksController extends Controller
 
     public function store(Request $request)
     {
+        $total=$request->gld+$request->peng+$request->punk+$request->anjal+$request->ot+$request->at+$request->psk+$request->waria+$request->pria+$request->wanita;
         DB::table('data_pmks')->insert([
             'id_kec'=>$request->kecamatan,
             'id_desa'=>$request->desa,
@@ -370,6 +374,7 @@ class PmksController extends Controller
             'waria'=>$request->waria,
             'pria'=>$request->pria,
             'wanita'=>$request->wanita,
+            'total'=>$total,
         ]);
         return redirect('/pmks')->with('success', 'Berhasil Menambahkan Data!');
     }
