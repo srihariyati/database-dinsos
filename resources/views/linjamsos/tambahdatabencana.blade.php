@@ -19,7 +19,7 @@
                     <div class="row" style="margin-left: 0px;">
                         <div class="col-auto" style="width:290px">
                             <label style="font-size:2.2vh; margin-left: 0px; margin-bottom: 0.3rem">Kecamatan</label>
-                                <select class="form-select" id="autoSizingSelect" style="font-size:2.2vh;">
+                                <select class="form-select" id="kecamatan"name="kecamatan" style="font-size:2.2vh;">
                                     <option selected >Pilih Kecamatan</option>
                                     @foreach ($kecamatan as $kec)
                                     <option value="{{$kec->id_kec}}">{{$kec->nama_kec}}</option>
@@ -29,14 +29,14 @@
 
                         <div class="col-auto" style="font-size:2.2vh; margin-left: 0.2rem; width:290px">
                             <label style="margin-bottom: 0.3rem">Desa/Kelurahan</label>
-                                <select class="form-select" id="autoSizingSelect" style="font-size:2.2vh;">
+                                <select class="form-select" id="desa" name="desa" style="font-size:2.2vh;">
                                     <option selected>Pilih Desa/Kelurahan</option>
                                 </select>
                         </div>
 
                         <div class="col-auto" style="font-size:2.2vh; margin-left: 0.2rem; width:140px">
                             <label style="margin-bottom: 0.3rem">Bulan</label>
-                                <select class="form-select" id="autoSizingSelect" style="font-size:2.2vh;">
+                                <select class="form-select" id="bulan" name="bulan" style="font-size:2.2vh;">
                                     <option  value="">Pilih Bulan</option>
                                     @foreach($bulan as $b)
                                     <option value="{{$b->id_bulan}}">{{$b->nama_bulan}}</option>
@@ -46,7 +46,7 @@
 
                         <div class="col-auto" style="font-size:2.2vh; margin-left: 0.2rem; width:140px">
                             <label style="margin-bottom: 6px">Tahun</label>
-                                <select class="form-select" id="autoSizingSelect" style="font-size:2.2vh;">
+                                <select class="form-select" id="tahun" name="tahun" style="font-size:2.2vh;">
                                     <option selected>Pilih Tahun</option>
                                     @foreach($tahun as $t)
                                     <option value="{{$t->id_tahun}}">{{$t->tahun}}</option>
@@ -65,32 +65,21 @@
 
                         <div class="col-auto" style="width:290px">
                             <label style="font-size:2.2vh; margin-left: 0px; margin-bottom: 0.2rem">Jenis Bencana</label>
-                            <select class="form-select" id="jenis_bencana" style="font-size:13px;">
+                            <select class="form-select" id="jenis_bencana" name="jenis_bencana" style="font-size:13px;">
                                     <option selected >Pilih Jenis Bencana</option>
-                                    <option value="1">Banjir</option>
-                                    <option value="2">Kebakaran</option>
-                                    <option value="3">Angin Kencang</option>
-                                    <option value="4">Gempa Bumi</option>
-                                    <option value="5">Tanah Longsor</option>
-                                    <option value="6">Tsunami</option>
-                                    <option value="7">Lain-lain</option>
                                 </select>
                         </div>
 
                         <div class="col-auto" style="font-size:2.2vh; margin-left: 0.2rem; width:290px">
                             <label style="margin-bottom: 0.2rem">Sumber Dana</label>
-                            <select class="form-select" id="sumber_dana" style="font-size:13px;">
+                            <select class="form-select" id="sumber_dana" name="sumber_dana" style="font-size:13px;">
                                     <option selected>Pilih Sumber Dana</option>
-                                    <option value="1">APBK</option>
-                                    <option value="1">APBN</option>
-                                    <option value="1">APBA</option>
-                                    <option value="2">Lain-lain</option>
                             </select>
                         </div>
 
                         <div class="col-auto" style="font-size:2.2vh; margin-left: 0.2rem; width:290px; margin-top : 2rem;">
                             <label style="margin-bottom: 0.2rem">Total Penerima (KK)</label>
-                            <input type="number" name="totalkk" id="totalkk" class="form-control" placeholder="0" required>   
+                            <input type="number" name="penerima" id="penerima" class="form-control" placeholder="0" required>   
                         </div>
                     </div>
                 </div>
@@ -98,7 +87,7 @@
                 <div class="container">
                     <div class="row" style="margin-left: 48.5rem;">
                         <div class="col-auto">
-                            <a class="btn btn-success" id="tambah" href="" role="button">Simpan</a>
+                            <button class="btn btn-success" type="submit"> Simpan </button>
                         </div>
 
                     </div>
@@ -109,5 +98,35 @@
         </div>
 
     </div>
+<script>
+     $(document).ready(function(){
+        //ketika pilih kecamatan
+        $('#kecamatan').on('change', function(){
+            //ambil value dari id kecamatan     
+            var kecId = this.value;
+            console.log(kecId);
+            $('#desa').html('');
 
+            $.ajax({
+                //kirim id ke controller getDesa untuk baca desa yang ada didalam kacamatan yang dipilih
+                url: '{{ route('getDataBencana') }}?id_kec='+kecId,
+                type :'get',             
+                success : function(res){
+                    //$('#desa').html('<option value="">Pilih Desa</option> '); 
+
+                    $.each(res.desa, function (key, value) {                                             
+                        // buat option untuk pilih desa (desa berada di kecamatan yang  dipilih)
+                        $('#desa').append('<option value="'+ value.id_desa + '">' + value.nama_desa + '</option>');                  
+                    });
+                    $.each(res.sumberdana, function (key, value) {                                             
+                        $('#sumber_dana').append('<option value="'+ value.id_sumber_dana + '">' + value.sumber_dana + '</option>');                  
+                    });
+                    $.each(res.jenisbencana, function (key, value) {                                             
+                        $('#jenis_bencana').append('<option value="'+ value.id_bencana + '">' + value.jenis_bencana + '</option>');                  
+                    });
+                }
+            });
+        });
+    });
+</script>
 @endsection

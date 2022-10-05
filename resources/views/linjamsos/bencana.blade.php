@@ -81,6 +81,7 @@
                 <tr>
                     <th>Kecamatan</th>
                     <th>Desa/Kelurahan</th>
+                    <th>Tanggal Bencana</th>
                     <th>Bulan</th>
                     <th>Tahun</th>
                     <th>Jenis Bencana</th>
@@ -96,6 +97,67 @@
 
     <script type="text/javascript">
      $(document).ready(function(){
+
+        $.ajax({
+            //kirim id ke controller getDesa untuk baca desa yang ada didalam kacamatan yang dipilih
+            url: '{{ route('getDataBencana') }}',
+            type :'get',             
+            success : function(res){
+                var table = $('#tabel-data').DataTable({
+                    destroy: true,
+                    dom: 'Bfrtip',
+                        buttons: [
+                            {
+                                //export excel
+                                extend: 'excel',
+                                text: 'Simpan Excel',
+                                title: 'Data Bansos Tanggap Darurat - Bencana',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6]
+                                }
+                            },
+                            {
+                                //export pdf
+                                extend: 'pdf',
+                                text: 'Simpan PDF',
+                                title: 'Data Bansos Tanggap Darurat - Bencana',
+                                orientation: 'landscape',
+                                messageTop: 'Data Bansos Tanggap Darurat - Bencana - Dinas Sosial Kota Banda Aceh',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6]
+                                }
+                            },
+                            {
+                                //export print
+                                extend: 'print',
+                                text: 'Cetak',
+                                title: 'Data Bansos Tanggap Darurat - Bencana',
+                                orientation: 'landscape',
+                                messageTop: 'Data Bansos Tanggap Darurat - Bencana - Dinas Sosial Kota Banda Aceh',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6]
+                                }
+                            },
+                            
+                        ],
+                    data: res.semua,
+                    columns: [
+                        { 'data': 'nama_kec' },
+                        { 'data': 'nama_desa' },
+                        { 'data': 'tanggal' },
+                        { 'data': 'nama_bulan' },
+                        { 'data': 'tahun' },
+                        { 'data': 'jenis_bencana' },
+                        { 'data': 'sumber_dana' },
+                        { 'data': 'jumlah_penerima' },
+                        { 'data': "", "defaultContent": '<a class="btn btn-warning btn-sm" id="edit" href="{{ url('/editpmks?id_data=1')}}" role="button">Edit</a>'},
+
+                    ]
+                }); 
+            }
+        });
+
+
         //ketika pilih kecamatan
         $('#kecamatan').on('change', function(){
             //ambil value dari id kecamatan     
@@ -159,6 +221,7 @@
                         columns: [
                             { 'data': 'nama_kec' },
                             { 'data': 'nama_desa' },
+                            { 'data': 'tanggal' },
                             { 'data': 'nama_bulan' },
                             { 'data': 'tahun' },
                             { 'data': 'jenis_bencana' },

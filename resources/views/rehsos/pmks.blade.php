@@ -99,6 +99,76 @@
 
 <script type="text/javascript">
     $(document).ready(function(){
+       console.log("ready");
+       $.ajax({
+            url: '{{ route('getDataPMKS') }}',
+            type :'get',             
+            success : function(res){
+                console.log(res.semua);
+                //menampilkan data pmks (hanya kecamatan yang dipilih)
+                var table = $('#tabel-data').DataTable({
+                        destroy: true,
+                        dom: 'Bfrtip',
+                        buttons: [
+                            {
+                                //export excel
+                                extend: 'excel',
+                                text: 'Simpan Excel',
+                                title: 'Data PMKS',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                }
+                            },
+                            {
+                                //export pdf
+                                extend: 'pdf',
+                                text: 'Simpan PDF',
+                                title: 'Data PMKS',
+                                orientation: 'landscape',
+                                messageTop: 'Data PMKS - Dinas Sosial Kota Banda Aceh',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                }
+                            },
+                            {
+                                //export print
+                                extend: 'print',
+                                text: 'Cetak',
+                                title: 'Data PMKS',
+                                orientation: 'landscape',
+                                messageTop: 'Data PMKS - Dinas Sosial Kota Banda Aceh',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14 ]
+                                }
+                            },
+                            
+                        ],
+                        data: res.semua,
+                        columns: [
+                            { 'data': 'nama_kec' },
+                            { 'data': 'nama_desa' },
+                            { 'data': 'nama_bulan' },
+                            { 'data': 'tahun' },
+                            { 'data': 'gelandangan' },
+                            { 'data': 'pengemis' },
+                            { 'data': 'punk' },
+                            { 'data': 'anak_jalanan' },
+                            { 'data': 'orang_terlantar' },
+                            { 'data': 'anak_terlantar' },
+                            { 'data': 'psk' },
+                            { 'data': 'waria' },
+                            { 'data': 'pria' },
+                            { 'data': 'wanita' },
+                            { 'data': 'total' },
+                            { 'data': "","defaultContent": '<a class="btn btn-warning btn-sm" id="edit" href="{{ url('/editpmks?id_data=1')}}" role="button">Edit</a>'},
+
+                        ]
+                    });  
+            }
+       });
+
+
+
         //ketika pilih kecamatan
         $('#kecamatan').on('change', function(){
             //ambil value dari id kecamatan     
@@ -399,7 +469,6 @@
                             { 'data': 'wanita' },
                             { 'data': 'total' },
                             { 'data': "","defaultContent": '<a class="btn btn-warning btn-sm" id="edit" href="{{ url('/editpmks?id_data=1')}}" role="button">Edit</a>'},
-,
                         ]
                     }); 
                 }

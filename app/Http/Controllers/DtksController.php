@@ -113,6 +113,16 @@ class DtksController extends Controller
         'bulan.nama_bulan', 'tahun.tahun')
         -> get();
 
+        $semua =  DB::table('data_dtks')
+        -> join('kecamatan','data_dtks.id_kec','=','kecamatan.id_kec')
+        -> join('desa', 'data_dtks.id_desa', '=','desa.id_desa')
+        -> join('bulan','data_dtks.id_bulan','=','bulan.id_bulan')
+        -> join('tahun','data_dtks.id_tahun','=','tahun.id_tahun')
+        -> join ('data_pbi', 'data_dtks.id_data','=', 'data_pbi.id_data')
+        -> select('data_dtks.*','data_pbi.*','desa.nama_desa', 'kecamatan.nama_kec',
+        'bulan.nama_bulan', 'tahun.tahun')
+        -> get();
+
         return response()->json(array(
             'desa' =>$desa,
             'kecamatan'=>$kecamatan,
@@ -123,6 +133,7 @@ class DtksController extends Controller
             'desa_bulan'=>$desa_bulan,
             'kec_bulan'=>$kec_bulan,
             'kec_tahun'=>$kec_tahun,
+            'semua' => $semua,
         ));
 
 
@@ -151,5 +162,40 @@ class DtksController extends Controller
         ->with (['datadtks'=>$datadtks])
         ->with (['bulan'=>$bulan])
         ->with (['tahun'=>$tahun]);
+    }
+
+    public function tambah(Request $request)
+    {
+        $kecamatan =DB::table('kecamatan')->get();
+        $bulan = DB::table('bulan')->get();
+        $tahun = DB::table('tahun')->get();
+
+        return view('dayasos.tambahdtks',compact('kecamatan'))
+        ->with (['bulan'=>$bulan])
+        ->with (['tahun'=>$tahun]);
+
+    }
+
+    public function store(Request $request)
+    {
+        DB::table('data_dtks')->insert([
+            'id_kec'=>$request->kecamatan,
+            'id_desa'=>$request->desa,
+            'id_bulan'=>$request->bulan,
+            'id_tahun'=>$request->tahun,
+            'ruta'=>$request->ruta,
+            'jiwa'=>$request->jiwa,
+        ]);
+
+        DB::table('data_pbi')->insert([
+            'id_kec'=>$request->kecamatan,
+            'id_desa'=>$request->desa,
+            'id_bulan'=>$request->bulan,
+            'id_tahun'=>$request->tahun,
+            'jumlah_aktif'=>$request->aktif,
+            'jumlah_nonaktif'=>$request->nonaktif,
+            'jumlah_bbl'=>$request->bbl,
+        ]);
+        return redirect('/dtks')->with('success', 'Berhasil Menambahkan Data!');
     }
 }

@@ -39,6 +39,9 @@
                         <label class="fw-bold" style="margin-bottom: 0.5rem">Bulan</label>
                             <select class="form-select" id="bulan" style="font-size:2.2vh;">
                                 <option selected>Pilih Bulan</option>
+                                    @foreach($bulan as $b)
+                                    <option value="{{$b->id_bulan}}">{{$b->nama_bulan}}</option>
+                                    @endforeach($bulan as $b)
                               
                             </select>
                     </div>
@@ -47,6 +50,9 @@
                         <label class="fw-bold" style="margin-bottom: 0.5rem">Tahun</label>
                             <select class="form-select" id="tahun" style="font-size:2.2vh;">
                                 <option selected>Pilih Tahun</option>
+                                    @foreach($tahun as $t)
+                                    <option value="{{$t->id_tahun}}">{{$t->tahun}}</option>
+                                    @endforeach($tahun as $t)
                                
                             </select>
                     </div>
@@ -79,6 +85,66 @@
     </div>
 <script type="text/javascript">
      $(document).ready(function(){
+        $.ajax({
+            url: '{{ route('getDataPKH')}}',
+            type :'get',             
+            success : function(res){
+                var table = $('#tabel-data').DataTable({
+                    destroy: true,
+                    dom: 'Bfrtip',
+                        buttons: [
+                            {
+                                //export excel
+                                extend: 'excel',
+                                text: 'Simpan Excel',
+                                title: 'Data PKH',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8]
+                                }
+                            },
+                            {
+                                //export pdf
+                                extend: 'pdf',
+                                text: 'Simpan PDF',
+                                title: 'Data PKH',
+                                orientation: 'landscape',
+                                messageTop: 'Data PKH - Dinas Sosial Kota Banda Aceh',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8]
+                                }
+                            },
+                            {
+                                //export print
+                                extend: 'print',
+                                text: 'Cetak',
+                                title: 'Data PKH',
+                                orientation: 'landscape',
+                                messageTop: 'Data PKH - Dinas Sosial Kota Banda Aceh',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8]
+                                }
+                            },
+                            
+                        ],
+                    data: res.semua,
+                    columns: [
+                        { 'data': 'nama_kec' },
+                        { 'data': 'nama_desa' },
+                        { 'data': 'nama_bulan' },
+                        { 'data': 'tahun' },
+                        { 'data': 'penerima_bantuan_tunai_bersyarat' },
+                        { 'data': 'penerima_bpnt' },
+                        { 'data': 'pbi_jaminan_kesehatan' },
+                        { 'data': 'kpm_pkh_p2k2' },
+                        { 'data': 'kpm_bumil_busui_baduta' },
+                        { 'data': "", "defaultContent": '<a class="btn btn-warning btn-sm" id="edit" href="{{ url('/editPKH?id_data=1')}}" role="button">Edit</a>'},
+
+                    ]
+                });
+            }
+        });
+
+
         //ketika pilih kecamatan
         $('#kecamatan').on('change', function(){
             //ambil value dari id kecamatan     
