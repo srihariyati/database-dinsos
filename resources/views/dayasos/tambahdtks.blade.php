@@ -13,12 +13,13 @@
                 </div>
             </div>
 
-            <form action="#">
+            <form action="/tambahdtks/store" method="post">
+            {{ csrf_field() }}
                 <div class="container" style="margin-top: 1rem;">
                     <div class="row" style="margin-left: 0px;">
                         <div class="col-auto" style="width:290px">
                             <label style="font-size:2.2vh; margin-left: 0px; margin-bottom: 0.3rem">Kecamatan</label>
-                                <select class="form-select" id="kecamatan" style="font-size:2.2vh;">
+                                <select class="form-select" id="kecamatan" name="kecamatan" style="font-size:2.2vh;">
                                     <option selected >Pilih Kecamatan</option>
                                     @foreach ($kecamatan as $kec)
                                     <option value="{{$kec->id_kec}}">{{$kec->nama_kec}}</option>
@@ -28,14 +29,14 @@
 
                         <div class="col-auto" style="font-size:2.2vh; margin-left: 0.2rem; width:290px">
                             <label style="margin-bottom: 0.3rem">Desa/Kelurahan</label>
-                                <select class="form-select" id="desa" style="font-size:2.2vh;">
+                                <select class="form-select" id="desa" name="desa" style="font-size:2.2vh;">
                                     <option selected>Pilih Desa/Kelurahan</option>
                                 </select>
                         </div>
 
                         <div class="col-auto" style="font-size:2.2vh; margin-left: 0.2rem; width:140px">
                             <label style="margin-bottom: 0.3rem">Bulan</label>
-                                <select class="form-select" id="bulan" style="font-size:2.2vh;">
+                                <select class="form-select" id="bulan" name="bulan" style="font-size:2.2vh;">
                                     @foreach($bulan as $b)
                                     <option value="{{$b->id_bulan}}">{{$b->nama_bulan}}</option>
                                     @endforeach($bulan as $b)
@@ -44,7 +45,7 @@
 
                         <div class="col-auto" style="font-size:2.2vh; margin-left: 0.2rem; width:140px">
                             <label style="margin-bottom: 6px">Tahun</label>
-                                <select class="form-select" id="tahun" style="font-size:2.2vh;">
+                                <select class="form-select" id="tahun" name="tahun" style="font-size:2.2vh;">
                                     <option selected>Pilih Tahun</option>
                                     @foreach($tahun as $t)
                                     <option value="{{$t->id_tahun}}">{{$t->tahun}}</option>
@@ -103,9 +104,8 @@
                 <div class="container">
                     <div class="row" style="margin-left: 48.5rem;">
                         <div class="col-auto">
-                            <a class="btn btn-success" id="tambah" href="" role="button">Simpan</a>
+                            <button class="btn btn-success" type="submit"> Simpan </button>
                         </div>
-
                     </div>
                 </div>
 

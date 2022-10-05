@@ -39,6 +39,9 @@
                         <label class="fw-bold" style="margin-bottom: 0.5rem">Bulan</label>
                             <select class="form-select" id="bulan" style="font-size:2.2vh;">
                                 <option selected>Pilih Bulan</option>
+                                    @foreach($bulan as $b)
+                                    <option value="{{$b->id_bulan}}">{{$b->nama_bulan}}</option>
+                                    @endforeach($bulan as $b)
                               
                             </select>
                     </div>
@@ -47,6 +50,9 @@
                         <label class="fw-bold" style="margin-bottom: 0.5rem">Tahun</label>
                             <select class="form-select" id="tahun" style="font-size:2.2vh;">
                                 <option selected>Pilih Tahun</option>
+                                    @foreach($tahun as $t)
+                                    <option value="{{$t->id_tahun}}">{{$t->tahun}}</option>
+                                    @endforeach($tahun as $t)
                                
                             </select>
                     </div>
@@ -134,7 +140,6 @@
                         { 'data': "", "defaultContent": '<a class="btn btn-warning btn-sm" id="edit" href="{{ url('/editPKH?id_data=1')}}" role="button">Edit</a>'},
 
                     ]
-                    
                 });
             }
         });

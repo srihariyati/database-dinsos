@@ -37,55 +37,33 @@ Route::group(['middleware' =>['auth']], function(){
     Route::get('/pmks','PmksController@index2');
     Route::get('/dtks','DtksController@index2');
 
-    // Route::get('/editpmks', function () {
-    //     return view('rehsos/editpmks');
-    // });
-
-    Route::get('/caripmks','PmksController@index');
-
-    
-
-   
-    
-    Route::get('/tambahpkh', function () {
-        return view('linjamsos/tambahpkh');
-    });
     //mengambil data kecamatan untuk dropdown
-    Route::get('get-data-pmks',[PmksController::class, 'getDataPMKS'])->name('getDataPMKS');
-
-    Route::get('pmks', [PmksController::class, 'view'])->name('dropdownView');
    
-    Route::get('get-data-kec',[PmksController::class, 'getDataKec'])->name('getDataKec');
-    Route::get('get-pmks-desa',[PmksController::class, 'getPmksDesa'])->name('getPmksDesa');
-    Route::get('get-pmks-bulan',[PmksController::class,'getPmksBulan'])->name('getPmksBulan');
-
+    Route::get('pmks', [PmksController::class, 'view'])->name('dropdownView');
+    Route::get('get-data-pmks',[PmksController::class, 'getDataPMKS'])->name('getDataPMKS');
     Route::get('/editpmks',[PmksController::class, 'editPmks'])->name('editPmks');
     Route::get('/tambahpmks', [PmksController::class, 'tambah'])->name('tambah');
-
-    //update data pmks
-    Route::post('/editpmks/update',[PmksController::class, 'update'])->name('update');
-
-    //store data pmks
     Route::post('/tambahpmks/store',[PmksController::class, 'store'])->name('store');
+    Route::post('/editpmks/update',[PmksController::class, 'update'])->name('update');
 
     //lihat data dtks
     Route::get('/dtks', [DtksController::class, 'getViewDTKS'])->name('getViewDTKS');
     Route::get('get-data-dtks',[DtksController::class,'getDataDTKS'])->name('getDataDTKS');
-    
-    //edit data dtks
     Route::get('/editdtks',[DtksController::class, 'editDtks'])->name('editDtks');
     Route::get('/tambahdtks',[DtksController::class, 'tambah'])->name('tambah');
+    Route::post('/tambahdtks/store',[DtksController::class, 'store'])->name('store');
+
     //lihat data pkh
     Route::get('/pkh',[PkhController::class, 'getViewPKH'])->name('getViewPKH');
     Route::get('get-data-pkh',[PkhController::class,'getDataPKH'])->name('getDataPKH');
+    Route::get('/tambahpkh', [PkhController::class, 'tambah'])->name('tambah');
+    Route::post('/tambahpkh/store',[PkhController::class, 'store'])->name('store');
 
     //lihat data bencana
     Route::get('/bencana',[BencanaController::class, 'getViewBencana'])->name('getViewBencana');
     Route::get('get-data-bencana', [BencanaController::class, 'getDataBencana'])->name('getDataBencana');
-
-    //tambh data bencana
     Route::get('/tambahdatabencana', [BencanaController::class, 'tambah'])->name('tambah');
-
+    Route::post('/tambahbencana/store', [BencanaController::class, 'store'])->name('store');
 });
 
 
