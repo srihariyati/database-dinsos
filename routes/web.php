@@ -48,11 +48,7 @@ Route::group(['middleware' =>['auth']], function(){
     Route::get('/tambahdtks', function () {
         return view('dayasos/tambahdtks');
     });
-
     
-    
-
- 
     Route::get('/tambahpkh', function () {
         return view('linjamsos/tambahpkh');
     });
