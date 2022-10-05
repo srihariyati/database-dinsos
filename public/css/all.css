@@ -65,6 +65,5 @@ table.dataTable thead .sorting_desc_disabled:before {
 }
 
 .card {
-    position:fixed;
+    position: fixed;
 }
-
