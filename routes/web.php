@@ -45,9 +45,7 @@ Route::group(['middleware' =>['auth']], function(){
 
     
 
-    Route::get('/tambahdtks', function () {
-        return view('dayasos/tambahdtks');
-    });
+   
     
     Route::get('/tambahpkh', function () {
         return view('linjamsos/tambahpkh');
@@ -76,7 +74,7 @@ Route::group(['middleware' =>['auth']], function(){
     
     //edit data dtks
     Route::get('/editdtks',[DtksController::class, 'editDtks'])->name('editDtks');
-
+    Route::get('/tambahdtks',[DtksController::class, 'tambah'])->name('tambah');
     //lihat data pkh
     Route::get('/pkh',[PkhController::class, 'getViewPKH'])->name('getViewPKH');
     Route::get('get-data-pkh',[PkhController::class,'getDataPKH'])->name('getDataPKH');

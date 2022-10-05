@@ -79,6 +79,67 @@
     </div>
 <script type="text/javascript">
      $(document).ready(function(){
+        $.ajax({
+            url: '{{ route('getDataPKH')}}',
+            type :'get',             
+            success : function(res){
+                var table = $('#tabel-data').DataTable({
+                    destroy: true,
+                    dom: 'Bfrtip',
+                        buttons: [
+                            {
+                                //export excel
+                                extend: 'excel',
+                                text: 'Simpan Excel',
+                                title: 'Data PKH',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8]
+                                }
+                            },
+                            {
+                                //export pdf
+                                extend: 'pdf',
+                                text: 'Simpan PDF',
+                                title: 'Data PKH',
+                                orientation: 'landscape',
+                                messageTop: 'Data PKH - Dinas Sosial Kota Banda Aceh',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8]
+                                }
+                            },
+                            {
+                                //export print
+                                extend: 'print',
+                                text: 'Cetak',
+                                title: 'Data PKH',
+                                orientation: 'landscape',
+                                messageTop: 'Data PKH - Dinas Sosial Kota Banda Aceh',
+                                exportOptions: {
+                                    columns: [ 0, 1, 2, 3, 4, 5, 6, 7, 8]
+                                }
+                            },
+                            
+                        ],
+                    data: res.semua,
+                    columns: [
+                        { 'data': 'nama_kec' },
+                        { 'data': 'nama_desa' },
+                        { 'data': 'nama_bulan' },
+                        { 'data': 'tahun' },
+                        { 'data': 'penerima_bantuan_tunai_bersyarat' },
+                        { 'data': 'penerima_bpnt' },
+                        { 'data': 'pbi_jaminan_kesehatan' },
+                        { 'data': 'kpm_pkh_p2k2' },
+                        { 'data': 'kpm_bumil_busui_baduta' },
+                        { 'data': "", "defaultContent": '<a class="btn btn-warning btn-sm" id="edit" href="{{ url('/editPKH?id_data=1')}}" role="button">Edit</a>'},
+
+                    ]
+                    
+                });
+            }
+        });
+
+
         //ketika pilih kecamatan
         $('#kecamatan').on('change', function(){
             //ambil value dari id kecamatan     
