@@ -175,4 +175,27 @@ class DtksController extends Controller
         ->with (['tahun'=>$tahun]);
 
     }
+
+    public function store(Request $request)
+    {
+        DB::table('data_dtks')->insert([
+            'id_kec'=>$request->kecamatan,
+            'id_desa'=>$request->desa,
+            'id_bulan'=>$request->bulan,
+            'id_tahun'=>$request->tahun,
+            'ruta'=>$request->ruta,
+            'jiwa'=>$request->jiwa,
+        ]);
+
+        DB::table('data_pbi')->insert([
+            'id_kec'=>$request->kecamatan,
+            'id_desa'=>$request->desa,
+            'id_bulan'=>$request->bulan,
+            'id_tahun'=>$request->tahun,
+            'jumlah_aktif'=>$request->aktif,
+            'jumlah_nonaktif'=>$request->nonaktif,
+            'jumlah_bbl'=>$request->bbl,
+        ]);
+        return redirect('/dtks')->with('success', 'Berhasil Menambahkan Data!');
+    }
 }

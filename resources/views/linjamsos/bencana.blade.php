@@ -81,6 +81,7 @@
                 <tr>
                     <th>Kecamatan</th>
                     <th>Desa/Kelurahan</th>
+                    <th>Tanggal Bencana</th>
                     <th>Bulan</th>
                     <th>Tahun</th>
                     <th>Jenis Bencana</th>
@@ -143,6 +144,7 @@
                     columns: [
                         { 'data': 'nama_kec' },
                         { 'data': 'nama_desa' },
+                        { 'data': 'tanggal' },
                         { 'data': 'nama_bulan' },
                         { 'data': 'tahun' },
                         { 'data': 'jenis_bencana' },
@@ -219,6 +221,7 @@
                         columns: [
                             { 'data': 'nama_kec' },
                             { 'data': 'nama_desa' },
+                            { 'data': 'tanggal' },
                             { 'data': 'nama_bulan' },
                             { 'data': 'tahun' },
                             { 'data': 'jenis_bencana' },
