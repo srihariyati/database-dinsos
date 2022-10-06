@@ -70,7 +70,7 @@
     <div id="card2" class="card w-75" style="margin-top: 5px;">
         <div class="card-body">
             
-        <div class="table-responsive" style="height: 17.5rem; font-size:1.5vh;">
+        <div class="table-responsive" style="height: 22.5rem; font-size:2vh;">
             <table id="tabel-data" class="table table-striped table-bordered" width="100%" cellspacing="0" >
             <thead>
                 <tr>

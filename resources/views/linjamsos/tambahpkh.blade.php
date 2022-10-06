@@ -9,7 +9,7 @@
                     <a href="{{ url('/pkh')}}" class="icon"><i class= "fas fa-chevron-left fa-lg"  style="color:black;"> </i></a>
                 </div>
                 <div class="col-auto">
-                    <h4 class="fw-bold">Tambah Data Bantuan Sosial Masa Tanggap Darurat Bencana</h4>
+                    <h4 class="fw-bold">Tambah Data PKH</h4>
                 </div>
             </div>
 
