@@ -5,6 +5,21 @@
     <div class="card w-75">
         <div class="card-body" style="margin-bottom: 10px;">
             <div class="container" >
+            <!-- @if(session('error'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <b>Opps!</b> {{session('eror')}}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close" ></button>
+                </div>
+            @endif -->
+
+            @if (session('error'))
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    {{ session('error') }}
+                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close">
+                       
+                    </button>
+                </div>
+            @endif
                 <div class="row" style="margin-left: -40px;">
                     <div class="col-auto">
                         <h4 class="fw-bold" >Data Rekapan PMKS</h4>

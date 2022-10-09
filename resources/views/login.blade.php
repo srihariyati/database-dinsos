@@ -51,7 +51,7 @@
 				        </div>
 	    			</div>
 	    			<div class="justify-content-center text-center mb-3">
-				    	<p class="card-text"><small>Copyright ©2022 <a href="https://informatika.unsyiah.ac.id/webinf/" style="color: #E6B325" class="text-decoration-underline">Informatika USK</a> All rights reserved.</small></p>
+				    	<p class="card-text"><small>Copyright ©2022 <a href="https://informatika.unsyiah.ac.id/webinf/" target="blank"style="color: #E6B325" class="text-decoration-underline">Informatika USK</a> All rights reserved.</small></p>
 				    </div>
 	  			</div>
 
