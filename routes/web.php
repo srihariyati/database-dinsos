@@ -41,28 +41,28 @@ Route::group(['middleware' =>['auth']], function(){
    
     Route::get('pmks', [PmksController::class, 'view'])->name('dropdownView');
     Route::get('get-data-pmks',[PmksController::class, 'getDataPMKS'])->name('getDataPMKS');
-    Route::get('/editpmks',[PmksController::class, 'editPmks'])->name('editPmks');
-    Route::get('/tambahpmks', [PmksController::class, 'tambah'])->name('tambah');
+    Route::get('/editpmks',[PmksController::class, 'editPmks'])->name('editPmks')->middleware(['auth', 'cekStatus:SuperAdmin']);
+    Route::get('/tambahpmks', [PmksController::class, 'tambah'])->name('tambah')->middleware(['auth', 'cekStatus:Admin,SuperAdmin']);
     Route::post('/tambahpmks/store',[PmksController::class, 'store'])->name('store');
     Route::post('/editpmks/update',[PmksController::class, 'update'])->name('update');
 
     //lihat data dtks
     Route::get('/dtks', [DtksController::class, 'getViewDTKS'])->name('getViewDTKS');
     Route::get('get-data-dtks',[DtksController::class,'getDataDTKS'])->name('getDataDTKS');
-    Route::get('/editdtks',[DtksController::class, 'editDtks'])->name('editDtks');
-    Route::get('/tambahdtks',[DtksController::class, 'tambah'])->name('tambah');
+    Route::get('/editdtks',[DtksController::class, 'editDtks'])->name('editDtks')->middleware(['auth', 'cekStatus:SuperAdmin']);
+    Route::get('/tambahdtks',[DtksController::class, 'tambah'])->name('tambah')->middleware(['auth', 'cekStatus:Admin,SuperAdmin']);
     Route::post('/tambahdtks/store',[DtksController::class, 'store'])->name('store');
 
     //lihat data pkh
     Route::get('/pkh',[PkhController::class, 'getViewPKH'])->name('getViewPKH');
     Route::get('get-data-pkh',[PkhController::class,'getDataPKH'])->name('getDataPKH');
-    Route::get('/tambahpkh', [PkhController::class, 'tambah'])->name('tambah');
+    Route::get('/tambahpkh', [PkhController::class, 'tambah'])->name('tambah')->middleware(['auth', 'cekStatus:Admin,SuperAdmin']);
     Route::post('/tambahpkh/store',[PkhController::class, 'store'])->name('store');
 
     //lihat data bencana
     Route::get('/bencana',[BencanaController::class, 'getViewBencana'])->name('getViewBencana');
     Route::get('get-data-bencana', [BencanaController::class, 'getDataBencana'])->name('getDataBencana');
-    Route::get('/tambahdatabencana', [BencanaController::class, 'tambah'])->name('tambah');
+    Route::get('/tambahdatabencana', [BencanaController::class, 'tambah'])->name('tambah')->middleware(['auth', 'cekStatus:Admin,SuperAdmin']);
     Route::post('/tambahbencana/store', [BencanaController::class, 'store'])->name('store');
 });
 
